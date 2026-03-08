@@ -1,0 +1,52 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "unused-imports"],
+    "settings": {
+        "react": {
+            "version": "18.2.0"
+        }
+    },
+    "rules": {
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "never",
+                "objects": "never",
+                "imports": "never",
+                "exports": "never",
+                "functions": "never"
+            }
+        ],
+        "@typescript-eslint/comma-dangle": [
+            "error",
+            {
+                "arrays": "never",
+                "objects": "never",
+                "imports": "never",
+                "exports": "never",
+                "functions": "never"
+            }
+        ],
+        "indent": ["error", 4],
+        "@typescript-eslint/indent": ["error", 4],
+        "semi": [2, "always"],
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/naming-convention": "off",
+        "unused-imports/no-unused-imports": "error",
+        "@typescript-eslint/no-unused-vars": "off",
+        "no-unused-vars": "off"
+    }
+}
