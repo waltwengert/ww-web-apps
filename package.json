@@ -15,7 +15,7 @@
     "deps:check": "depcheck --ignores=\"@types/node,@types/react,@types/react-dom,typescript\" || (echo '❌ Unused dependencies found! Remove them before committing.' && exit 1)",
     "start:secret-santa": "yarn workspace @ww-web-apps/secret-santa start",
     "build:secret-santa": "yarn workspace @ww-web-apps/secret-santa build",
-    "test:secret-santa": "yarn workspace @ww-web-apps/secret-santa test run",
+    "test:secret-santa": "yarn workspace @ww-web-apps/secret-santa test",
     "prepare": "husky install"
   },
   "devDependencies": {

@@ -6,7 +6,8 @@
   "files": ["dist"],
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "test": "echo 'No tests for @ww-web-apps/ui'"
   },
   "dependencies": {
     "react": "^18.2.0",
