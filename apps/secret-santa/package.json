@@ -1,0 +1,46 @@
+{
+    "name": "@ww-web-apps/secret-santa",
+    "version": "0.1.0",
+    "homepage": "https://waltwengert.github.io/secret-santa",
+    "private": true,
+    "dependencies": {
+        "@testing-library/jest-dom": "^6.1.4",
+        "@testing-library/react": "^14.0.0",
+        "@types/jest": "^29.5.5",
+        "@types/react": "^18.0.0",
+        "@types/react-dom": "^18.0.0",
+        "@vitejs/plugin-react": "^4.0.0",
+        "@ww-web-apps/ui": "*",
+        "gh-pages": "^4.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.27.0",
+        "styled-components": "^5.3.6",
+        "typescript": "*",
+        "vite": "^4.3.9"
+    },
+    "devDependencies": {
+        "jsdom": "^22.1.0",
+        "vitest": "^0.34.6"
+    },
+    "scripts": {
+        "start": "vite",
+        "build": "vite build",
+        "test": "vitest",
+        "preview": "vite preview",
+        "predeploy": "yarn build",
+        "deploy": "gh-pages -d dist"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
