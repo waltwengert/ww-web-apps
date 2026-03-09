@@ -1,10 +1,22 @@
 import styled from 'styled-components';
+import React from 'react';
 
 import { MOBILE_DEVICE_WIDTH } from './constants';
 
-export const BaseButton = styled.button`
-    background-color: #000000;
-    color: #ffffff;
+interface ButtonProps {
+    children: React.ReactNode;
+    backgroundColor?: string;
+    color?: string;
+    onClick?: () => void;
+    type?: 'button' | 'submit' | 'reset';
+}
+
+const StyledButton = styled.button<{
+    backgroundColor?: string;
+    color?: string;
+}>`
+    background-color: ${props => props.backgroundColor || '#000000'};
+    color: ${props => props.color || '#ffffff'};
     font-size: 18px;
     border: none;
     border-radius: 100px;
@@ -31,3 +43,22 @@ export const BaseButton = styled.button`
         }
     }
 `;
+
+export const BaseButton = ({
+    children,
+    backgroundColor,
+    color,
+    onClick,
+    type = 'button'
+}: ButtonProps) => {
+    return (
+        <StyledButton
+            backgroundColor={backgroundColor}
+            color={color}
+            onClick={onClick}
+            type={type}
+        >
+            {children}
+        </StyledButton>
+    );
+};
