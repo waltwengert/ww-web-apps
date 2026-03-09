@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "eslint apps/**/*.{js,jsx,ts,tsx} packages/**/*.{js,jsx,ts,tsx}",
+    "lint": "eslint apps/**/*.{ts,tsx} packages/**/*.{ts,tsx}",
     "format": "prettier --write apps/**/*.{js,jsx,ts,tsx,html,css,less,ejs} packages/**/*.{js,jsx,ts,tsx,html,css,less,ejs}",
     "start": "yarn workspaces run start",
     "build": "yarn workspaces run build",
@@ -16,6 +16,15 @@
     "start:secret-santa": "yarn workspace @ww-web-apps/secret-santa start",
     "build:secret-santa": "yarn workspace @ww-web-apps/secret-santa build",
     "test:secret-santa": "yarn workspace @ww-web-apps/secret-santa test",
+    "start:future-weight": "yarn workspace @ww-web-apps/future-weight start",
+    "build:future-weight": "yarn workspace @ww-web-apps/future-weight build",
+    "test:future-weight": "yarn workspace @ww-web-apps/future-weight test",
+    "start:secret-santa-decrypter": "yarn workspace @ww-web-apps/secret-santa-decrypter start",
+    "build:secret-santa-decrypter": "yarn workspace @ww-web-apps/secret-santa-decrypter build",
+    "test:secret-santa-decrypter": "yarn workspace @ww-web-apps/secret-santa-decrypter test",
+    "start:title-case": "yarn workspace @ww-web-apps/title-case start",
+    "build:title-case": "yarn workspace @ww-web-apps/title-case build",
+    "test:title-case": "yarn workspace @ww-web-apps/title-case test",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -33,7 +42,7 @@
     "typescript": "*"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{ts,tsx}": [
       "prettier --write",
       "eslint --fix"
     ],

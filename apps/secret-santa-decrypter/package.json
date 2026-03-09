@@ -1,0 +1,15 @@
+{
+    "name": "@ww-web-apps/secret-santa-decrypter",
+    "version": "0.1.0",
+    "homepage": "https://waltwengert.github.io/secret-santa-decrypter",
+    "private": true,
+    "dependencies": {
+        "vite": "^4.3.9"
+    },
+    "scripts": {
+        "start": "vite",
+        "build": "vite build",
+        "test": "echo 'No tests for @ww-web-apps/secret-santa-decrypter'",
+        "preview": "vite preview"
+    }
+}

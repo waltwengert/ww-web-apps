@@ -1,0 +1,40 @@
+* {
+    /*margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  -webkit-overflow-scrolling: touch;*/
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#userIn {
+    width: 30vw;
+    margin-left: 35vw;
+    margin-right: 35vw;
+}
+
+.center {
+    width: 100%;
+    text-align: center;
+}
+
+.input {
+    margin-bottom: 10px;
+}
+
+select {
+    width: 60%;
+}
+
+#txtOut {
+    pointer-events: none;
+}
