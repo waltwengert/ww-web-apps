@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BaseButton, BaseInput, BaseLabel } from '@ww-web-apps/ui';
+import { BaseInput } from '@ww-web-apps/ui';
 import './style.css';
 
 const App: React.FC = () => {

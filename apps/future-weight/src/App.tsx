@@ -84,6 +84,9 @@ const App: React.FC = () => {
         weight: number,
         bodyfat: string
     ): number => {
+        // TODO: factor in body fat percentage.
+        console.debug('Ignoring body fat percentage of', bodyfat);
+
         let normalizedWeight = weight;
         let normalizedHeight = height;
 
