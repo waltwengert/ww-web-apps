@@ -19,4 +19,6 @@
 
 # IDE
 .vs/*
+!.vscode/extensions.json
+!.vscode/settings.json
 .vscode/*

@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "ms-vscode.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "formulahendry.auto-rename-tag"
+    ]
+}
