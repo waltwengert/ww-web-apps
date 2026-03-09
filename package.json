@@ -1,6 +1,7 @@
 {
   "name": "ww-web-apps",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -12,7 +13,7 @@
     "start": "yarn workspaces run start",
     "build": "yarn workspaces run build",
     "test": "yarn workspaces run test",
-    "deps:check": "depcheck --ignores=\"@types/node,@types/react,@types/react-dom,typescript\" || (echo '❌ Unused dependencies found! Remove them before committing.' && exit 1)",
+    "deps:check": "depcheck || (echo '❌ Unused dependencies found! Remove them before committing.' && exit 1)",
     "start:secret-santa": "yarn workspace @ww-web-apps/secret-santa start",
     "build:secret-santa": "yarn workspace @ww-web-apps/secret-santa build",
     "test:secret-santa": "yarn workspace @ww-web-apps/secret-santa test",
@@ -28,18 +29,19 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
+    "@babel/core": "^7.29.0",
+    "@eslint/js": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
     "depcheck": "^1.4.7",
-    "eslint": "^8.0.1",
-    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint": "^10.0.3",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^17.4.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.4",
     "prettier": "2.8.0",
-    "typescript": "*"
+    "react-is": "^19.2.4",
+    "typescript": "^5.4.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -48,6 +50,12 @@
     ],
     "*.{html,css,less,ejs}": [
       "prettier --write"
+    ]
+  },
+  "depcheck": {
+    "ignores": [
+      "@babel/core",
+      "react-is"
     ]
   }
 }
