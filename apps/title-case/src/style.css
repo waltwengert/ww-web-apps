@@ -1,40 +1,28 @@
 * {
-    /*margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-  -webkit-overflow-scrolling: touch;*/
+    box-sizing: border-box;
 }
 
 html,
 body {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    color: #1f2a44;
+    background:
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(45, 108, 223, 0.22),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 88% 82%,
+            rgba(66, 185, 131, 0.22),
+            transparent 38%
+        ),
+        linear-gradient(135deg, #f6efde 0%, #dce9ff 100%);
 }
 
-#userIn {
-    width: 30vw;
-    margin-left: 35vw;
-    margin-right: 35vw;
-}
-
-.center {
-    width: 100%;
-    text-align: center;
-}
-
-.input {
-    margin-bottom: 10px;
-}
-
-select {
-    width: 60%;
-}
-
-#txtOut {
-    pointer-events: none;
+#root {
+    min-height: 100vh;
 }

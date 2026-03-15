@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Button, SecretSanta } from '@ww-web-apps/ui';
 
-import { decrypt } from '../utilities/utils';
+import { decrypt } from '../lib/secretSanta';
 import {
     BaseResultsPanel,
     ButtonRowContainer,

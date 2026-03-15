@@ -1,4 +1,6 @@
-import { CIPHER_KEY } from './consts';
+const CIPHER_KEY = 13;
+
+export const ENCRYPTED_LENGTH = 12;
 
 /**
  * Takes an array and shuffles it.

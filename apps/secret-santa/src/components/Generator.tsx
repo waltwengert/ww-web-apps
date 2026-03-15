@@ -7,7 +7,7 @@ import {
     decryptStringArray,
     encryptStringArray,
     shuffle
-} from '../utilities/utils';
+} from '../lib/secretSanta';
 import { ButtonRowContainer, ButtonRowWrapper } from './layout';
 import { PrimaryInput } from './PrimaryInput';
 import { Results } from './Results';
