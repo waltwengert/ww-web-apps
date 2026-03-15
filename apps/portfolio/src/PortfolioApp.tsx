@@ -32,6 +32,8 @@ const App = (): React.ReactElement => {
             return;
         }
 
+        setActiveSection(sectionId);
+
         const { buttonsHeight } = getScrollHeights();
         const maxScrollTop =
             document.documentElement.scrollHeight - window.innerHeight;
@@ -51,15 +53,11 @@ const App = (): React.ReactElement => {
             setButtonsFixed(window.scrollY > headingHeight);
 
             let nextSection: SectionId = 'about';
+            let bestScore = -1;
+            let bestVisiblePx = -1;
 
-            const atBottom =
-                window.innerHeight + window.scrollY >=
-                document.documentElement.scrollHeight - 2;
-
-            if (atBottom) {
-                setActiveSection('employment');
-                return;
-            }
+            const viewportTop = buttonsHeight;
+            const viewportBottom = window.innerHeight;
 
             for (const sectionId of SECTION_IDS) {
                 const section = document.getElementById(sectionId);
@@ -67,15 +65,27 @@ const App = (): React.ReactElement => {
                     continue;
                 }
 
-                const top = section.offsetTop - buttonsHeight;
-                const bottom = top + section.offsetHeight;
+                const rect = section.getBoundingClientRect();
+                const visiblePx =
+                    Math.min(rect.bottom, viewportBottom) -
+                    Math.max(rect.top, viewportTop);
+
+                if (visiblePx <= 0) {
+                    continue;
+                }
+
+                // Ratio favors short sections (e.g. Education) when they are
+                // mostly visible, while visiblePx breaks ties naturally.
+                const sectionHeight = Math.max(rect.height, 1);
+                const score = visiblePx / sectionHeight;
 
                 if (
-                    window.scrollY >= top - 40 &&
-                    window.scrollY < bottom - 40
+                    score > bestScore ||
+                    (score === bestScore && visiblePx > bestVisiblePx)
                 ) {
+                    bestScore = score;
+                    bestVisiblePx = visiblePx;
                     nextSection = sectionId;
-                    break;
                 }
             }
 
