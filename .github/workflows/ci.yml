@@ -109,3 +109,60 @@ jobs:
 
       - name: Run E2E smoke tests
         run: yarn test:e2e
+
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, test, e2e]
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build packages
+        run: yarn build:packages
+
+      - name: Build apps
+        run: |
+          yarn build:portfolio
+          yarn build:title-case
+          yarn build:future-weight
+          yarn build:secret-santa
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -r apps/portfolio/dist/. _site/
+          mkdir -p _site/title-case
+          cp -r apps/title-case/dist/. _site/title-case/
+          mkdir -p _site/future-weight
+          cp -r apps/future-weight/dist/. _site/future-weight/
+          mkdir -p _site/secret-santa
+          cp -r apps/secret-santa/dist/. _site/secret-santa/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
