@@ -33,8 +33,13 @@ const App = (): React.ReactElement => {
         }
 
         const { buttonsHeight } = getScrollHeights();
+        const maxScrollTop =
+            document.documentElement.scrollHeight - window.innerHeight;
         window.scroll({
-            top: element.offsetTop - buttonsHeight,
+            top: Math.max(
+                0,
+                Math.min(element.offsetTop - buttonsHeight, maxScrollTop)
+            ),
             behavior: 'auto'
         });
     };
@@ -46,6 +51,15 @@ const App = (): React.ReactElement => {
             setButtonsFixed(window.scrollY > headingHeight);
 
             let nextSection: SectionId = 'about';
+
+            const atBottom =
+                window.innerHeight + window.scrollY >=
+                document.documentElement.scrollHeight - 2;
+
+            if (atBottom) {
+                setActiveSection('employment');
+                return;
+            }
 
             for (const sectionId of SECTION_IDS) {
                 const section = document.getElementById(sectionId);

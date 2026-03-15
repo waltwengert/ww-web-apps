@@ -32,6 +32,16 @@ describe('Portfolio App', () => {
         const projectsSection = document.getElementById('projects');
         expect(projectsSection).toBeTruthy();
 
+        Object.defineProperty(window, 'innerHeight', {
+            value: 800,
+            configurable: true
+        });
+
+        Object.defineProperty(document.documentElement, 'scrollHeight', {
+            value: 2000,
+            configurable: true
+        });
+
         Object.defineProperty(projectsSection!, 'offsetTop', {
             value: 500,
             configurable: true
