@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 
@@ -38,5 +39,16 @@ describe('Decrypter UI', () => {
             screen.queryByPlaceholderText('The code goes here')
         ).not.toBeInTheDocument();
         expect(screen.getByText('alex')).toBeInTheDocument();
+    });
+
+    it('has no a11y violations', async () => {
+        const { container } = render(
+            <MemoryRouter initialEntries={['/decrypter']}>
+                <Routes>
+                    <Route path="/decrypter" element={<Decrypter />} />
+                </Routes>
+            </MemoryRouter>
+        );
+        expect(await axe(container)).toHaveNoViolations();
     });
 });
