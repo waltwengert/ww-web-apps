@@ -103,6 +103,29 @@ const config = [
         }
     },
 
+    // Restrict inline color literals; enforce centralized colour tokens in UI lib.
+    {
+        files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+        ignores: ['packages/ui/src/colors.ts', '**/*.d.ts', '**/dist/**'],
+        rules: {
+            'no-restricted-syntax': [
+                'error',
+                {
+                    selector:
+                        'Literal[value=/^(?:#(?:[0-9a-fA-F]{3,8})|(?:rgb|hsl)a?\\()/]',
+                    message:
+                        'Define color values in packages/ui/src/colors.ts and import the token instead of using inline color literals.'
+                },
+                {
+                    selector:
+                        'TemplateElement[value.raw=/(?:#(?:[0-9a-fA-F]{3,8})|(?:rgb|hsl)a?\\()/]',
+                    message:
+                        'Define color values in packages/ui/src/colors.ts and interpolate tokens instead of inline color literals.'
+                }
+            ]
+        }
+    },
+
     // apps/secret-santa: may only use SecretSanta and Base colour namespaces
     {
         files: ['apps/secret-santa/**/*.ts', 'apps/secret-santa/**/*.tsx'],
