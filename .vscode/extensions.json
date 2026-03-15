@@ -2,7 +2,6 @@
     "recommendations": [
         "ms-vscode.vscode-eslint",
         "esbenp.prettier-vscode",
-        "ms-vscode.vscode-typescript-next",
-        "formulahendry.auto-rename-tag"
+        "ms-vscode.vscode-typescript-next"
     ]
 }
