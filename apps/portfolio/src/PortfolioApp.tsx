@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { data } from './data';
+import { data } from './portfolioData';
 
 const SECTION_IDS = ['about', 'projects', 'education', 'employment'] as const;
 
