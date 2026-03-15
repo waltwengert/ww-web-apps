@@ -1,6 +1,5 @@
 export interface HeadingData {
     name: string;
-    imgSource: string;
     mailLink: string;
     mailText: string;
     githubLink: string;
@@ -44,42 +43,66 @@ export interface PortfolioData {
 
 export const data: PortfolioData = {
     heading: {
-        name: '<NAME>',
-        imgSource: 'assets/<AVATAR_IMAGE>',
-        mailLink: 'mailto:<EMAIL_ADDRESS>',
-        mailText: '<ALIAS>@<EMAIL_DOMAIN>',
-        githubLink: 'https://github.com/<GITHUB_USERNAME>',
-        linkedinLink: 'https://www.linkedin.com/in/<LINKEDIN_USERNAME>/'
+        name: 'Walt Wengert',
+        mailLink: 'mailto:hello@example.com',
+        mailText: 'hello@example.com',
+        githubLink: 'https://github.com/waltwengert',
+        linkedinLink: 'https://www.linkedin.com/in/example-profile/'
     },
     about: [
         {
-            heading: '<ABOUT_HEADING>',
-            body: '<ABOUT_BODY>'
+            heading: 'About This Site',
+            body: 'This portfolio uses intentionally generic profile content while still showcasing real projects and code quality work from this monorepo.'
+        },
+        {
+            heading: 'About Me (Mock Profile)',
+            body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. This section will be replaced with a real profile when needed.'
         }
     ],
     projects: [
         {
-            screen: 'assets/<PROJECT_SCREENSHOT>',
-            title: '<PROJECT_TITLE>',
-            tech: '<PROJECT_TECH>',
-            about: '<PROJECT_DESCRIPTION>',
-            link: '<PROJECT_LINK>',
-            play: '<HOST_LINK>'
+            screen: 'assets/secretsanta_Browser.png',
+            title: 'Secret Santa',
+            tech: 'React, TypeScript, Vite, styled-components',
+            about: 'Randomized Secret Santa pairing tool with optional encrypted links for sharing assignments.',
+            link: 'https://github.com/waltwengert/ww-web-apps/tree/master/apps/secret-santa',
+            play: 'na'
+        },
+        {
+            screen: 'assets/portfolio_Browser.png',
+            title: 'Portfolio Site',
+            tech: 'React, TypeScript, Vite',
+            about: 'Single-page portfolio with sticky section navigation and responsive tiles.',
+            link: 'https://github.com/waltwengert/ww-web-apps/tree/master/apps/portfolio',
+            play: 'na'
+        },
+        {
+            screen: 'assets/calc.PNG',
+            title: 'Future Weight Calculator',
+            tech: 'React, TypeScript, Vitest',
+            about: 'BMR, TDEE, and BMI calculator with reusable UI components and extracted domain logic.',
+            link: 'https://github.com/waltwengert/ww-web-apps/tree/master/apps/future-weight',
+            play: 'na'
         }
     ],
     education: [
         {
-            level: '<EDUCATION_LEVEL>',
-            focus: '<EDUCATION_FOCUS>',
-            institution: '<EDUCATION_INSTITUTION>',
-            period: '<EDUCATION_END_DATE>'
+            level: 'Mock Degree',
+            focus: 'Lorem Ipsum Engineering',
+            institution: 'Placeholder Institute of Technology',
+            period: '2019 - 2022'
         }
     ],
     employment: [
         {
-            employer: '<EMPLOYER>',
-            position: '<POSITION>',
-            period: '<START_DATE> — <END_DATE>'
+            employer: 'Example Company Pty Ltd',
+            position: 'Software Developer (Mock Role)',
+            period: '2022 — Present'
+        },
+        {
+            employer: 'Sample Solutions',
+            position: 'Junior Developer (Mock Role)',
+            period: '2020 — 2022'
         }
     ]
 };
