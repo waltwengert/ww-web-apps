@@ -46,8 +46,13 @@ export const TitleCase = {
 
 export const Portfolio = {
     Background: '#222222',
+    Surface: '#2a4e6c',
     Text: '#fffaff',
+    TileText: '#444444',
     Muted: '#9f9f9f',
+    TileBorder: '#2a2a2a',
+    TileBackground: '#e9e9e9',
+    MobileBorder: '#3f3f3f',
     Button: '#627280',
     ButtonActive: '#2a4e6c',
     ButtonText: '#2a2a2a'
