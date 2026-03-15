@@ -15,7 +15,8 @@ Current apps:
 
 ## Setup
 
-1. Install dependencies: `yarn install`
+1. Enable Corepack (once per machine): `sudo corepack enable`
+2. Install dependencies: `yarn install`
 2. Run all builds: `yarn build`
 3. Start an app:
 	- `yarn start:{appName}` from repo root, or
