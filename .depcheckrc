@@ -1,0 +1,7 @@
+{
+  "ignores": [
+    "@babel/core",
+    "react-is",
+    "husky"
+  ]
+}
