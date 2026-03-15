@@ -336,6 +336,7 @@ const App: React.FC = () => {
                     <FormRow>
                         <FieldLabel>Activity</FieldLabel>
                         <ActivitySelect
+                            aria-label="Activity"
                             value={activity}
                             onChange={e => setActivity(e.target.value)}
                         >

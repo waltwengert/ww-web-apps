@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import App from './FutureWeightApp';
@@ -11,6 +12,11 @@ describe('FutureWeight App', () => {
     it('renders app heading', () => {
         render(<App />);
         expect(screen.getByText(/future weight/i)).toBeInTheDocument();
+    });
+
+    it('has no a11y violations', async () => {
+        const { container } = render(<App />);
+        expect(await axe(container)).toHaveNoViolations();
     });
 
     it('calculates and renders BMR, TDEE, and BMI for valid metric inputs', () => {

@@ -398,7 +398,7 @@ const EducationPeriod = styled.h4`
     }
 `;
 
-const EducationInstitution = styled.h4`
+const EducationInstitution = styled.h3`
     width: 30%;
     padding-left: 3%;
     padding-right: 5%;
@@ -462,7 +462,7 @@ const EmploymentPosition = styled.h3`
     }
 `;
 
-const EmploymentPeriod = styled.h4`
+const EmploymentPeriod = styled.p`
     width: 30%;
     padding-left: 3%;
     padding-right: 5%;
@@ -631,6 +631,7 @@ const App = (): React.ReactElement => {
                         target="_blank"
                         href={data.heading.githubLink}
                         rel="noreferrer"
+                        aria-label="GitHub"
                     >
                         <SocialIcon icon={faGithub} />
                     </SocialIconLink>
@@ -640,6 +641,7 @@ const App = (): React.ReactElement => {
                         target="_blank"
                         href={data.heading.linkedinLink}
                         rel="noreferrer"
+                        aria-label="LinkedIn"
                     >
                         <SocialIcon icon={faLinkedinIn} />
                     </SocialIconLink>
