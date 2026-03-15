@@ -320,6 +320,16 @@
   resolved "https://registry.yarnpkg.com/@exodus/bytes/-/bytes-1.15.0.tgz#54479e0f406cbad024d6fe1c3190ecca4468df3b"
   integrity sha512-UY0nlA+feH81UGSHv92sLEPLCeZFjXOuHhrIo0HQydScuQc8s0A7kL/UdgwgDq8g8ilksmuoF35YVTNphV2aBQ==
 
+"@fontsource/grandstander@^5.2.7":
+  version "5.2.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/grandstander/-/grandstander-5.2.7.tgz#308f6b772b2195fa5d4d55e5cd242350c65de70a"
+  integrity sha512-SBO1jNrp3dBswtIy5LDg4nd8yC9oS1Thq9IvbigYxcWv411UdhiNtWRG44awoPuH9g9hs8KuCQKZ/ZBjEPIWUw==
+
+"@fontsource/roboto-slab@^5.2.7":
+  version "5.2.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto-slab/-/roboto-slab-5.2.8.tgz#557ffa492aeb18eada80bbccc423f788b9967de1"
+  integrity sha512-8+iMCsoUZsDwQUe5omwCp7JPNTVdyAgay5AdhmnFZPEVIVabujrmYaFkSuZ1+GUemPEWlzEQ6aQkg2mPL84SAA==
+
 "@fortawesome/fontawesome-common-types@6.7.2":
   version "6.7.2"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.7.2.tgz#7123d74b0c1e726794aed1184795dbce12186470"
