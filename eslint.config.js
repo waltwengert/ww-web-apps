@@ -101,6 +101,86 @@ const config = [
                 }
             ]
         }
+    },
+
+    // apps/secret-santa: may only use SecretSanta and Base colour namespaces
+    {
+        files: ['apps/secret-santa/**/*.ts', 'apps/secret-santa/**/*.tsx'],
+        rules: {
+            'no-restricted-imports': [
+                'error',
+                {
+                    paths: [
+                        {
+                            name: '@ww-web-apps/ui',
+                            importNames: ['FutureWeight', 'TitleCase'],
+                            message:
+                                'apps/secret-santa should only use SecretSanta and Base colour namespaces.'
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+
+    // apps/future-weight: may only use FutureWeight and Base colour namespaces
+    {
+        files: ['apps/future-weight/**/*.ts', 'apps/future-weight/**/*.tsx'],
+        rules: {
+            'no-restricted-imports': [
+                'error',
+                {
+                    paths: [
+                        {
+                            name: '@ww-web-apps/ui',
+                            importNames: ['SecretSanta', 'TitleCase'],
+                            message:
+                                'apps/future-weight should only use FutureWeight and Base colour namespaces.'
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+
+    // apps/title-case: may only use TitleCase and Base colour namespaces
+    {
+        files: ['apps/title-case/**/*.ts', 'apps/title-case/**/*.tsx'],
+        rules: {
+            'no-restricted-imports': [
+                'error',
+                {
+                    paths: [
+                        {
+                            name: '@ww-web-apps/ui',
+                            importNames: ['SecretSanta', 'FutureWeight'],
+                            message:
+                                'apps/title-case should only use TitleCase and Base colour namespaces.'
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+
+    // apps/portfolio: may only use Portfolio and Base colour namespaces
+    {
+        files: ['apps/portfolio/**/*.ts', 'apps/portfolio/**/*.tsx'],
+        rules: {
+            'no-restricted-imports': [
+                'error',
+                {
+                    paths: [
+                        {
+                            name: '@ww-web-apps/ui',
+                            importNames: ['SecretSanta', 'FutureWeight', 'TitleCase'],
+                            message:
+                                'apps/portfolio should only use Portfolio and Base colour namespaces.'
+                        }
+                    ]
+                }
+            ]
+        }
     }
 ];
 

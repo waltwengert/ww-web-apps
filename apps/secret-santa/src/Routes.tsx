@@ -1,6 +1,6 @@
 import { createHashRouter } from 'react-router-dom';
 
-import { Decrypter, loader as decrypterLoader } from './pages/Decrypter';
+import { Decrypter } from './pages/Decrypter';
 import Generator from './pages/Generator';
 
 export const router = createHashRouter([
@@ -14,9 +14,12 @@ export const router = createHashRouter([
                 index: true
             },
             {
+                path: 'decrypter',
+                element: <Decrypter />
+            },
+            {
                 path: 'decrypter/:decryptionText',
-                element: <Decrypter />,
-                loader: decrypterLoader
+                element: <Decrypter />
             }
         ]
     }

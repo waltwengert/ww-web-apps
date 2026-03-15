@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { SecretSanta } from '@ww-web-apps/ui';
+
 import { Header } from './components/Header';
 
 const AppWrapper = styled.div`
-    background-color: #146b3a;
+    background-color: ${SecretSanta.BackgroundGreen};
 
     min-width: 100vw;
     min-height: 100vh;

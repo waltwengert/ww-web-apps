@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { BaseInput } from '@ww-web-apps/ui';
+import { Input } from '@ww-web-apps/ui';
 
 import './style.css';
 
@@ -80,7 +80,7 @@ const App: React.FC = () => {
         <div>
             <h1 className="center">TitleCase</h1>
             <div id="userIn" className="center">
-                <BaseInput
+                <Input
                     type="text"
                     value={inputText}
                     onChange={handleInputChange}
@@ -98,7 +98,7 @@ const App: React.FC = () => {
                     <option value="lower">lower case</option>
                 </select>
 
-                <BaseInput
+                <Input
                     type="text"
                     value={outputText}
                     readOnly
