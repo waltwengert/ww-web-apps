@@ -6,7 +6,7 @@
     "dependencies": {
         "@testing-library/jest-dom": "^6.1.4",
         "@vitejs/plugin-react": "^6.0.1",
-        "@ww-web-apps/ui": "*",
+        "@ww-web-apps/ui": "workspace:*",
         "react": "^19.2.4",
         "react-dom": "^19.2.4",
         "styled-components": "^6.3.11",
@@ -15,11 +15,11 @@
     "devDependencies": {
         "@testing-library/dom": "^10.4.1",
         "@testing-library/react": "^16.3.2",
+        "@types/jest": "^30.0.0",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
-        "@types/jest": "^30.0.0",
-        "typescript": "^5.4.0",
         "jsdom": "^28.1.0",
+        "typescript": "^5.4.0",
         "vitest": "^4.1.0"
     },
     "scripts": {
