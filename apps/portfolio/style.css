@@ -64,7 +64,7 @@ a {
 }
 
 /*the github and linkedin icons*/
-.fab {
+.socialIcon {
     font-size: 30px;
     padding-left: 10px;
     padding-right: 10px;
@@ -72,7 +72,7 @@ a {
 }
 
 /*the icons in the nav buttons*/
-.fas {
+.navIcon {
     font-size: 30px;
 }
 
@@ -93,7 +93,7 @@ a {
 .btn {
     /*margin-left: 1px;
   margin-right: 1px;*/
-    background-color: /*#c1684d*/ /*#6b87b5*/ #627280;
+    background-color: #627280;
     color: #2a2a2a;
     cursor: pointer;
     padding: 12px;
@@ -107,12 +107,12 @@ a {
 }
 
 .btn-active {
-    background-color: /*#a62700*/ /*#2d4d80*/ #2a4e6c;
-    color: #fffaff /*#66f732*/;
+    background-color: #2a4e6c;
+    color: #fffaff;
 }
 
 .section {
-    background-color: /*#a62700*/ /*#2d4d80*/ #2a4e6c;
+    background-color: #2a4e6c;
 
     /*-22% from 11% padding either side*/
     width: 78%;
@@ -367,7 +367,7 @@ a {
         width: 100px;
     }
 
-    .fab {
+    .socialIcon {
         /*increase top padding of github/linkedin icons to centre them*/
         padding-top: 13px;
     }
@@ -473,7 +473,6 @@ a {
         border: 0px;
         border-bottom: 1px dotted;
         border-color: #3f3f3f;
-        /*background-color: #fffaff;*/
         margin: 0px auto;
     }
 
@@ -520,7 +519,7 @@ a {
 /*only have hover functionality on hover enabled devices (i.e. not touch)*/
 @media (hover: hover) {
     .btn:hover {
-        color: /*#2a4e6c*/ #9f9f9f;
+        color: #9f9f9f;
     }
 
     .btn-active:hover {
@@ -533,6 +532,6 @@ a {
     }
 
     #projects .projLink:hover {
-        color: /*#a62700*/ /*#2d4d80*/ #9f9f9f;
+        color: #9f9f9f;
     }
 }

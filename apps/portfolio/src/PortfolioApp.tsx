@@ -1,10 +1,56 @@
 import React, { useEffect, useState } from 'react';
+import {
+    faGithub,
+    faLinkedinIn,
+    IconDefinition
+} from '@fortawesome/free-brands-svg-icons';
+import {
+    faAddressCard,
+    faBriefcase,
+    faKeyboard,
+    faPlayCircle,
+    faUserGraduate
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { data } from './portfolioData';
 
 const SECTION_IDS = ['about', 'projects', 'education', 'employment'] as const;
 
 type SectionId = (typeof SECTION_IDS)[number];
+
+// Portfolio currently standardizes on Font Awesome icon classes.
+const NAV_ITEMS: Array<{
+    id: SectionId;
+    buttonId: string;
+    label: string;
+    icon: IconDefinition;
+}> = [
+    {
+        id: 'about',
+        buttonId: 'btnAbout',
+        label: 'About',
+        icon: faAddressCard
+    },
+    {
+        id: 'projects',
+        buttonId: 'btnProj',
+        label: 'Projects',
+        icon: faKeyboard
+    },
+    {
+        id: 'education',
+        buttonId: 'btnEdu',
+        label: 'Education',
+        icon: faUserGraduate
+    },
+    {
+        id: 'employment',
+        buttonId: 'btnEmp',
+        label: 'Employment',
+        icon: faBriefcase
+    }
+];
 
 const getScrollHeights = (): {
     headingHeight: number;
@@ -125,7 +171,10 @@ const App = (): React.ReactElement => {
                         href={data.heading.githubLink}
                         rel="noreferrer"
                     >
-                        <i className="fab fa-github" />
+                        <FontAwesomeIcon
+                            icon={faGithub}
+                            className="socialIcon"
+                        />
                     </a>
                     <a
                         id="linkedin"
@@ -134,7 +183,10 @@ const App = (): React.ReactElement => {
                         href={data.heading.linkedinLink}
                         rel="noreferrer"
                     >
-                        <i className="fab fa-linkedin-in" />
+                        <FontAwesomeIcon
+                            icon={faLinkedinIn}
+                            className="socialIcon"
+                        />
                     </a>
                 </div>
             </div>
@@ -147,46 +199,19 @@ const App = (): React.ReactElement => {
                     top: buttonsFixed ? '0px' : `${buttonsTopPx}px`
                 }}
             >
-                <button
-                    id="btnAbout"
-                    type="button"
-                    className={`btn btn-info ${activeSection === 'about' ? 'btn-active' : ''}`}
-                    onClick={() => scrollToSection('about')}
-                >
-                    <i className="fas fa-address-card" />
-                    <br />
-                    About
-                </button>
-                <button
-                    id="btnProj"
-                    type="button"
-                    className={`btn btn-info ${activeSection === 'projects' ? 'btn-active' : ''}`}
-                    onClick={() => scrollToSection('projects')}
-                >
-                    <i className="fas fa-keyboard" />
-                    <br />
-                    Projects
-                </button>
-                <button
-                    id="btnEdu"
-                    type="button"
-                    className={`btn btn-info ${activeSection === 'education' ? 'btn-active' : ''}`}
-                    onClick={() => scrollToSection('education')}
-                >
-                    <i className="fas fa-user-graduate" />
-                    <br />
-                    Education
-                </button>
-                <button
-                    id="btnEmp"
-                    type="button"
-                    className={`btn btn-info ${activeSection === 'employment' ? 'btn-active' : ''}`}
-                    onClick={() => scrollToSection('employment')}
-                >
-                    <i className="fas fa-briefcase" />
-                    <br />
-                    Employment
-                </button>
+                {NAV_ITEMS.map(item => (
+                    <button
+                        key={item.id}
+                        id={item.buttonId}
+                        type="button"
+                        className={`btn btn-info ${activeSection === item.id ? 'btn-active' : ''}`}
+                        onClick={() => scrollToSection(item.id)}
+                    >
+                        <FontAwesomeIcon icon={item.icon} className="navIcon" />
+                        <br />
+                        {item.label}
+                    </button>
+                ))}
             </div>
 
             <div id="about" className="section">
@@ -197,9 +222,7 @@ const App = (): React.ReactElement => {
                             className={`tile ${index === data.about.length - 1 ? 'lastTile' : ''}`}
                         >
                             <h2>{item.heading}</h2>
-                            <p
-                                dangerouslySetInnerHTML={{ __html: item.body }}
-                            />
+                            <p>{item.body}</p>
                         </div>
                     )
                 )}
@@ -231,7 +254,10 @@ const App = (): React.ReactElement => {
                                     rel="noreferrer"
                                     aria-label={`${project.title} GitHub`}
                                 >
-                                    <i className="fab fa-github projLink" />
+                                    <FontAwesomeIcon
+                                        icon={faGithub}
+                                        className="projLink"
+                                    />
                                 </a>
                                 {project.play !== 'na' ? (
                                     <a
@@ -240,7 +266,10 @@ const App = (): React.ReactElement => {
                                         rel="noreferrer"
                                         aria-label={`${project.title} Live`}
                                     >
-                                        <i className="fas fa-play-circle projLink" />
+                                        <FontAwesomeIcon
+                                            icon={faPlayCircle}
+                                            className="projLink"
+                                        />
                                     </a>
                                 ) : null}
                             </div>
@@ -275,11 +304,7 @@ const App = (): React.ReactElement => {
                             className={`tile ${index === data.employment.length - 1 ? 'lastTile' : ''}`}
                         >
                             <h2>{item.employer}</h2>
-                            <h4
-                                dangerouslySetInnerHTML={{
-                                    __html: item.period
-                                }}
-                            />
+                            <h4>{item.period}</h4>
                             <h3>{item.position}</h3>
                         </div>
                     )
