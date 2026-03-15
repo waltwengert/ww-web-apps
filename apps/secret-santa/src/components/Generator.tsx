@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { Button, Checkbox, SecretSanta } from '@ww-web-apps/ui';
@@ -37,6 +37,10 @@ export const Generator = (): React.ReactElement => {
             setNameList([...nameList, clean]);
         }
         setCurrentText('');
+    };
+
+    const onInputKeyUp = (e: KeyboardEvent<HTMLInputElement>): void => {
+        if (e.key === 'Enter') onAdd();
     };
 
     const onShuffle = (): void => {
@@ -79,6 +83,7 @@ export const Generator = (): React.ReactElement => {
                 autoFocus={true}
                 value={currentText}
                 onChange={handleTextInputChange}
+                onKeyUp={onInputKeyUp}
                 bottomSlot={
                     <EncryptedCheckbox
                         labelText="Encrypted?"
