@@ -7,14 +7,55 @@ Monorepo for my web apps using TypeScript and React.
 - `apps/` - Individual applications
 - `packages/` - Shared packages (UI components, utilities, etc.)
 
+Current apps:
+
+- `future-weight`
+- `secret-santa`
+- `secret-santa-decrypter`
+- `title-case`
+
 ## Setup
 
 1. Install dependencies: `yarn install`
-2. Build shared packages: `yarn build` (or `npm run build` in each package)
-3. For each app, run `yarn start` in the app directory (or `yarn start:{appName}`)
+2. Run all builds: `yarn build`
+3. Start an app:
+	- `yarn start:{appName}` from repo root, or
+	- `yarn start` inside that app workspace
+
+## Common Commands
+
+- `yarn lint` - Lint all TypeScript files in `apps/` and `packages/`
+- `yarn format` - Format source files with Prettier
+- `yarn test` - Run tests in all workspaces
+- `yarn build` - Build all workspaces
+
+Per-app commands from the repo root (pattern):
+
+- `yarn start:<app-name>`
+- `yarn build:<app-name>`
+- `yarn test:<app-name>`
+
+## Dependency Management
+
+Audit outdated dependencies:
+
+- `yarn outdated`
+
+Upgrade dependencies:
+
+- `yarn upgrade --latest`
+
+Recommended post-upgrade validation:
+
+1. `yarn install`
+2. `yarn lint`
+3. `yarn test`
+4. `yarn build`
+
+Check for unused dependencies:
+
+- `yarn deps:check`
 
 ## Shared Dev Tools
 
-- ESLint, Prettier, Husky pre-commit hooks are configured at the root.
-- Run `yarn lint` to lint all code.
-- Run `yarn format` to format all code.
+- ESLint, Prettier, Husky, and lint-staged are configured at the root.
