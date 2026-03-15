@@ -41,5 +41,17 @@ describe('textCase', () => {
             expect(convertTextCase('hello world', 'upper')).toBe('HELLO WORLD');
             expect(convertTextCase('HELLO WORLD', 'lower')).toBe('hello world');
         });
+
+        it('supports Caesar encode/decode with arbitrary shifts', () => {
+            expect(convertTextCase('abc xyz', 'caesar-encode', 13)).toBe(
+                'nop klm'
+            );
+            expect(convertTextCase('nop klm', 'caesar-decode', 13)).toBe(
+                'abc xyz'
+            );
+
+            expect(convertTextCase('abc', 'caesar-encode', 29)).toBe('def');
+            expect(convertTextCase('abc', 'caesar-encode', -1)).toBe('zab');
+        });
     });
 });

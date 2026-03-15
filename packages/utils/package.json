@@ -10,9 +10,10 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "typecheck": "tsc --noEmit",
-    "test": "echo 'No tests for @ww-web-apps/utils'"
+    "test": "vitest run"
   },
   "devDependencies": {
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "^4.1.0"
   }
 }
