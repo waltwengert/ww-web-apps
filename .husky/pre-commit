@@ -1,4 +1,6 @@
 # check for unused dependencies
 yarn deps:check
+# run full typecheck across all workspaces
+yarn typecheck
 # lint-staged will run linters on staged files and auto-fix them if possible
 npx lint-staged

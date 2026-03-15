@@ -17,6 +17,7 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "test": "echo 'No tests for @ww-web-apps/portfolio'",
     "preview": "vite preview"
   }
