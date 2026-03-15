@@ -12,13 +12,14 @@ Current apps:
 - `future-weight`
 - `secret-santa`
 - `title-case`
+- `portfolio`
 
 ## Setup
 
-1. Enable Corepack (once per machine): `sudo corepack enable`
+1. Enable Corepack (once per machine): `corepack enable`
 2. Install dependencies: `yarn install`
-2. Run all builds: `yarn build`
-3. Start an app:
+3. Run all builds: `yarn build`
+4. Start an app:
 	- `yarn start:{appName}` from repo root, or
 	- `yarn start` inside that app workspace
 
@@ -27,6 +28,7 @@ Current apps:
 - `yarn lint` - Lint all TypeScript files in `apps/` and `packages/`
 - `yarn format` - Format source files with Prettier
 - `yarn test` - Run tests in all workspaces
+- `yarn test:e2e` - Run Playwright smoke tests for all apps
 - `yarn build` - Build all workspaces
 
 Per-app commands from the repo root (pattern):
@@ -59,3 +61,4 @@ Check for unused dependencies:
 ## Shared Dev Tools
 
 - ESLint, Prettier, Husky, and lint-staged are configured at the root.
+- Playwright smoke tests are configured at the root; see `e2e/README.md`.

@@ -28,11 +28,14 @@
     "test:title-case": "yarn workspace @ww-web-apps/title-case test",
     "start:portfolio": "yarn workspace @ww-web-apps/portfolio start",
     "build:portfolio": "yarn workspace @ww-web-apps/portfolio build",
-    "test:portfolio": "yarn workspace @ww-web-apps/portfolio test"
+    "test:portfolio": "yarn workspace @ww-web-apps/portfolio test",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.53.2",
     "@typescript-eslint/eslint-plugin": "^8.57.0",
     "@typescript-eslint/parser": "^8.57.0",
     "depcheck": "^1.4.7",
