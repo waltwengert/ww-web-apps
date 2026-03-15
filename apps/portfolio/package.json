@@ -1,0 +1,23 @@
+{
+  "name": "@ww-web-apps/portfolio",
+  "version": "0.1.0",
+  "homepage": "https://waltwengert.github.io/",
+  "private": true,
+  "dependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "vite": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.4.0"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "echo 'No tests for @ww-web-apps/portfolio'",
+    "preview": "vite preview"
+  }
+}
