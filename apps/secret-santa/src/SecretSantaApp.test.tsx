@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { expect, it } from 'vitest';
 
-import App from './App';
+import App from './SecretSantaApp';
 
 it('renders secret santa text', () => {
     render(

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import App from '../App';
 import { Generator as GeneratorComponent } from '../components/Generator';
+import App from '../SecretSantaApp';
 
 const Generator = (): React.ReactElement => {
     return (
