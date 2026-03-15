@@ -22,7 +22,3 @@ body {
         ),
         linear-gradient(135deg, #edf7f1 0%, #e0f0ec 100%);
 }
-
-#root {
-    min-height: 100vh;
-}
