@@ -16,6 +16,7 @@ import styled, { css } from 'styled-components';
 
 import { Portfolio as PortfolioColors } from '@ww-web-apps/ui';
 
+import avatarImage from '../assets/ww.gif';
 import { data } from './portfolioData';
 
 const SECTION_IDS = ['about', 'projects', 'education', 'employment'] as const;
@@ -620,7 +621,7 @@ const App = (): React.ReactElement => {
         <>
             <Header>
                 <NameHeading id="name">{data.heading.name}</NameHeading>
-                <Avatar id="ww" alt="ww" src="assets/ww.gif" />
+                <Avatar id="ww" alt="ww" src={avatarImage} />
                 <MailLink id="mail" href={data.heading.mailLink} target="_top">
                     {data.heading.mailText}
                 </MailLink>

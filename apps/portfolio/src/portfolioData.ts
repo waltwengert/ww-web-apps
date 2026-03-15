@@ -1,3 +1,7 @@
+import calcScreenshot from '../assets/calc.png';
+import portfolioScreenshot from '../assets/portfolio_Browser.png';
+import secretSantaScreenshot from '../assets/secretsanta_Browser.png';
+
 export interface HeadingData {
     name: string;
     mailLink: string;
@@ -61,7 +65,7 @@ export const data: PortfolioData = {
     ],
     projects: [
         {
-            screen: 'assets/secretsanta_Browser.png',
+            screen: secretSantaScreenshot,
             title: 'Secret Santa',
             tech: 'React, TypeScript, Vite, styled-components',
             about: 'Randomized Secret Santa pairing tool with optional encrypted links for sharing assignments.',
@@ -69,7 +73,7 @@ export const data: PortfolioData = {
             play: 'na'
         },
         {
-            screen: 'assets/portfolio_Browser.png',
+            screen: portfolioScreenshot,
             title: 'Portfolio Site',
             tech: 'React, TypeScript, Vite',
             about: 'Single-page portfolio with sticky section navigation and responsive tiles.',
@@ -77,7 +81,7 @@ export const data: PortfolioData = {
             play: 'na'
         },
         {
-            screen: 'assets/calc.PNG',
+            screen: calcScreenshot,
             title: 'Future Weight Calculator',
             tech: 'React, TypeScript, Vitest',
             about: 'BMR, TDEE, and BMI calculator with reusable UI components and extracted domain logic.',
