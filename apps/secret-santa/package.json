@@ -27,6 +27,7 @@
     "scripts": {
         "start": "vite",
         "build": "vite build",
+        "typecheck": "tsc --noEmit",
         "test": "vitest run",
         "preview": "vite preview",
         "predeploy": "yarn build",

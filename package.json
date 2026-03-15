@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "lint": "eslint apps/**/*.{ts,tsx} packages/**/*.{ts,tsx}",
+    "typecheck": "yarn workspaces run typecheck",
     "format": "prettier --write apps/**/*.{js,jsx,ts,tsx,html,css,less,ejs} packages/**/*.{js,jsx,ts,tsx,html,css,less,ejs}",
     "start": "yarn workspaces run start",
     "build": "yarn workspaces run build",
