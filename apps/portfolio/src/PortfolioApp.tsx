@@ -88,7 +88,7 @@ const App = (): React.ReactElement => {
                     id="ww"
                     className="img-circle"
                     alt="ww"
-                    src={data.heading.imgSource}
+                    src="assets/ww.gif"
                 />
                 <a id="mail" href={data.heading.mailLink} target="_top">
                     {data.heading.mailText}
