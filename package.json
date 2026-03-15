@@ -24,6 +24,9 @@
     "start:title-case": "yarn workspace @ww-web-apps/title-case start",
     "build:title-case": "yarn workspace @ww-web-apps/title-case build",
     "test:title-case": "yarn workspace @ww-web-apps/title-case test",
+    "start:portfolio": "yarn workspace @ww-web-apps/portfolio start",
+    "build:portfolio": "yarn workspace @ww-web-apps/portfolio build",
+    "test:portfolio": "yarn workspace @ww-web-apps/portfolio test",
     "prepare": "husky install"
   },
   "devDependencies": {
