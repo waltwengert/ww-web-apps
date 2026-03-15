@@ -14,11 +14,12 @@ interface ButtonProps {
 }
 
 const StyledButton = styled.button<{
-    backgroundColor?: string;
-    color?: string;
+    $backgroundColor?: string;
+    $color?: string;
 }>`
-    background-color: ${(props): string => props.backgroundColor || Base.Black};
-    color: ${(props): string => props.color || Base.White};
+    background-color: ${(props): string =>
+        props.$backgroundColor || Base.Black};
+    color: ${(props): string => props.$color || Base.White};
     font-size: 18px;
     border: none;
     border-radius: 100px;
@@ -57,8 +58,8 @@ export const Button = ({
     return (
         <StyledButton
             className={className}
-            backgroundColor={backgroundColor}
-            color={color}
+            $backgroundColor={backgroundColor}
+            $color={color}
             onClick={onClick}
             type={type}
         >
