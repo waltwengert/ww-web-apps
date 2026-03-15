@@ -1,67 +1,83 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import { Input } from '@ww-web-apps/ui';
+import { Input, Select, TitleCase } from '@ww-web-apps/ui';
 
-import './style.css';
+import { convertTextCase } from './lib/textCase';
+
+const Page = styled.main`
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+`;
+
+const Card = styled.section`
+    width: min(720px, 92vw);
+    background: ${TitleCase.CardBackground};
+    border: 1px solid ${TitleCase.CardBorder};
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(32, 58, 114, 0.14);
+    padding: 28px 24px;
+`;
+
+const Heading = styled.h1`
+    margin: 0;
+    text-align: center;
+    color: ${TitleCase.Heading};
+    font-size: clamp(2rem, 4.4vw, 2.9rem);
+    letter-spacing: 0.02em;
+`;
+
+const Subheading = styled.p`
+    margin: 10px 0 24px;
+    text-align: center;
+    color: ${TitleCase.Muted};
+    font-size: 1.02rem;
+`;
+
+const ControlsStack = styled.div`
+    width: min(560px, 100%);
+    margin: 0 auto;
+    display: grid;
+    gap: 12px;
+    align-items: center;
+`;
+
+const TitleCaseInput = styled(Input)`
+    width: 100%;
+    margin: 0;
+    border: 1px solid ${TitleCase.CardBorder};
+    border-radius: 12px;
+    color: ${TitleCase.Text};
+    background: ${TitleCase.White};
+
+    &:focus {
+        outline: 2px solid ${TitleCase.Accent};
+        outline-offset: 1px;
+    }
+`;
+
+const CaseSelector = styled(Select)`
+    width: 100%;
+    margin: 0;
+    border-color: ${TitleCase.Accent};
+    color: ${TitleCase.Heading};
+    background-color: ${TitleCase.AccentSoft};
+`;
 
 const App: React.FC = () => {
     const [inputText, setInputText] = useState('');
     const [outputText, setOutputText] = useState('');
     const [caseType, setCaseType] = useState('title');
 
-    const convert = (sentence: string, type: string): string => {
-        let newSentence = '';
-
-        for (let i = 0; i < sentence.length; i++) {
-            let charCode = sentence.charAt(i).charCodeAt(0);
-
-            switch (type) {
-                case 'title':
-                    // For now, just return as-is. Could implement proper title case later
-                    break;
-
-                case 'sentence':
-                    if (i == 0) {
-                        //first letter in the sentence
-                        //TODO: subsequent sentences
-                        if (charCode >= 97 && charCode <= 122) {
-                            //if charCode is lowercase alphabet
-                            charCode -= 32; //convert to uppercase
-                        }
-                    }
-                    break;
-
-                case 'upper':
-                    if (charCode >= 97 && charCode <= 122) {
-                        //if charCode is lowercase alphabet
-                        charCode -= 32; //convert to uppercase
-                    }
-                    break;
-
-                case 'lower':
-                    if (charCode >= 65 && charCode <= 90) {
-                        //if charCode is uppercase alphabet
-                        charCode += 32; //convert to lowercase
-                    }
-                    break;
-
-                default: //title case
-                    break;
-            }
-
-            const char = String.fromCharCode(charCode);
-            newSentence += char;
-        }
-
-        return newSentence;
-    };
-
     const handleInputChange = (
         e: React.ChangeEvent<HTMLInputElement>
     ): void => {
         const newText = e.target.value;
         setInputText(newText);
-        setOutputText(convert(newText, caseType));
+        setOutputText(convertTextCase(newText, caseType));
     };
 
     const handleCaseTypeChange = (
@@ -69,43 +85,40 @@ const App: React.FC = () => {
     ): void => {
         const newType = e.target.value;
         setCaseType(newType);
-        setOutputText(convert(inputText, newType));
-    };
-
-    const getPlaceholderText = (): string => {
-        return `Will convert to: ${convert('text like this', caseType)}`;
+        setOutputText(convertTextCase(inputText, newType));
     };
 
     return (
-        <div>
-            <h1 className="center">TitleCase</h1>
-            <div id="userIn" className="center">
-                <Input
-                    type="text"
-                    value={inputText}
-                    onChange={handleInputChange}
-                    placeholder="text like this"
-                />
+        <Page>
+            <Card>
+                <Heading>TitleCase</Heading>
+                <Subheading>
+                    Convert text between title, sentence, upper, and lower case
+                    styles.
+                </Subheading>
 
-                <select
-                    value={caseType}
-                    onChange={handleCaseTypeChange}
-                    className="input"
-                >
-                    <option value="title">Title Case</option>
-                    <option value="sentence">Sentence case</option>
-                    <option value="upper">UPPER CASE</option>
-                    <option value="lower">lower case</option>
-                </select>
+                <ControlsStack>
+                    <TitleCaseInput
+                        type="text"
+                        value={inputText}
+                        onChange={handleInputChange}
+                        placeholder="text like this"
+                    />
 
-                <Input
-                    type="text"
-                    value={outputText}
-                    readOnly
-                    placeholder={getPlaceholderText()}
-                />
-            </div>
-        </div>
+                    <CaseSelector
+                        value={caseType}
+                        onChange={handleCaseTypeChange}
+                    >
+                        <option value="title">Title Case</option>
+                        <option value="sentence">Sentence case</option>
+                        <option value="upper">UPPER CASE</option>
+                        <option value="lower">lower case</option>
+                    </CaseSelector>
+
+                    <TitleCaseInput type="text" value={outputText} readOnly />
+                </ControlsStack>
+            </Card>
+        </Page>
     );
 };
 

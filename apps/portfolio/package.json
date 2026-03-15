@@ -10,15 +10,21 @@
     "vite": "^8.0.0"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^16.3.2",
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "typescript": "^5.4.0"
+    "jsdom": "^28.1.0",
+    "typescript": "^5.4.0",
+    "vitest": "^4.1.0"
   },
   "scripts": {
     "start": "vite",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
-    "test": "echo 'No tests for @ww-web-apps/portfolio'",
+    "test": "vitest run",
     "preview": "vite preview"
   }
 }
