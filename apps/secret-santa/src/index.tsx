@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom';
 
 import { router } from './Routes';
 
+import '@fontsource/grandstander/400.css';
 import './index.css';
 
 const root = ReactDOM.createRoot(
