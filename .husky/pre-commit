@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # check for unused dependencies
 yarn deps:check
 # lint-staged will run linters on staged files and auto-fix them if possible
