@@ -13,6 +13,7 @@
     "format": "prettier --write apps/**/*.{js,jsx,ts,tsx,html,css,less,ejs} packages/**/*.{js,jsx,ts,tsx,html,css,less,ejs}",
     "start": "yarn workspaces run start",
     "build": "yarn workspaces run build",
+    "build:packages": "yarn workspaces --include '@ww-web-apps/ui' --include '@ww-web-apps/utils' run build",
     "test": "yarn workspaces run test",
     "deps:check": "depcheck || (echo '❌ Unused dependencies found! Remove them before committing.' && exit 1)",
     "start:secret-santa": "yarn workspace @ww-web-apps/secret-santa start",
