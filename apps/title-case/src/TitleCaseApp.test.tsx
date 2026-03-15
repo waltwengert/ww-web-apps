@@ -35,4 +35,28 @@ describe('TitleCase App', () => {
         fireEvent.change(selector, { target: { value: 'lower' } });
         expect(output).toHaveValue('hello world. this is some text!');
     });
+
+    it('shows cipher shift input for Caesar modes and applies chosen shift', () => {
+        render(<App />);
+
+        const [input, output] = screen.getAllByRole('textbox');
+        const selector = screen.getByRole('combobox');
+
+        expect(screen.queryByLabelText('Cipher shift')).not.toBeInTheDocument();
+
+        fireEvent.change(selector, { target: { value: 'caesar-encode' } });
+
+        const shiftInput = screen.getByLabelText('Cipher shift');
+        expect(shiftInput).toBeInTheDocument();
+
+        fireEvent.change(input, { target: { value: 'abc xyz' } });
+        expect(output).toHaveValue('nop klm');
+
+        fireEvent.change(shiftInput, { target: { value: '5' } });
+        expect(output).toHaveValue('fgh cde');
+
+        fireEvent.change(selector, { target: { value: 'caesar-decode' } });
+        fireEvent.change(input, { target: { value: 'fgh cde' } });
+        expect(output).toHaveValue('abc xyz');
+    });
 });

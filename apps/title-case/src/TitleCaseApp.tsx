@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Input, Select, TitleCase } from '@ww-web-apps/ui';
 
-import { convertTextCase } from './lib/textCase';
+import { convertTextCase, TextCaseType } from './lib/textCase';
 
 const Page = styled.main`
     min-height: 100vh;
@@ -70,22 +70,53 @@ const CaseSelector = styled(Select)`
 const App: React.FC = () => {
     const [inputText, setInputText] = useState('');
     const [outputText, setOutputText] = useState('');
-    const [caseType, setCaseType] = useState('title');
+    const [caseType, setCaseType] = useState<TextCaseType>('title');
+    const [cipherShift, setCipherShift] = useState('13');
+
+    const getParsedCipherShift = (rawShift: string): number => {
+        const parsedShift = parseInt(rawShift, 10);
+        return Number.isNaN(parsedShift) ? 0 : parsedShift;
+    };
+
+    const isCaesarMode =
+        caseType === 'caesar-encode' || caseType === 'caesar-decode';
 
     const handleInputChange = (
         e: React.ChangeEvent<HTMLInputElement>
     ): void => {
         const newText = e.target.value;
         setInputText(newText);
-        setOutputText(convertTextCase(newText, caseType));
+        setOutputText(
+            convertTextCase(
+                newText,
+                caseType,
+                getParsedCipherShift(cipherShift)
+            )
+        );
     };
 
     const handleCaseTypeChange = (
         e: React.ChangeEvent<HTMLSelectElement>
     ): void => {
-        const newType = e.target.value;
+        const newType = e.target.value as TextCaseType;
         setCaseType(newType);
-        setOutputText(convertTextCase(inputText, newType));
+        setOutputText(
+            convertTextCase(
+                inputText,
+                newType,
+                getParsedCipherShift(cipherShift)
+            )
+        );
+    };
+
+    const handleCipherShiftChange = (
+        e: React.ChangeEvent<HTMLInputElement>
+    ): void => {
+        const newShift = e.target.value;
+        setCipherShift(newShift);
+        setOutputText(
+            convertTextCase(inputText, caseType, getParsedCipherShift(newShift))
+        );
     };
 
     return (
@@ -106,15 +137,31 @@ const App: React.FC = () => {
                         placeholder="text like this"
                     />
 
+                    {isCaesarMode ? (
+                        <TitleCaseInput
+                            aria-label="Cipher shift"
+                            type="number"
+                            value={cipherShift}
+                            onChange={handleCipherShiftChange}
+                            placeholder="e.g. 13"
+                        />
+                    ) : null}
+
                     <CaseSelector
                         aria-label="Case type"
                         value={caseType}
                         onChange={handleCaseTypeChange}
                     >
-                        <option value="title">Title Case</option>
-                        <option value="sentence">Sentence case</option>
-                        <option value="upper">UPPER CASE</option>
-                        <option value="lower">lower case</option>
+                        <optgroup label="Case styles">
+                            <option value="title">Title Case</option>
+                            <option value="sentence">Sentence case</option>
+                            <option value="upper">UPPER CASE</option>
+                            <option value="lower">lower case</option>
+                        </optgroup>
+                        <optgroup label="Caesar cipher">
+                            <option value="caesar-encode">Caesar encode</option>
+                            <option value="caesar-decode">Caesar decode</option>
+                        </optgroup>
                     </CaseSelector>
 
                     <TitleCaseInput

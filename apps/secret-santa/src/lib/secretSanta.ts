@@ -1,3 +1,5 @@
+import { caesarDecrypt, caesarEncrypt } from '@ww-web-apps/utils';
+
 const CIPHER_KEY = 13;
 
 export const ENCRYPTED_LENGTH = 12;
@@ -28,26 +30,7 @@ export function shuffle<T>(array: T[]): T[] {
  * @returns Encrypted string.
  */
 export function encrypt(stringToEncrypt: string): string {
-    stringToEncrypt = stringToEncrypt.trim().toLowerCase();
-    let encryptedString = '';
-
-    for (let i = 0; i < stringToEncrypt.length; i++) {
-        let charCode = stringToEncrypt.charCodeAt(i);
-
-        // lower case ASCII alphabet is 97(a) to 122(z)
-        if (charCode >= 97 && charCode <= 122) {
-            if (charCode + CIPHER_KEY > 122) {
-                // wrap
-                charCode += CIPHER_KEY - 26;
-            } else {
-                charCode += CIPHER_KEY;
-            }
-        }
-
-        encryptedString += String.fromCharCode(charCode);
-    }
-
-    return encryptedString;
+    return caesarEncrypt(stringToEncrypt.trim().toLowerCase(), CIPHER_KEY);
 }
 
 /**
@@ -65,26 +48,7 @@ export function encryptStringArray(arrayToEncrypt: string[]): string[] {
  * @returns Decrypted string.
  */
 export function decrypt(stringToDecrypt: string): string {
-    stringToDecrypt = stringToDecrypt.trim().toLowerCase();
-    let decryptedString = '';
-
-    for (let i = 0; i < stringToDecrypt.length; i++) {
-        let charCode = stringToDecrypt.charCodeAt(i);
-
-        // lower case ASCII alphabet is 97(a) to 122(z)
-        if (charCode >= 97 && charCode <= 122) {
-            if (charCode - CIPHER_KEY < 97) {
-                // wrap
-                charCode -= CIPHER_KEY - 26;
-            } else {
-                charCode -= CIPHER_KEY;
-            }
-        }
-
-        decryptedString += String.fromCharCode(charCode);
-    }
-
-    return decryptedString;
+    return caesarDecrypt(stringToDecrypt.trim().toLowerCase(), CIPHER_KEY);
 }
 
 /**

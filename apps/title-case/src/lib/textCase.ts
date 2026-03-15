@@ -1,3 +1,13 @@
+import { caesarDecrypt, caesarEncrypt } from '@ww-web-apps/utils';
+
+export type TextCaseType =
+    | 'title'
+    | 'sentence'
+    | 'upper'
+    | 'lower'
+    | 'caesar-encode'
+    | 'caesar-decode';
+
 function isLowerAlpha(charCode: number): boolean {
     return charCode >= 97 && charCode <= 122;
 }
@@ -87,7 +97,11 @@ export function toLowerCaseAscii(sentence: string): string {
     return result;
 }
 
-export function convertTextCase(sentence: string, type: string): string {
+export function convertTextCase(
+    sentence: string,
+    type: TextCaseType,
+    caesarShift = 13
+): string {
     switch (type) {
         case 'title':
             return toTitleCase(sentence);
@@ -97,6 +111,10 @@ export function convertTextCase(sentence: string, type: string): string {
             return toUpperCaseAscii(sentence);
         case 'lower':
             return toLowerCaseAscii(sentence);
+        case 'caesar-encode':
+            return caesarEncrypt(sentence, caesarShift);
+        case 'caesar-decode':
+            return caesarDecrypt(sentence, caesarShift);
         default:
             return toTitleCase(sentence);
     }

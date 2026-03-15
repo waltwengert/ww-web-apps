@@ -1456,6 +1456,7 @@ __metadata:
     "@types/react-dom": "npm:^19.2.3"
     "@vitejs/plugin-react": "npm:^6.0.1"
     "@ww-web-apps/ui": "workspace:*"
+    "@ww-web-apps/utils": "workspace:*"
     gh-pages: "npm:^6.3.0"
     jest-axe: "npm:^10.0.0"
     jsdom: "npm:^28.1.0"
@@ -1482,6 +1483,7 @@ __metadata:
     "@types/react-dom": "npm:^19.2.3"
     "@vitejs/plugin-react": "npm:^6.0.1"
     "@ww-web-apps/ui": "workspace:*"
+    "@ww-web-apps/utils": "workspace:*"
     jest-axe: "npm:^10.0.0"
     jsdom: "npm:^28.1.0"
     react: "npm:^19.2.4"
@@ -1510,11 +1512,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ww-web-apps/utils@workspace:packages/utils":
+"@ww-web-apps/utils@workspace:*, @ww-web-apps/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@ww-web-apps/utils@workspace:packages/utils"
   dependencies:
     typescript: "npm:*"
+    vitest: "npm:^4.1.0"
   languageName: unknown
   linkType: soft
 
