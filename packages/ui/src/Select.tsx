@@ -15,14 +15,14 @@ export const Select = styled.select`
 
     color: ${Base.Black};
     background-color: ${Base.White};
-    border: 1px solid #b8c4dd;
+    border: 1px solid ${Base.SelectBorder};
     border-radius: 12px;
 
     // Remove browser-default arrow so custom arrow is consistent.
     appearance: none;
     background-image:
-        linear-gradient(45deg, transparent 50%, #6b7b9d 50%),
-        linear-gradient(135deg, #6b7b9d 50%, transparent 50%);
+        linear-gradient(45deg, transparent 50%, ${Base.SelectArrow} 50%),
+        linear-gradient(135deg, ${Base.SelectArrow} 50%, transparent 50%);
     background-position:
         calc(100% - 18px) calc(50% - 3px),
         calc(100% - 12px) calc(50% - 3px);

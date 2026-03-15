@@ -18,7 +18,7 @@ const Card = styled.section`
     background: ${TitleCase.CardBackground};
     border: 1px solid ${TitleCase.CardBorder};
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(32, 58, 114, 0.14);
+    box-shadow: 0 20px 40px ${TitleCase.CardShadow};
     padding: 28px 24px;
 `;
 

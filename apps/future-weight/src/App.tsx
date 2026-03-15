@@ -27,7 +27,7 @@ const Card = styled.section`
     background: ${FutureWeight.CardBackground};
     border: 1px solid ${FutureWeight.CardBorder};
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(20, 80, 60, 0.12);
+    box-shadow: 0 20px 40px ${FutureWeight.CardShadow};
     padding: 28px 24px;
 `;
 
@@ -132,7 +132,7 @@ const ToggleOption = styled.button<{ $active?: boolean }>`
 // ── Feedback & action ─────────────────────────────────────────────────────────
 
 const ErrorText = styled.p`
-    color: #c0392b;
+    color: ${FutureWeight.Error};
     font-size: 14px;
     text-align: center;
     margin: 0;
