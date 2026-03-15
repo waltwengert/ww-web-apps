@@ -6,7 +6,7 @@ const CheckboxWrapper = styled.label`
     justify-content: center;
     align-items: center;
 
-    &: hover {
+    &:hover {
         cursor: pointer;
     }
 
@@ -26,14 +26,16 @@ const StyledCheckbox = styled.input`
 interface CheckboxProps {
     labelText: string;
     onChange: () => void;
+    className?: string;
 }
 
-export const BaseCheckbox = ({
+export const Checkbox = ({
     labelText,
-    onChange
+    onChange,
+    className
 }: CheckboxProps): React.ReactElement => {
     return (
-        <CheckboxWrapper>
+        <CheckboxWrapper className={className}>
             <StyledCheckbox type="checkbox" onChange={onChange} />
             {labelText}
         </CheckboxWrapper>

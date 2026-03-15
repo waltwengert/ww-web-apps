@@ -11,7 +11,6 @@ Current apps:
 
 - `future-weight`
 - `secret-santa`
-- `secret-santa-decrypter`
 - `title-case`
 
 ## Setup

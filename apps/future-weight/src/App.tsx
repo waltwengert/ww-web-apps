@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { BaseButton, BaseInput, BaseLabel } from '@ww-web-apps/ui';
+import { Button, Input, Label } from '@ww-web-apps/ui';
 
 import './style.css';
 
@@ -175,8 +175,8 @@ const App: React.FC = () => {
                 </div>
 
                 <div>
-                    <BaseLabel>Age</BaseLabel>
-                    <BaseInput
+                    <Label>Age</Label>
+                    <Input
                         type="text"
                         value={age}
                         onChange={e => setAge(e.target.value)}
@@ -184,7 +184,7 @@ const App: React.FC = () => {
                 </div>
 
                 <div>
-                    <BaseLabel>Sex</BaseLabel>
+                    <Label>Sex</Label>
 
                     <label>
                         <input
@@ -208,8 +208,8 @@ const App: React.FC = () => {
                 </div>
 
                 <div>
-                    <BaseLabel>Height</BaseLabel>
-                    <BaseInput
+                    <Label>Height</Label>
+                    <Input
                         type="text"
                         value={height}
                         onChange={e => setHeight(e.target.value)}
@@ -220,8 +220,8 @@ const App: React.FC = () => {
                 </div>
 
                 <div>
-                    <BaseLabel>Weight</BaseLabel>
-                    <BaseInput
+                    <Label>Weight</Label>
+                    <Input
                         type="text"
                         value={weight}
                         onChange={e => setWeight(e.target.value)}
@@ -232,7 +232,7 @@ const App: React.FC = () => {
                 </div>
 
                 <div>
-                    <BaseLabel>Activity Level</BaseLabel>
+                    <Label>Activity Level</Label>
                     <select
                         value={activity}
                         onChange={e => setActivity(e.target.value)}
@@ -257,8 +257,8 @@ const App: React.FC = () => {
                 </div>
 
                 <div>
-                    <BaseLabel>Body Fat % (optional)</BaseLabel>
-                    <BaseInput
+                    <Label>Body Fat % (optional)</Label>
+                    <Input
                         type="text"
                         value={bodyfat}
                         onChange={e => setBodyfat(e.target.value)}
@@ -267,7 +267,7 @@ const App: React.FC = () => {
                 </div>
 
                 <div>
-                    <BaseButton onClick={calculateTdee}>Calculate</BaseButton>
+                    <Button onClick={calculateTdee}>Calculate</Button>
                 </div>
 
                 <div id="results">

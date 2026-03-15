@@ -1,21 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { MOBILE_DEVICE_WIDTH } from '@ww-web-apps/ui';
+import { SecretSanta } from '@ww-web-apps/ui';
 
-const ResultsContainer = styled.div`
+import { BaseResultsPanel } from './layout';
+
+const ResultsContainer = styled(BaseResultsPanel)`
     flex: 1 1 auto;
-
-    background-color: #165b33;
     overflow: auto;
-
-    margin: 20px auto 40px;
-
-    width: 50vw;
-
-    @media (max-width: ${MOBILE_DEVICE_WIDTH}px) {
-        width: 90vw;
-    }
 `;
 
 const NamesContainer = styled.div`
@@ -25,15 +17,15 @@ const NamesContainer = styled.div`
 
 const Name = styled.div`
     padding: 20px 10px;
-    color: white;
+    color: ${SecretSanta.White};
 `;
 
 const ResultText = styled.div`
-    color: #f8b229;
+    color: ${SecretSanta.Gold};
 `;
 
 const ResultLink = styled.a`
-    color: #f8b229;
+    color: ${SecretSanta.Gold};
 `;
 
 interface ResultsProps {
