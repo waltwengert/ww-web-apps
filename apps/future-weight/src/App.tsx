@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { FutureWeight, Input, Select } from '@ww-web-apps/ui';
@@ -204,19 +204,11 @@ const App: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [results, setResults] = useState<Results | null>(null);
 
-    const handleCalculate = (): void => {
-        const validationError = validateStats(age, height, weight);
-        if (validationError) {
-            setError(validationError);
-            setResults(null);
-            return;
-        }
-
-        setError(null);
+    const compute = (): Results | null => {
+        if (validateStats(age, height, weight) !== null) return null;
         const ageNum = parseInt(age);
         const heightNum = parseInt(height);
         const weightNum = parseInt(weight);
-
         const bmr = calculateBmr(
             ageNum,
             heightNum,
@@ -226,8 +218,33 @@ const App: React.FC = () => {
         );
         const tdee = calculateTdee(bmr, activity);
         const bmi = calculateBmi(heightNum, weightNum, isMetric);
+        return { bmr, tdee, bmi };
+    };
 
-        setResults({ bmr, tdee, bmi });
+    // After first successful calculation, auto-update whenever any input changes.
+    useEffect(() => {
+        if (results === null) return;
+        const updated = compute();
+        if (updated !== null) {
+            setError(null);
+            setResults(updated);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [age, height, weight, activity, isMetric, isMale]);
+
+    const handleCalculate = (): void => {
+        const validationError = validateStats(age, height, weight);
+        if (validationError) {
+            setError(validationError);
+            setResults(null);
+            return;
+        }
+        setError(null);
+        setResults(compute());
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+        if (e.key === 'Enter') handleCalculate();
     };
 
     const heightUnit = isMetric ? 'cm' : 'in';
@@ -286,6 +303,7 @@ const App: React.FC = () => {
                             type="text"
                             value={age}
                             onChange={e => setAge(e.target.value)}
+                            onKeyDown={handleKeyDown}
                             placeholder="e.g. 30"
                         />
                         <UnitTag>yrs</UnitTag>
@@ -297,6 +315,7 @@ const App: React.FC = () => {
                             type="text"
                             value={height}
                             onChange={e => setHeight(e.target.value)}
+                            onKeyDown={handleKeyDown}
                             placeholder={isMetric ? 'e.g. 175' : 'e.g. 69'}
                         />
                         <UnitTag>{heightUnit}</UnitTag>
@@ -308,6 +327,7 @@ const App: React.FC = () => {
                             type="text"
                             value={weight}
                             onChange={e => setWeight(e.target.value)}
+                            onKeyDown={handleKeyDown}
                             placeholder={isMetric ? 'e.g. 75' : 'e.g. 165'}
                         />
                         <UnitTag>{weightUnit}</UnitTag>
@@ -344,6 +364,7 @@ const App: React.FC = () => {
                             type="text"
                             value={bodyfat}
                             onChange={e => setBodyfat(e.target.value)}
+                            onKeyDown={handleKeyDown}
                             placeholder="optional"
                         />
                         <UnitTag>%</UnitTag>
