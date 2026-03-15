@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
+
 import {
     BaseButton,
     BaseCheckbox,
@@ -7,12 +8,12 @@ import {
     MOBILE_DEVICE_WIDTH
 } from '@ww-web-apps/ui';
 
-import { Results } from './Results';
 import {
+    decryptStringArray,
     encryptStringArray,
-    shuffle,
-    decryptStringArray
+    shuffle
 } from '../utilities/utils';
+import { Results } from './Results';
 
 const InputWrapper = styled.div`
     flex: 0 1 auto;

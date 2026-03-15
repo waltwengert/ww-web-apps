@@ -1,5 +1,6 @@
-import styled from 'styled-components';
 import React from 'react';
+import styled from 'styled-components';
+
 import { MOBILE_DEVICE_WIDTH } from '@ww-web-apps/ui';
 
 const ResultsContainer = styled.div`
