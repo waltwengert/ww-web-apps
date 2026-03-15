@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import { describe, expect, it } from 'vitest';
 
 import App from './TitleCaseApp';
@@ -7,6 +8,11 @@ describe('TitleCase App', () => {
     it('renders app heading', () => {
         render(<App />);
         expect(screen.getByText(/titlecase/i)).toBeInTheDocument();
+    });
+
+    it('has no a11y violations', async () => {
+        const { container } = render(<App />);
+        expect(await axe(container)).toHaveNoViolations();
     });
 
     it('converts text to title/upper/sentence/lower via case selector', () => {

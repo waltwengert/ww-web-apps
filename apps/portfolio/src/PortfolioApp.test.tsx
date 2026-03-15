@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import { axe } from 'jest-axe';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import App from './PortfolioApp';
@@ -18,6 +19,11 @@ describe('Portfolio App', () => {
         expect(
             screen.getByRole('button', { name: /projects/i })
         ).toBeInTheDocument();
+    });
+
+    it('has no a11y violations', async () => {
+        const { container } = render(<App />);
+        expect(await axe(container)).toHaveNoViolations();
     });
 
     it('scrolls to selected section when nav button is clicked', () => {

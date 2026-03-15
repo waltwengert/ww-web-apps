@@ -99,6 +99,7 @@ const App: React.FC = () => {
 
                 <ControlsStack>
                     <TitleCaseInput
+                        aria-label="Input text"
                         type="text"
                         value={inputText}
                         onChange={handleInputChange}
@@ -106,6 +107,7 @@ const App: React.FC = () => {
                     />
 
                     <CaseSelector
+                        aria-label="Case type"
                         value={caseType}
                         onChange={handleCaseTypeChange}
                     >
@@ -115,7 +117,12 @@ const App: React.FC = () => {
                         <option value="lower">lower case</option>
                     </CaseSelector>
 
-                    <TitleCaseInput type="text" value={outputText} readOnly />
+                    <TitleCaseInput
+                        aria-label="Output text"
+                        type="text"
+                        value={outputText}
+                        readOnly
+                    />
                 </ControlsStack>
             </Card>
         </Page>
