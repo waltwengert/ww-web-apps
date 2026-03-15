@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Walt Wengert</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=0"
+        />
+
+        <!--Font awesome icons and Google Font's Roboto Slab font-->
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
+            rel="stylesheet"
+        />
+
+        <!--to have JSON accesible in JS (for a mock API response)-->
+        <script src="src/data.js"></script>
+
+        <link rel="icon" href="assets/ww.gif" type="image/x-icon" />
+        <script src="src/index.js"></script>
+    </head>
+
+    <body>
+        <!--Page heading, to remain at top of screen with basic details + nav buttons-->
+        <div class="heading" align="center">
+            <h1 id="name"></h1>
+            <img id="ww" class="img-circle" alt="ww" />
+            <a id="mail" target="_top"></a>
+            <div class="icons">
+                <a id="github" class="text-center" target="_blank">
+                    <i class="fab fa-github"></i
+                ></a>
+                <a id="linkedin" class="text-center" target="_blank">
+                    <i class="fab fa-linkedin-in"></i
+                ></a>
+            </div>
+        </div>
+
+        <!--Rows of buttons to change active section-->
+        <div id="btns" class="buttons">
+            <button
+                id="btnAbout"
+                type="button"
+                class="btn btn-info btn-active"
+                onclick="toggleBtn(0, false)"
+            >
+                <i class="fas fa-address-card"></i><br />About
+            </button>
+            <button
+                id="btnProj"
+                type="button"
+                class="btn btn-info"
+                onclick="toggleBtn(1, false)"
+            >
+                <i class="fas fa-keyboard"></i><br />Projects
+            </button>
+            <button
+                id="btnEdu"
+                type="button"
+                class="btn btn-info"
+                onclick="toggleBtn(2, false)"
+            >
+                <i class="fas fa-user-graduate"></i><br />Education
+            </button>
+            <button
+                id="btnEmp"
+                type="button"
+                class="btn btn-info"
+                onclick="toggleBtn(3, false)"
+            >
+                <i class="fas fa-briefcase"></i><br />Employment
+            </button>
+        </div>
+
+        <!--About section, basic paragraphs describing who I am in context of dev-->
+        <div id="about" class="section"></div>
+        <!--Projects section, rows of tiles for each project-->
+        <div id="projects" class="section"></div>
+        <!--Education section, rows of tiles (level, focus, institution, period)-->
+        <div id="education" class="section"></div>
+        <!--Employment section, rows of tiles (employer, position, period)-->
+        <div id="employment" class="section"></div>
+    </body>
+</html>

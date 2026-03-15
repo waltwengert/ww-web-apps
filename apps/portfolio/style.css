@@ -1,0 +1,543 @@
+/* CSS 'reset' */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    -webkit-overflow-scrolling: touch;
+}
+
+html,
+body {
+    /*make height 100% minus the height of the buttons so page doesn't
+    overscroll*/
+    height: calc(100vh - 78px);
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #222222;
+}
+
+.heading {
+    background-color: #222222;
+    width: 100%;
+
+    /*to achieve body scrolling over heading*/
+    position: fixed;
+    top: 0;
+    z-index: -3;
+}
+
+#name {
+    font-family: 'Roboto Slab', 'Arial', sans-serif;
+    font-size: 44px;
+    font-weight: 100;
+    color: #fffaff;
+    padding-top: 10px;
+}
+
+.img-circle {
+    width: 120px;
+    border-radius: 50%;
+    padding-bottom: 10px;
+    padding-top: 5px;
+
+    /*to center the image*/
+    margin: auto;
+    display: block;
+}
+
+#mail {
+    font-family: 'Roboto Slab', 'Arial', sans-serif;
+    font-size: 18px;
+
+    /*to stop the link going accross the entire page*/
+    width: min-content;
+}
+
+a {
+    color: #fffaff;
+    padding-top: 10px;
+    text-decoration: none;
+}
+
+/*the github and linkedin icons*/
+.fab {
+    font-size: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 8px;
+}
+
+/*the icons in the nav buttons*/
+.fas {
+    font-size: 30px;
+}
+
+.buttons {
+    display: flex;
+    /*taking 1px from the side margins of 1px on .btn*/
+    padding-right: 11%; /*calc(8% - 1px);*/
+    padding-left: 11%; /*calc(8% - 1px);*/
+    position: absolute;
+
+    /*280px for the heading height, 0 for left and right to force flex*/
+    top: 280px;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.btn {
+    /*margin-left: 1px;
+  margin-right: 1px;*/
+    background-color: /*#c1684d*/ /*#6b87b5*/ #627280;
+    color: #2a2a2a;
+    cursor: pointer;
+    padding: 12px;
+    flex: 1;
+    font-size: 20px;
+}
+
+.btn:focus {
+    background-color: /*#a62700*/ /*#2d4d80*/ #2a4e6c;
+    color: #fffaff /*#66f732*/;
+}
+
+.btn-active {
+    background-color: /*#a62700*/ /*#2d4d80*/ #2a4e6c;
+    color: #fffaff /*#66f732*/;
+}
+
+.section {
+    background-color: /*#a62700*/ /*#2d4d80*/ #2a4e6c;
+
+    /*-22% from 11% padding either side*/
+    width: 78%;
+    margin-left: auto;
+    margin-right: auto;
+
+    /*100% of page height excluding buttons + 20px buffer*/
+    /*min-height: calc(100vh - 78px + 20px);*/
+    padding-top: 20px;
+
+    /*the height of heading (280) and buttons (78)*/
+    /*margin-top: 358px;*/
+
+    color: #444444;
+    box-sizing: border-box;
+
+    /*this is only temporary, in JS change to auto at page's bottom*/
+    overflow: visible;
+
+    display: flex;
+    flex-direction: column;
+    /*z-index: -2;*/
+}
+
+/*the titles for all section tiles*/
+.section h2 {
+    font-size: 28px;
+}
+
+/*the about section as it is the first one*/
+#about {
+    /*the height of heading (280) and buttons (78)*/
+    margin-top: 358px;
+    z-index: -5;
+}
+
+/*about first few words/heading*/
+#about h2 {
+    padding-top: 25px;
+    padding-bottom: 10px;
+    padding-left: 7%;
+}
+
+/*about body*/
+#about p {
+    font-size: 18px;
+    padding-bottom: 30px;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+/*important about paragraph words*/
+#about strong {
+    font-weight: bolder;
+    color: #444444;
+}
+
+.projTile {
+    display: flex;
+}
+
+.imgDiv {
+    flex: 4;
+    text-align: center;
+}
+
+.txtDiv {
+    flex: 6;
+}
+
+.btnDiv {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+}
+
+#projects {
+    z-index: -4;
+}
+
+/*project images*/
+#projects img {
+    max-width: 90%;
+    max-width: 90%;
+    margin: 10px;
+    object-fit: cover;
+    object-position: top;
+    box-shadow: 3px 3px 3px gray;
+}
+
+/*project title*/
+#projects h2 {
+    padding: 10px;
+}
+
+/*project tech*/
+#projects h3 {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: normal;
+
+    padding-left: 10px;
+}
+
+#projects p {
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+}
+
+/*github and play icons*/
+#projects .projLink {
+    font-size: 36px;
+    color: #444444;
+    flex: 1;
+    padding: 0;
+    padding-right: 10px;
+}
+
+#education {
+    z-index: -3;
+}
+
+/*education level*/
+#education h2 {
+    width: 55%;
+    padding-left: 7%;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    float: left;
+}
+
+/*education focus*/
+#education h3 {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: italic;
+    width: 55%;
+    padding-left: 7%;
+    padding-right: 10%;
+    padding-bottom: 30px;
+    float: left;
+}
+
+/*education institution + period*/
+#education h4 {
+    width: 20%;
+    padding-left: 3%;
+    padding-right: 5%;
+    float: left;
+    text-align: right;
+}
+
+/*education institution*/
+#education .eduInstitution {
+    width: 30%;
+    padding-top: 5%;
+    padding-bottom: 15px;
+}
+
+/*last section, needs a min height equal to page - buttons so it can be nav'd to*/
+#employment {
+    min-height: calc(100vh - 78px);
+    z-index: -2;
+}
+
+/*employment employer*/
+#employment h2 {
+    width: 55%;
+    padding-left: 7%;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    float: left;
+}
+
+/*employment position*/
+#employment h3 {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: italic;
+    width: 55%;
+    padding-left: 7%;
+    padding-right: 10%;
+    padding-bottom: 30px;
+    float: left;
+}
+
+/*employment period*/
+#employment h4 {
+    width: 30%;
+    padding-left: 3%;
+    padding-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 15px;
+    float: left;
+    text-align: right;
+}
+
+.tile {
+    margin: 5px auto;
+    border-left: 2px solid;
+    border-color: #2a2a2a;
+    background-color: #e9e9e9;
+    width: 80%;
+}
+
+.lastTile {
+    margin-bottom: 40px;
+}
+
+/*if the screen is less than 600px wide (i.e. a mobile device)*/
+@media screen and (max-width: 600px) {
+    html,
+    body {
+        /*make height 100% minus the height of the buttons so page doesn't
+      overscroll*/
+        height: calc(100vh - 54px);
+    }
+
+    #name {
+        font-size: 32px;
+    }
+
+    #mail {
+        font-size: 16px;
+    }
+
+    .section {
+        width: 100%;
+    }
+
+    .section h2 {
+        font-size: 24px;
+    }
+
+    .buttons {
+        padding-right: 0%;
+        padding-left: 0%;
+
+        /*250px for the heading height*/
+        top: 250px;
+    }
+
+    .btn {
+        font-size: 0px;
+    }
+
+    .img-circle {
+        width: 100px;
+    }
+
+    .fab {
+        /*increase top padding of github/linkedin icons to centre them*/
+        padding-top: 13px;
+    }
+
+    #about {
+        /*the height of heading (250) and buttons (54)*/
+        margin-top: 304px;
+    }
+
+    #projects img {
+        box-shadow: 1px 1px 1px gray;
+    }
+
+    #projects h2 {
+        padding-top: 5%;
+    }
+
+    #projects h3 {
+        padding-bottom: 6%;
+    }
+
+    #projects p {
+        display: none;
+    }
+
+    #projects .projLink {
+        padding-top: 4%;
+    }
+
+    #education .tile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #education h2 {
+        width: 80%;
+        padding-bottom: 10px;
+        float: none;
+        order: 1;
+    }
+
+    #education h3 {
+        width: 80%;
+        float: none;
+        padding-bottom: 10px;
+        order: 2;
+    }
+
+    #education h4 {
+        /*hide the date for a leaner mobile look*/
+        display: none;
+    }
+
+    #education .eduInstitution {
+        padding-top: 0;
+        float: none;
+        order: 3;
+        display: block;
+        width: 80%;
+        text-align: left;
+        font-size: 18px;
+        font-weight: normal;
+        padding-bottom: 20px;
+        padding-left: 7%;
+    }
+
+    #employment {
+        min-height: calc(100vh - 54px);
+    }
+
+    #employment .tile {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #employment h2 {
+        width: 80%;
+        padding-right: 0;
+        padding-bottom: 10px;
+        float: none;
+        order: 1;
+    }
+
+    #employment h3 {
+        width: 80%;
+        float: none;
+        padding-bottom: 10px;
+        order: 2;
+    }
+
+    #employment h4 {
+        padding-top: 0;
+        float: none;
+        order: 3;
+        display: block;
+        width: 80%;
+        text-align: left;
+        font-size: 18px;
+        font-weight: normal;
+        padding-bottom: 20px;
+        padding-left: 7%;
+    }
+
+    .tile {
+        /*if the screen is thin (mobile) then modify tile style*/
+        width: 96%;
+        border: 0px;
+        border-bottom: 1px dotted;
+        border-color: #3f3f3f;
+        /*background-color: #fffaff;*/
+        margin: 0px auto;
+    }
+
+    .lastTile {
+        margin-bottom: 30px;
+        border-bottom: none;
+    }
+}
+
+/*if the screen is more than 1400px wide (i.e. full screen 1080+ monitor)*/
+@media screen and (min-width: 1400px) {
+    .buttons {
+        padding-left: 19%;
+        padding-right: 19%;
+
+        top: 310px;
+    }
+
+    #name {
+        padding-top: 20px;
+    }
+
+    .img-circle {
+        width: 120px;
+        padding-bottom: 15px;
+        padding-top: 10px;
+    }
+
+    p {
+        padding-bottom: 20px;
+    }
+
+    .section {
+        /*-38% from 18% padding either side*/
+        width: 62%;
+    }
+
+    #about {
+        /*the height of heading (310) and buttons (78)*/
+        margin-top: 388px;
+    }
+}
+
+/*only have hover functionality on hover enabled devices (i.e. not touch)*/
+@media (hover: hover) {
+    .btn:hover {
+        color: /*#2a4e6c*/ #9f9f9f;
+    }
+
+    .btn-active:hover {
+        color: #fffaff;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #9f9f9f;
+    }
+
+    #projects .projLink:hover {
+        color: /*#a62700*/ /*#2d4d80*/ #9f9f9f;
+    }
+}
