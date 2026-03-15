@@ -54,19 +54,23 @@ const App: React.FC = () => {
         return newSentence;
     };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (
+        e: React.ChangeEvent<HTMLInputElement>
+    ): void => {
         const newText = e.target.value;
         setInputText(newText);
         setOutputText(convert(newText, caseType));
     };
 
-    const handleCaseTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleCaseTypeChange = (
+        e: React.ChangeEvent<HTMLSelectElement>
+    ): void => {
         const newType = e.target.value;
         setCaseType(newType);
         setOutputText(convert(inputText, newType));
     };
 
-    const getPlaceholderText = () => {
+    const getPlaceholderText = (): string => {
         return `Will convert to: ${convert('text like this', caseType)}`;
     };
 

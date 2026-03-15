@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 import { MOBILE_DEVICE_WIDTH } from '@ww-web-apps/ui';
 
 const ResultsContainer = styled.div`
@@ -46,21 +47,23 @@ export const Results = ({
     shuffledNameList,
     hidden,
     encrypted
-}: ResultsProps) => {
-    const names = nameList.map(name => (
-        <Name key={`name-${name}`}>{name}</Name>
-    ));
-    const shuffledNames = shuffledNameList.map(name => (
-        <Name key={`shuffledName-${name}`} hidden={hidden}>
-            {encrypted ? (
-                <ResultLink href={`/secret-santa/#/decrypter/${name}`}>
-                    {name}
-                </ResultLink>
-            ) : (
-                <ResultText>{name}</ResultText>
-            )}
-        </Name>
-    ));
+}: ResultsProps): React.ReactElement => {
+    const names = nameList.map(
+        (name): React.ReactElement => <Name key={`name-${name}`}>{name}</Name>
+    );
+    const shuffledNames = shuffledNameList.map(
+        (name): React.ReactElement => (
+            <Name key={`shuffledName-${name}`} hidden={hidden}>
+                {encrypted ? (
+                    <ResultLink href={`/secret-santa/#/decrypter/${name}`}>
+                        {name}
+                    </ResultLink>
+                ) : (
+                    <ResultText>{name}</ResultText>
+                )}
+            </Name>
+        )
+    );
 
     return (
         <ResultsContainer>
