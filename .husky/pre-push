@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # Run tests for all apps
 # Note: This assumes all apps in apps/* have test scripts
 # If an app doesn't have tests, add a dummy test script or exclude it
