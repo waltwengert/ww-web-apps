@@ -34,11 +34,11 @@ const App: React.FC = () => {
     const [bodyfat, setBodyfat] = useState('');
     const [results, setResults] = useState('');
 
-    const changeUnits = (newUnits: 'metric' | 'imperial') => {
+    const changeUnits = (newUnits: 'metric' | 'imperial'): void => {
         setUnits(newUnits);
     };
 
-    const updateSex = (newSex: 'male' | 'female') => {
+    const updateSex = (newSex: 'male' | 'female'): void => {
         setSex(newSex);
     };
 
@@ -121,7 +121,7 @@ const App: React.FC = () => {
         return Math.round((normalizedWeight / heightM / heightM) * 10) / 10;
     };
 
-    const calculateTdee = () => {
+    const calculateTdee = (): void => {
         if (!validStats(age, height, weight)) {
             return;
         }

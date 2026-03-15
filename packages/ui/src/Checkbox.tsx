@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 
 const CheckboxWrapper = styled.label`
     display: flex;
@@ -27,7 +28,10 @@ interface CheckboxProps {
     onChange: () => void;
 }
 
-export const BaseCheckbox = ({ labelText, onChange }: CheckboxProps) => {
+export const BaseCheckbox = ({
+    labelText,
+    onChange
+}: CheckboxProps): React.ReactElement => {
     return (
         <CheckboxWrapper>
             <StyledCheckbox type="checkbox" onChange={onChange} />

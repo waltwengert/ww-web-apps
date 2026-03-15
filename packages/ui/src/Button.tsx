@@ -15,8 +15,8 @@ const StyledButton = styled.button<{
     backgroundColor?: string;
     color?: string;
 }>`
-    background-color: ${props => props.backgroundColor || '#000000'};
-    color: ${props => props.color || '#ffffff'};
+    background-color: ${(props): string => props.backgroundColor || '#000000'};
+    color: ${(props): string => props.color || '#ffffff'};
     font-size: 18px;
     border: none;
     border-radius: 100px;
@@ -50,7 +50,7 @@ export const BaseButton = ({
     color,
     onClick,
     type = 'button'
-}: ButtonProps) => {
+}: ButtonProps): React.ReactElement => {
     return (
         <StyledButton
             backgroundColor={backgroundColor}

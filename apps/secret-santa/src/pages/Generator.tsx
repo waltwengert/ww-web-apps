@@ -1,7 +1,8 @@
+import React from 'react';
 import App from '../App';
 import { UserInput } from '../components/UserInput';
 
-const Generator = () => {
+const Generator = (): React.ReactElement => {
     return (
         <App>
             <UserInput />

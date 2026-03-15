@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
     BaseButton,
@@ -71,7 +71,7 @@ const InputButton = styled(BaseButton)`
     background-color: #bb2528;
 `;
 
-export const UserInput = () => {
+export const UserInput = (): React.ReactElement => {
     const [nameList, setNameList] = useState<string[]>([]);
     const [shuffledNameList, setShuffledNameList] = useState<string[]>([]);
     const [encrypted, setEncrypted] = useState(false);
@@ -79,14 +79,14 @@ export const UserInput = () => {
     const [currentText, setCurrentText] = useState('');
 
     const [hideButtonText, setHideButtonText] = useState<
-    'Hide all' | 'Reveal all'
+        'Hide all' | 'Reveal all'
     >('Hide all');
 
-    const handleTextInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleTextInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
         setCurrentText(e.target.value);
     };
 
-    const onAdd = () => {
+    const onAdd = (): void => {
         const clean = currentText.trim().toLowerCase();
         if (clean.length > 0) {
             setNameList([...nameList, clean]);
@@ -94,7 +94,7 @@ export const UserInput = () => {
         setCurrentText('');
     };
 
-    const onShuffle = () => {
+    const onShuffle = (): void => {
         const shuffled = shuffle([...nameList]);
         if (encrypted) {
             setShuffledNameList(encryptStringArray(shuffled));
@@ -103,7 +103,7 @@ export const UserInput = () => {
         }
     };
 
-    const onToggleEncrypted = () => {
+    const onToggleEncrypted = (): void => {
         const next = !encrypted;
         setEncrypted(next);
         if (next) {
@@ -115,7 +115,7 @@ export const UserInput = () => {
         }
     };
 
-    const onHide = () => {
+    const onHide = (): void => {
         setHidden(!hidden);
     };
 

@@ -18,7 +18,7 @@ interface AppProps {
     children: React.ReactNode;
 }
 
-const App = ({ children }: AppProps) => {
+const App = ({ children }: AppProps): React.ReactElement => {
     return (
         <AppWrapper>
             <Header />

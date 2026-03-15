@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 import { BaseLabel } from '@ww-web-apps/ui';
 
 const HeaderWrapper = styled.div`
@@ -21,7 +22,7 @@ const HeaderWrapper = styled.div`
     user-select: none;
 `;
 
-export const Header = () => {
+export const Header = (): React.ReactElement => {
     return (
         <HeaderWrapper>
             <BaseLabel>Secret Santa</BaseLabel>

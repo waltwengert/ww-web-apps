@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -13,12 +14,16 @@ interface DecrypterParams {
     decryptionText?: string;
 }
 
-export function loader({ params }: { params: DecrypterParams }) {
+export function loader({
+    params
+}: {
+    params: DecrypterParams;
+}): DecrypterParams {
     const decryptionText = params.decryptionText;
     return { decryptionText };
 }
 
-export const Decrypter = () => {
+export const Decrypter = (): React.ReactElement => {
     const data = useLoaderData() as DecrypterParams;
 
     return (
