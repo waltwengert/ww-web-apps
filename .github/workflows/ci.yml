@@ -115,6 +115,32 @@ jobs:
             - name: Run a11y tests
               run: yarn test:a11y
 
+    coverage:
+        name: Test Coverage
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6
+
+            - name: Setup Node
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22
+
+            - name: Enable Corepack
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.13.0 --activate
+
+            - name: Install dependencies
+              run: yarn --frozen-lockfile
+
+            - name: Build packages
+              run: yarn build:packages
+
+            - name: Run coverage checks
+              run: yarn test:coverage
+
     e2e:
         name: E2E Test
         runs-on: ubuntu-latest
@@ -176,7 +202,7 @@ jobs:
     deploy:
         name: Deploy to GitHub Pages
         runs-on: ubuntu-latest
-        needs: [lint, typecheck, test, a11y, e2e]
+        needs: [lint, typecheck, test, a11y, coverage, e2e]
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         permissions:
             pages: write

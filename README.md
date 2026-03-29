@@ -28,6 +28,7 @@ Current apps:
 - `yarn lint` - Lint all TypeScript files in `apps/` and `packages/`
 - `yarn format` - Format source files with Prettier
 - `yarn test` - Run tests in all workspaces
+- `yarn test:coverage` - Run workspace coverage checks with minimum thresholds
 - `yarn test:e2e` - Run Playwright E2E tests for all apps
 - `yarn build` - Build all workspaces
 

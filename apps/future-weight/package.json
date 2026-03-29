@@ -19,16 +19,18 @@
         "@types/jest-axe": "^3.5.9",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
+        "@vitest/coverage-v8": "^4.1.2",
         "jest-axe": "^10.0.0",
         "jsdom": "^28.1.0",
         "typescript": "^5.4.0",
-        "vitest": "^4.1.0"
+        "vitest": "^4.1.2"
     },
     "scripts": {
         "start": "vite",
         "build": "vite build",
         "typecheck": "tsc --noEmit",
         "test": "vitest run",
+        "test:coverage": "vitest run --coverage --coverage.reporter=text-summary --coverage.thresholds.lines=60 --coverage.thresholds.functions=60 --coverage.thresholds.statements=60 --coverage.thresholds.branches=50",
         "preview": "vite preview"
     }
 }
