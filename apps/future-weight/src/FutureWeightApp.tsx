@@ -300,6 +300,7 @@ const App: React.FC = () => {
                     <FormRow>
                         <FieldLabel>Age</FieldLabel>
                         <FutureWeightInput
+                            aria-label="Age"
                             type="text"
                             value={age}
                             onChange={e => setAge(e.target.value)}
@@ -312,6 +313,7 @@ const App: React.FC = () => {
                     <FormRow>
                         <FieldLabel>Height</FieldLabel>
                         <FutureWeightInput
+                            aria-label="Height"
                             type="text"
                             value={height}
                             onChange={e => setHeight(e.target.value)}
@@ -324,6 +326,7 @@ const App: React.FC = () => {
                     <FormRow>
                         <FieldLabel>Weight</FieldLabel>
                         <FutureWeightInput
+                            aria-label="Weight"
                             type="text"
                             value={weight}
                             onChange={e => setWeight(e.target.value)}
@@ -362,6 +365,7 @@ const App: React.FC = () => {
                     <FormRow>
                         <FieldLabel>Body fat %</FieldLabel>
                         <FutureWeightInput
+                            aria-label="Body fat percentage"
                             type="text"
                             value={bodyfat}
                             onChange={e => setBodyfat(e.target.value)}

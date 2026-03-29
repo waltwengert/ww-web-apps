@@ -22,8 +22,9 @@ describe('FutureWeight App', () => {
     it('calculates and renders BMR, TDEE, and BMI for valid metric inputs', () => {
         render(<App />);
 
-        const textInputs = screen.getAllByRole('textbox');
-        const [ageInput, heightInput, weightInput] = textInputs;
+        const ageInput = screen.getByLabelText('Age');
+        const heightInput = screen.getByLabelText('Height');
+        const weightInput = screen.getByLabelText('Weight');
 
         fireEvent.change(ageInput, { target: { value: '30' } });
         fireEvent.change(heightInput, { target: { value: '180' } });
@@ -39,8 +40,9 @@ describe('FutureWeight App', () => {
     it('shows inline validation error and does not show results with invalid stats', () => {
         render(<App />);
 
-        const textInputs = screen.getAllByRole('textbox');
-        const [ageInput, heightInput, weightInput] = textInputs;
+        const ageInput = screen.getByLabelText('Age');
+        const heightInput = screen.getByLabelText('Height');
+        const weightInput = screen.getByLabelText('Weight');
 
         fireEvent.change(ageInput, { target: { value: '141' } });
         fireEvent.change(heightInput, { target: { value: '180' } });

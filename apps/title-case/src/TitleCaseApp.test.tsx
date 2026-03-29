@@ -18,7 +18,8 @@ describe('TitleCase App', () => {
     it('converts text to title/upper/sentence/lower via case selector', () => {
         render(<App />);
 
-        const [input, output] = screen.getAllByRole('textbox');
+        const input = screen.getByLabelText('Input text');
+        const output = screen.getByLabelText('Output text');
         const selector = screen.getByRole('combobox');
 
         fireEvent.change(input, {
@@ -39,7 +40,8 @@ describe('TitleCase App', () => {
     it('shows cipher shift input for Caesar modes and applies chosen shift', () => {
         render(<App />);
 
-        const [input, output] = screen.getAllByRole('textbox');
+        const input = screen.getByLabelText('Input text');
+        const output = screen.getByLabelText('Output text');
         const selector = screen.getByRole('combobox');
 
         expect(screen.queryByLabelText('Cipher shift')).not.toBeInTheDocument();
