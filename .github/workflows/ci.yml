@@ -118,6 +118,35 @@ jobs:
             - name: Run E2E smoke tests
               run: yarn test:e2e
 
+    maintenance:
+        name: Dependency Maintenance
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: yarn
+                  cache-dependency-path: yarn.lock
+
+            - name: Enable Corepack
+              run: corepack enable
+
+            - name: Install dependencies
+              run: yarn --frozen-lockfile
+
+            - name: Check for deduplication opportunities
+              run: yarn deps:dedupe-check
+
+            - name: Check unused dependencies
+              run: yarn deps:check
+
+            - name: Audit dependencies
+              run: yarn deps:audit
+
     deploy:
         name: Deploy to GitHub Pages
         runs-on: ubuntu-latest
