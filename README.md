@@ -20,8 +20,8 @@ Current apps:
 2. Install dependencies: `yarn install`
 3. Run all builds: `yarn build`
 4. Start an app:
-	- `yarn start:{appName}` from repo root, or
-	- `yarn start` inside that app workspace
+    - `yarn start:{appName}` from repo root, or
+    - `yarn start` inside that app workspace
 
 ## Common Commands
 
@@ -62,3 +62,17 @@ Check for unused dependencies:
 
 - ESLint, Prettier, Husky, and lint-staged are configured at the root.
 - Playwright smoke tests are configured at the root; see `e2e/README.md`.
+
+## Release and Deployment
+
+Deployment target:
+
+- GitHub Pages via `.github/workflows/ci.yml` deploy job.
+- Portfolio is deployed to the site root.
+- Other apps are deployed under path segments (for example `/title-case`, `/future-weight`, `/secret-santa`).
+
+Standard release flow:
+
+1. Push changes to `master`.
+2. CI runs lint, typecheck, unit tests, and E2E tests.
+3. If all checks pass, deploy job builds apps, assembles `_site`, and deploys to Pages.
