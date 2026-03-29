@@ -1,19 +1,21 @@
 {
-  "name": "@ww-web-apps/utils",
-  "version": "0.1.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run"
-  },
-  "devDependencies": {
-    "typescript": "*",
-    "vitest": "^4.1.0"
-  }
+    "name": "@ww-web-apps/utils",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "test:coverage": "vitest run --coverage --coverage.reporter=text-summary --coverage.thresholds.lines=80 --coverage.thresholds.functions=80 --coverage.thresholds.statements=80 --coverage.thresholds.branches=70"
+    },
+    "devDependencies": {
+        "@vitest/coverage-v8": "^4.1.2",
+        "typescript": "*",
+        "vitest": "^4.1.2"
+    }
 }
