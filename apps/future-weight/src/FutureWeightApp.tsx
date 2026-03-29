@@ -1,8 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 
-import { FutureWeight, Input, Select } from '@ww-web-apps/ui';
-
+import {
+    ActivitySelect,
+    CalculateButton,
+    Card,
+    ErrorText,
+    FieldLabel,
+    FormRow,
+    FormStack,
+    FutureWeightInput,
+    Heading,
+    Page,
+    ResultCard,
+    ResultLabel,
+    ResultsGrid,
+    ResultValue,
+    Subheading,
+    ToggleGroup,
+    ToggleOption,
+    UnitTag
+} from './FutureWeightApp.styles';
 import {
     calculateBmi,
     calculateBmr,
@@ -11,185 +28,6 @@ import {
 } from './lib/futureWeight';
 
 import './style.css';
-
-// ── Layout ────────────────────────────────────────────────────────────────────
-
-const Page = styled.main`
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-`;
-
-const Card = styled.section`
-    width: min(680px, 92vw);
-    background: ${FutureWeight.CardBackground};
-    border: 1px solid ${FutureWeight.CardBorder};
-    border-radius: 20px;
-    box-shadow: 0 20px 40px ${FutureWeight.CardShadow};
-    padding: 28px 24px;
-`;
-
-const Heading = styled.h1`
-    margin: 0;
-    text-align: center;
-    color: ${FutureWeight.Heading};
-    font-size: clamp(2rem, 4.4vw, 2.9rem);
-    letter-spacing: 0.02em;
-`;
-
-const Subheading = styled.p`
-    margin: 10px 0 24px;
-    text-align: center;
-    color: ${FutureWeight.Muted};
-    font-size: 1.02rem;
-`;
-
-// ── Form ──────────────────────────────────────────────────────────────────────
-
-const FormStack = styled.div`
-    width: min(520px, 100%);
-    margin: 0 auto;
-    display: grid;
-    gap: 14px;
-`;
-
-const FormRow = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 12px;
-`;
-
-const FieldLabel = styled.span`
-    width: 110px;
-    flex-shrink: 0;
-    font-size: 15px;
-    color: ${FutureWeight.Muted};
-    font-weight: 500;
-`;
-
-const UnitTag = styled.span`
-    font-size: 14px;
-    color: ${FutureWeight.Muted};
-    min-width: 28px;
-`;
-
-const FutureWeightInput = styled(Input)`
-    flex: 1;
-    width: auto;
-    margin: 0;
-    font-size: 16px;
-    border: 1px solid ${FutureWeight.CardBorder};
-    border-radius: 12px;
-    color: ${FutureWeight.Text};
-    background: ${FutureWeight.White};
-
-    &:focus {
-        outline: 2px solid ${FutureWeight.Accent};
-        outline-offset: 1px;
-    }
-`;
-
-const ActivitySelect = styled(Select)`
-    flex: 1;
-    width: auto;
-    margin: 0;
-    font-size: 15px;
-    border-color: ${FutureWeight.CardBorder};
-    color: ${FutureWeight.Text};
-    background-color: ${FutureWeight.White};
-`;
-
-// ── Segmented toggle ──────────────────────────────────────────────────────────
-
-const ToggleGroup = styled.div`
-    display: flex;
-    flex: 1;
-    background: ${FutureWeight.AccentSoft};
-    border-radius: 12px;
-    padding: 3px;
-    gap: 3px;
-`;
-
-const ToggleOption = styled.button<{ $active?: boolean }>`
-    flex: 1;
-    padding: 7px 14px;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    transition:
-        background 0.15s,
-        color 0.15s;
-    background: ${({ $active }): string =>
-        $active ? FutureWeight.Accent : 'transparent'};
-    color: ${({ $active }): string =>
-        $active ? FutureWeight.White : FutureWeight.Muted};
-    font-weight: ${({ $active }): string => ($active ? '600' : '400')};
-`;
-
-// ── Feedback & action ─────────────────────────────────────────────────────────
-
-const ErrorText = styled.p`
-    color: ${FutureWeight.Error};
-    font-size: 14px;
-    text-align: center;
-    margin: 0;
-`;
-
-const CalculateButton = styled.button`
-    width: 100%;
-    padding: 12px;
-    background: ${FutureWeight.Accent};
-    color: ${FutureWeight.White};
-    border: none;
-    border-radius: 12px;
-    font-size: 17px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.15s;
-
-    &:hover {
-        background: ${FutureWeight.Heading};
-    }
-`;
-
-// ── Results ───────────────────────────────────────────────────────────────────
-
-const ResultsGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-
-    @media (max-width: 480px) {
-        grid-template-columns: 1fr;
-    }
-`;
-
-const ResultCard = styled.div`
-    background: ${FutureWeight.AccentSoft};
-    border: 1px solid ${FutureWeight.CardBorder};
-    border-radius: 14px;
-    padding: 16px 12px;
-    text-align: center;
-`;
-
-const ResultValue = styled.div`
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: ${FutureWeight.Heading};
-`;
-
-const ResultLabel = styled.div`
-    font-size: 0.82rem;
-    color: ${FutureWeight.Muted};
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-`;
-
-// ── Component ─────────────────────────────────────────────────────────────────
 
 type Results = { bmr: number; tdee: number; bmi: number };
 
