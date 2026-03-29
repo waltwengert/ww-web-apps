@@ -1,62 +1,64 @@
 {
-  "name": "ww-web-apps",
-  "version": "1.0.0",
-  "type": "module",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "prepare": "husky",
-    "lint": "eslint apps/**/*.{ts,tsx} packages/**/*.{ts,tsx}",
-    "typecheck": "yarn workspaces foreach -A run typecheck",
-    "format": "prettier --write apps/**/*.{js,jsx,ts,tsx,html,css,less,ejs} packages/**/*.{js,jsx,ts,tsx,html,css,less,ejs}",
-    "start": "yarn workspaces foreach -A run start",
-    "build": "yarn workspaces foreach -A run build",
-    "build:packages": "yarn workspace @ww-web-apps/ui build && yarn workspace @ww-web-apps/utils build",
-    "test": "yarn workspaces foreach -A run test",
-    "deps:check": "depcheck || (echo '❌ Unused dependencies found! Remove them before committing.' && exit 1)",
-    "start:secret-santa": "yarn workspace @ww-web-apps/secret-santa start",
-    "build:secret-santa": "yarn workspace @ww-web-apps/secret-santa build",
-    "test:secret-santa": "yarn workspace @ww-web-apps/secret-santa test",
-    "start:future-weight": "yarn workspace @ww-web-apps/future-weight start",
-    "build:future-weight": "yarn workspace @ww-web-apps/future-weight build",
-    "test:future-weight": "yarn workspace @ww-web-apps/future-weight test",
-    "start:title-case": "yarn workspace @ww-web-apps/title-case start",
-    "build:title-case": "yarn workspace @ww-web-apps/title-case build",
-    "test:title-case": "yarn workspace @ww-web-apps/title-case test",
-    "start:portfolio": "yarn workspace @ww-web-apps/portfolio start",
-    "build:portfolio": "yarn workspace @ww-web-apps/portfolio build",
-    "test:portfolio": "yarn workspace @ww-web-apps/portfolio test",
-    "test:e2e": "playwright test",
-    "test:e2e:headed": "playwright test --headed"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.29.0",
-    "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.53.2",
-    "@typescript-eslint/eslint-plugin": "^8.57.0",
-    "@typescript-eslint/parser": "^8.57.0",
-    "depcheck": "^1.4.7",
-    "eslint": "^10.0.3",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "globals": "^17.4.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
-    "prettier": "3.8.1",
-    "react-is": "^19.2.4",
-    "typescript": "^5.4.0"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
+    "name": "ww-web-apps",
+    "version": "1.0.0",
+    "type": "module",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "packages/*"
     ],
-    "*.{html,css,less,ejs}": [
-      "prettier --write"
-    ]
-  },
-  "packageManager": "yarn@4.13.0+sha512.5c20ba010c99815433e5c8453112165e673f1c7948d8d2b267f4b5e52097538658388ebc9f9580656d9b75c5cc996f990f611f99304a2197d4c56d21eea370e7"
+    "scripts": {
+        "prepare": "husky",
+        "lint": "eslint apps/**/*.{ts,tsx} packages/**/*.{ts,tsx}",
+        "typecheck": "yarn workspaces foreach -A run typecheck",
+        "format": "prettier --write apps/**/*.{js,jsx,ts,tsx,html,css,less,ejs} packages/**/*.{js,jsx,ts,tsx,html,css,less,ejs}",
+        "start": "yarn workspaces foreach -A run start",
+        "build": "yarn workspaces foreach -A run build",
+        "build:packages": "yarn workspace @ww-web-apps/ui build && yarn workspace @ww-web-apps/utils build",
+        "test": "yarn workspaces foreach -A run test",
+        "deps:check": "knip --dependencies",
+        "deps:dedupe-check": "yarn dedupe --check",
+        "deps:audit": "yarn npm audit --all --severity high",
+        "start:secret-santa": "yarn workspace @ww-web-apps/secret-santa start",
+        "build:secret-santa": "yarn workspace @ww-web-apps/secret-santa build",
+        "test:secret-santa": "yarn workspace @ww-web-apps/secret-santa test",
+        "start:future-weight": "yarn workspace @ww-web-apps/future-weight start",
+        "build:future-weight": "yarn workspace @ww-web-apps/future-weight build",
+        "test:future-weight": "yarn workspace @ww-web-apps/future-weight test",
+        "start:title-case": "yarn workspace @ww-web-apps/title-case start",
+        "build:title-case": "yarn workspace @ww-web-apps/title-case build",
+        "test:title-case": "yarn workspace @ww-web-apps/title-case test",
+        "start:portfolio": "yarn workspace @ww-web-apps/portfolio start",
+        "build:portfolio": "yarn workspace @ww-web-apps/portfolio build",
+        "test:portfolio": "yarn workspace @ww-web-apps/portfolio test",
+        "test:e2e": "playwright test",
+        "test:e2e:headed": "playwright test --headed"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.29.0",
+        "@eslint/js": "^10.0.1",
+        "@playwright/test": "^1.53.2",
+        "@typescript-eslint/eslint-plugin": "^8.57.0",
+        "@typescript-eslint/parser": "^8.57.0",
+        "eslint": "^10.0.3",
+        "eslint-plugin-react-hooks": "^7.0.1",
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "globals": "^17.4.0",
+        "husky": "^9.1.7",
+        "knip": "^6.1.0",
+        "lint-staged": "^16.4.0",
+        "prettier": "3.8.1",
+        "react-is": "^19.2.4",
+        "typescript": "^5.4.0"
+    },
+    "lint-staged": {
+        "*.{ts,tsx}": [
+            "prettier --write",
+            "eslint --fix"
+        ],
+        "*.{html,css,less,ejs}": [
+            "prettier --write"
+        ]
+    },
+    "packageManager": "yarn@4.13.0+sha512.5c20ba010c99815433e5c8453112165e673f1c7948d8d2b267f4b5e52097538658388ebc9f9580656d9b75c5cc996f990f611f99304a2197d4c56d21eea370e7"
 }

@@ -1,0 +1,3 @@
+{
+    "ignoreDependencies": ["@babel/core", "lint-staged", "react-is"]
+}
