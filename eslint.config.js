@@ -135,10 +135,36 @@ const config = [
                 {
                     paths: [
                         {
+                            name: '@ww-web-apps/portfolio',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
+                            name: '@ww-web-apps/future-weight',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
+                            name: '@ww-web-apps/title-case',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
                             name: '@ww-web-apps/ui',
                             importNames: ['FutureWeight', 'TitleCase'],
                             message:
                                 'apps/secret-santa should only use SecretSanta and Base colour namespaces.'
+                        }
+                    ],
+                    patterns: [
+                        {
+                            group: [
+                                'apps/portfolio/**',
+                                'apps/future-weight/**',
+                                'apps/title-case/**'
+                            ],
+                            message:
+                                'Importing source files directly from other apps is disallowed. Move shared code to packages/*.'
                         }
                     ]
                 }
@@ -155,10 +181,36 @@ const config = [
                 {
                     paths: [
                         {
+                            name: '@ww-web-apps/portfolio',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
+                            name: '@ww-web-apps/secret-santa',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
+                            name: '@ww-web-apps/title-case',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
                             name: '@ww-web-apps/ui',
                             importNames: ['SecretSanta', 'TitleCase'],
                             message:
                                 'apps/future-weight should only use FutureWeight and Base colour namespaces.'
+                        }
+                    ],
+                    patterns: [
+                        {
+                            group: [
+                                'apps/portfolio/**',
+                                'apps/secret-santa/**',
+                                'apps/title-case/**'
+                            ],
+                            message:
+                                'Importing source files directly from other apps is disallowed. Move shared code to packages/*.'
                         }
                     ]
                 }
@@ -175,10 +227,36 @@ const config = [
                 {
                     paths: [
                         {
+                            name: '@ww-web-apps/portfolio',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
+                            name: '@ww-web-apps/secret-santa',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
+                            name: '@ww-web-apps/future-weight',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
                             name: '@ww-web-apps/ui',
                             importNames: ['SecretSanta', 'FutureWeight'],
                             message:
                                 'apps/title-case should only use TitleCase and Base colour namespaces.'
+                        }
+                    ],
+                    patterns: [
+                        {
+                            group: [
+                                'apps/portfolio/**',
+                                'apps/secret-santa/**',
+                                'apps/future-weight/**'
+                            ],
+                            message:
+                                'Importing source files directly from other apps is disallowed. Move shared code to packages/*.'
                         }
                     ]
                 }
@@ -195,10 +273,81 @@ const config = [
                 {
                     paths: [
                         {
+                            name: '@ww-web-apps/secret-santa',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
+                            name: '@ww-web-apps/future-weight',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
+                            name: '@ww-web-apps/title-case',
+                            message:
+                                'Cross-app imports are disallowed. Move shared code to packages/*.'
+                        },
+                        {
                             name: '@ww-web-apps/ui',
-                            importNames: ['SecretSanta', 'FutureWeight', 'TitleCase'],
+                            importNames: [
+                                'SecretSanta',
+                                'FutureWeight',
+                                'TitleCase'
+                            ],
                             message:
                                 'apps/portfolio should only use Portfolio and Base colour namespaces.'
+                        }
+                    ],
+                    patterns: [
+                        {
+                            group: [
+                                'apps/secret-santa/**',
+                                'apps/future-weight/**',
+                                'apps/title-case/**'
+                            ],
+                            message:
+                                'Importing source files directly from other apps is disallowed. Move shared code to packages/*.'
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+
+    // packages/* may not import app code directly or via app workspaces
+    {
+        files: ['packages/**/*.ts', 'packages/**/*.tsx'],
+        rules: {
+            'no-restricted-imports': [
+                'error',
+                {
+                    paths: [
+                        {
+                            name: '@ww-web-apps/portfolio',
+                            message:
+                                'Packages must not depend on app workspaces. Keep dependencies one-way: apps -> packages.'
+                        },
+                        {
+                            name: '@ww-web-apps/secret-santa',
+                            message:
+                                'Packages must not depend on app workspaces. Keep dependencies one-way: apps -> packages.'
+                        },
+                        {
+                            name: '@ww-web-apps/future-weight',
+                            message:
+                                'Packages must not depend on app workspaces. Keep dependencies one-way: apps -> packages.'
+                        },
+                        {
+                            name: '@ww-web-apps/title-case',
+                            message:
+                                'Packages must not depend on app workspaces. Keep dependencies one-way: apps -> packages.'
+                        }
+                    ],
+                    patterns: [
+                        {
+                            group: ['apps/**'],
+                            message:
+                                'Packages must not import app source files. Move shared logic into packages/* and import from there.'
                         }
                     ]
                 }
