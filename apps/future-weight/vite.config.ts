@@ -5,6 +5,10 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
     plugins: [react()],
     base: '/future-weight/',
+    server: {
+        port: 4174,
+        strictPort: true
+    },
     test: {
         globals: true,
         environment: 'jsdom',

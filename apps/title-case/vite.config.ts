@@ -5,6 +5,10 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
     plugins: [react()],
     base: '/title-case/',
+    server: {
+        port: 4173,
+        strictPort: true
+    },
     test: {
         globals: true,
         environment: 'jsdom',
