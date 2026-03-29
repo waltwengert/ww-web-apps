@@ -41,7 +41,7 @@ export default defineConfig({
     ],
     projects: [
         {
-            name: 'title-case-smoke',
+            name: 'title-case-e2e',
             use: {
                 ...devices['Desktop Chrome'],
                 baseURL: 'http://127.0.0.1:4173'
@@ -49,7 +49,7 @@ export default defineConfig({
             testMatch: /title-case\.spec\.ts/
         },
         {
-            name: 'future-weight-smoke',
+            name: 'future-weight-e2e',
             use: {
                 ...devices['Desktop Chrome'],
                 baseURL: 'http://127.0.0.1:4174'
@@ -57,7 +57,7 @@ export default defineConfig({
             testMatch: /future-weight\.spec\.ts/
         },
         {
-            name: 'secret-santa-smoke',
+            name: 'secret-santa-e2e',
             use: {
                 ...devices['Desktop Chrome'],
                 baseURL: 'http://127.0.0.1:4175'
@@ -65,7 +65,7 @@ export default defineConfig({
             testMatch: /secret-santa\.spec\.ts/
         },
         {
-            name: 'portfolio-smoke',
+            name: 'portfolio-e2e',
             use: {
                 ...devices['Desktop Chrome'],
                 baseURL: 'http://127.0.0.1:4176'

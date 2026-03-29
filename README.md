@@ -28,7 +28,7 @@ Current apps:
 - `yarn lint` - Lint all TypeScript files in `apps/` and `packages/`
 - `yarn format` - Format source files with Prettier
 - `yarn test` - Run tests in all workspaces
-- `yarn test:e2e` - Run Playwright smoke tests for all apps
+- `yarn test:e2e` - Run Playwright E2E tests for all apps
 - `yarn build` - Build all workspaces
 
 Per-app commands from the repo root (pattern):
@@ -61,7 +61,7 @@ Check for unused dependencies:
 ## Shared Dev Tools
 
 - ESLint, Prettier, Husky, and lint-staged are configured at the root.
-- Playwright smoke tests are configured at the root; see `e2e/README.md`.
+- Playwright E2E tests are configured at the root; see `e2e/README.md`.
 
 ## Release and Deployment
 

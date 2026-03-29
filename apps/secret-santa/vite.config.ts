@@ -5,6 +5,10 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
     plugins: [react()],
     base: '/secret-santa/',
+    server: {
+        port: 4175,
+        strictPort: true
+    },
     test: {
         globals: true,
         environment: 'jsdom',

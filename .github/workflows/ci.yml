@@ -90,7 +90,7 @@ jobs:
               run: yarn test
 
     e2e:
-        name: E2E Smoke
+        name: E2E
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -115,7 +115,7 @@ jobs:
             - name: Install Playwright Chromium
               run: yarn playwright install --with-deps chromium
 
-            - name: Run E2E smoke tests
+            - name: Run E2E tests
               run: yarn test:e2e
 
     maintenance:
