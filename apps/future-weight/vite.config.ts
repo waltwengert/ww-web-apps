@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/ww-web-apps/future-weight/',
+    base: '/future-weight/',
     test: {
         globals: true,
         environment: 'jsdom',

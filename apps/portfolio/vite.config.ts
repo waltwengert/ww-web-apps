@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/ww-web-apps/',
+    base: '/',
     test: {
         globals: true,
         environment: 'jsdom',
