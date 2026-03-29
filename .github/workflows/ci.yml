@@ -25,11 +25,11 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  cache: yarn
-                  cache-dependency-path: yarn.lock
 
             - name: Enable Corepack
-              run: corepack enable
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.13.0 --activate
 
             - name: Install dependencies
               run: yarn --frozen-lockfile
@@ -48,11 +48,11 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  cache: yarn
-                  cache-dependency-path: yarn.lock
 
             - name: Enable Corepack
-              run: corepack enable
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.13.0 --activate
 
             - name: Install dependencies
               run: yarn --frozen-lockfile
@@ -74,11 +74,11 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  cache: yarn
-                  cache-dependency-path: yarn.lock
 
             - name: Enable Corepack
-              run: corepack enable
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.13.0 --activate
 
             - name: Install dependencies
               run: yarn --frozen-lockfile
@@ -100,11 +100,11 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  cache: yarn
-                  cache-dependency-path: yarn.lock
 
             - name: Enable Corepack
-              run: corepack enable
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.13.0 --activate
 
             - name: Install dependencies
               run: yarn --frozen-lockfile
@@ -129,11 +129,11 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  cache: yarn
-                  cache-dependency-path: yarn.lock
 
             - name: Enable Corepack
-              run: corepack enable
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.13.0 --activate
 
             - name: Install dependencies
               run: yarn --frozen-lockfile
@@ -167,11 +167,11 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  cache: yarn
-                  cache-dependency-path: yarn.lock
 
             - name: Enable Corepack
-              run: corepack enable
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.13.0 --activate
 
             - name: Install dependencies
               run: yarn --frozen-lockfile
