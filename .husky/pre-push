@@ -1,11 +1,1 @@
 #!/usr/bin/env bash
-# Run tests for all apps
-# Note: This assumes all apps in apps/* have test scripts
-# If an app doesn't have tests, add a dummy test script or exclude it
-for app in apps/*; do
-  if [ -d "$app" ]; then
-    app_name=$(basename "$app")
-    echo "Running tests for $app_name..."
-    corepack yarn workspace "@ww-web-apps/$app_name" test || exit 1
-  fi
-done

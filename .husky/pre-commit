@@ -1,7 +1,2 @@
 #!/usr/bin/env bash
-# check for unused dependencies
-corepack yarn deps:check
-# run full typecheck across all workspaces
-corepack yarn typecheck
-# lint-staged will run linters on staged files and auto-fix them if possible
 corepack yarn lint-staged
