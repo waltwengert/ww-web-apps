@@ -31,6 +31,7 @@
         "start:portfolio": "yarn workspace @ww-web-apps/portfolio start",
         "build:portfolio": "yarn workspace @ww-web-apps/portfolio build",
         "test:portfolio": "yarn workspace @ww-web-apps/portfolio test",
+        "test:a11y": "yarn workspace @ww-web-apps/title-case test -- -t \"a11y\" && yarn workspace @ww-web-apps/future-weight test -- -t \"a11y\" && yarn workspace @ww-web-apps/secret-santa test -- -t \"a11y\" && yarn workspace @ww-web-apps/portfolio test -- -t \"a11y\"",
         "test:e2e": "playwright test",
         "test:e2e:headed": "playwright test --headed"
     },
