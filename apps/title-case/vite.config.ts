@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/ww-web-apps/title-case/',
+    base: '/title-case/',
     test: {
         globals: true,
         environment: 'jsdom',

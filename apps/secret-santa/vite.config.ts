@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/ww-web-apps/secret-santa/',
+    base: '/secret-santa/',
     test: {
         globals: true,
         environment: 'jsdom',
