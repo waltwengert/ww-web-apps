@@ -1,7 +1,12 @@
 name: CodeQL
 
 on:
+    push:
+        branches:
+            - master
     pull_request:
+    schedule:
+        - cron: '23 4 * * 1'
 
 permissions:
     actions: read
@@ -20,6 +25,7 @@ jobs:
               uses: github/codeql-action/init@v4
               with:
                   languages: javascript-typescript
+                  build-mode: none
 
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v4

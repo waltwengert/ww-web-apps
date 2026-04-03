@@ -3,11 +3,26 @@ updates:
     - package-ecosystem: npm
       directory: /
       schedule:
-          interval: weekly
-      open-pull-requests-limit: 5
+          interval: daily
+      open-pull-requests-limit: 10
+      assignees:
+          - waltwengert
+      labels:
+          - dependencies
+          - automated
+      commit-message:
+          prefix: 'deps'
 
     - package-ecosystem: github-actions
       directory: /
       schedule:
-          interval: monthly
+          interval: weekly
       open-pull-requests-limit: 3
+      assignees:
+          - waltwengert
+      labels:
+          - dependencies
+          - github-actions
+          - automated
+      commit-message:
+          prefix: 'ci'
