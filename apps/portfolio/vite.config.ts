@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/',
+    base: '/ww-web-apps/',
     server: {
         port: 4176,
         strictPort: true

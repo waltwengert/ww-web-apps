@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/title-case/',
+    base: '/ww-web-apps/title-case/',
     server: {
         port: 4173,
         strictPort: true
