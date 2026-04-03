@@ -486,12 +486,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/free-brands-svg-icons@npm:^6.7.2":
-  version: 6.7.2
-  resolution: "@fortawesome/free-brands-svg-icons@npm:6.7.2"
+"@fortawesome/free-brands-svg-icons@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "@fortawesome/free-brands-svg-icons@npm:7.2.0"
   dependencies:
-    "@fortawesome/fontawesome-common-types": "npm:6.7.2"
-  checksum: 10c0/054af882f3416d4a04dfe0f8db8f1ac645d07709a019e95368ae796c1aeee5929dfaf023e5568438a600e1bc1496e6e7270659d2be91b50531fdbd724034b22c
+    "@fortawesome/fontawesome-common-types": "npm:7.2.0"
+  checksum: 10c0/cfb883006dd0f918dde3d6ed81197552f094823e2032c284f05cb8788df65ccee7aa71c54b8042b393a843bb134fbcff492fc5b1ba57bb690cf9a9de17b30df3
   languageName: node
   linkType: hard
 
@@ -1680,7 +1680,7 @@ __metadata:
   dependencies:
     "@fontsource/roboto-slab": "npm:^5.2.7"
     "@fortawesome/fontawesome-svg-core": "npm:^7.2.0"
-    "@fortawesome/free-brands-svg-icons": "npm:^6.7.2"
+    "@fortawesome/free-brands-svg-icons": "npm:^7.2.0"
     "@fortawesome/free-solid-svg-icons": "npm:^6.7.2"
     "@fortawesome/react-fontawesome": "npm:^3.0.0"
     "@testing-library/dom": "npm:^10.4.1"
