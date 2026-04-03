@@ -3,6 +3,13 @@
 Portfolio is a single-page personal site with section navigation for about,
 projects, education, and employment.
 
+## Tech
+
+- React
+- TypeScript
+- Vite
+- styled-components
+
 ## Features
 
 - Sticky section navigation that tracks the currently visible section.

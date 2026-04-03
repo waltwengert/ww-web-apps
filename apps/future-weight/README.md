@@ -3,6 +3,13 @@
 Future Weight is a quick calculator for metabolic metrics based on user
 stats and activity level.
 
+## Tech
+
+- React
+- TypeScript
+- Vite
+- Vitest
+
 ## Features
 
 - Calculates BMR, TDEE, and BMI from age, height, and weight.
