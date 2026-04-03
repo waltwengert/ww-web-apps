@@ -69,8 +69,8 @@ Check for unused dependencies:
 Deployment target:
 
 - GitHub Pages via `.github/workflows/ci.yml` deploy job.
-- Portfolio is deployed to the site root.
-- Other apps are deployed under path segments (for example `/title-case`, `/future-weight`, `/secret-santa`).
+- Portfolio is deployed to `/ww-web-apps/`.
+- Other apps are deployed under `/ww-web-apps/{app-name}` (for example `/ww-web-apps/title-case`, `/ww-web-apps/future-weight`, `/ww-web-apps/secret-santa`).
 
 Standard release flow:
 

@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/secret-santa/',
+    base: '/ww-web-apps/secret-santa/',
     server: {
         port: 4175,
         strictPort: true

@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/future-weight/',
+    base: '/ww-web-apps/future-weight/',
     server: {
         port: 4174,
         strictPort: true
