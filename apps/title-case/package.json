@@ -8,8 +8,8 @@
         "@vitejs/plugin-react": "^6.0.1",
         "@ww-web-apps/ui": "workspace:*",
         "@ww-web-apps/utils": "workspace:*",
-        "react": "^19.2.4",
-        "react-dom": "^19.2.4",
+        "react": "^19.2.5",
+        "react-dom": "^19.2.5",
         "styled-components": "^6.3.12",
         "vite": "^8.0.7"
     },
