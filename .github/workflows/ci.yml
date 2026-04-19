@@ -250,7 +250,7 @@ jobs:
                   cp -r apps/secret-santa/dist/. _site/secret-santa/
 
             - name: Upload Pages artifact
-              uses: actions/upload-pages-artifact@v4
+              uses: actions/upload-pages-artifact@v5
               with:
                   path: _site
 
