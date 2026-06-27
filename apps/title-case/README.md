@@ -3,6 +3,13 @@
 Title Case converts text between common letter-case formats and Caesar
 cipher encode/decode modes.
 
+## Tech
+
+- React
+- TypeScript
+- Vite
+- Vitest
+
 ## Features
 
 - Convert text as you type (title, sentence, upper, lower).

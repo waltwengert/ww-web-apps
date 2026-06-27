@@ -3,6 +3,13 @@
 Secret Santa is a small app for creating gift exchange assignments and sharing
 them as plain names or encrypted tokens.
 
+## Tech
+
+- React
+- TypeScript
+- Vite
+- styled-components
+
 ## Features
 
 - Add participants and generate shuffled assignments.
