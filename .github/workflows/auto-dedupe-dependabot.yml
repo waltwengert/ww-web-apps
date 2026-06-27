@@ -1,0 +1,50 @@
+name: Auto-dedupe Dependabot PRs
+
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+
+permissions:
+    contents: write
+
+jobs:
+    dedupe:
+        if: |
+            github.actor == 'dependabot[bot]' ||
+            github.event.pull_request.user.login == 'dependabot[bot]'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout PR branch
+              uses: actions/checkout@v6
+              with:
+                  ref: ${{ github.event.pull_request.head.sha }}
+                  fetch-depth: 0
+                  persist-credentials: true
+
+            - name: Setup Node
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 22
+
+            - name: Enable Corepack
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.13.0 --activate
+
+            - name: Install dependencies
+              run: yarn --frozen-lockfile
+
+            - name: Run yarn dedupe
+              run: yarn dedupe
+
+            - name: Commit dedupe changes
+              run: |
+                  if git diff --quiet -- yarn.lock; then
+                    echo "No dedupe changes detected."
+                    exit 0
+                  fi
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git add yarn.lock
+                  git commit -m "chore(deps): dedupe dependencies"
+                  git push origin HEAD:${{ github.event.pull_request.head.ref }}
