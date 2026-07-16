@@ -628,37 +628,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-common-types@npm:7.3.0":
-  version: 7.3.0
-  resolution: "@fortawesome/fontawesome-common-types@npm:7.3.0"
-  checksum: 10c0/2d7310609b520e68cbc8737d551f526e434eb4cd093a3f7d420998809fa21e23aa96123c7d23bacb451ff49bb4eda79272583463ca6cf29a4335f24fe6babcd9
+"@fortawesome/fontawesome-common-types@npm:7.3.1":
+  version: 7.3.1
+  resolution: "@fortawesome/fontawesome-common-types@npm:7.3.1"
+  checksum: 10c0/f443a0109773e57ceab3c35021c4f26baf8c29afc79efbea2324bcd9f7dd326f5ac415e46ead17eaf6e935bc23fce83993d4211a4cff375c19100ee65ea9e5cc
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-svg-core@npm:^7.3.0":
-  version: 7.3.0
-  resolution: "@fortawesome/fontawesome-svg-core@npm:7.3.0"
+"@fortawesome/fontawesome-svg-core@npm:^7.3.1":
+  version: 7.3.1
+  resolution: "@fortawesome/fontawesome-svg-core@npm:7.3.1"
   dependencies:
-    "@fortawesome/fontawesome-common-types": "npm:7.3.0"
-  checksum: 10c0/8d0d8a297a26fa05d407cb4c3c280b84af4b5991eb31d868a02392d9d1b9ad32f73be7e0703e2a1e98b2cdc356edca75f0f8e70ba140e0edb1cfe8739b2b86a4
+    "@fortawesome/fontawesome-common-types": "npm:7.3.1"
+  checksum: 10c0/07c84a5751999d13d875f63e059ec2b0ab6dbed9cfe363fe8a870fd64e045c049367ae55bdee18973b38255967593d6eef403170a1e70cf4400de8216a932654
   languageName: node
   linkType: hard
 
-"@fortawesome/free-brands-svg-icons@npm:^7.3.0":
-  version: 7.3.0
-  resolution: "@fortawesome/free-brands-svg-icons@npm:7.3.0"
+"@fortawesome/free-brands-svg-icons@npm:^7.3.1":
+  version: 7.3.1
+  resolution: "@fortawesome/free-brands-svg-icons@npm:7.3.1"
   dependencies:
-    "@fortawesome/fontawesome-common-types": "npm:7.3.0"
-  checksum: 10c0/f1fe7325ed94fa3b026560e284639e93e34b5894427fb63ffe07725c7b109701f37fa503bfb279a387bbebda096bdeb6a5110b229a83db7c407173fd3f2c1ec3
+    "@fortawesome/fontawesome-common-types": "npm:7.3.1"
+  checksum: 10c0/ae9049f450a64166f02e6a199b0c87786899a0d49e114994da85b8ccf906466543510d0e3e63fdb945eac00e0b81b0c2e274d54f06a605767a1e8503bdea344e
   languageName: node
   linkType: hard
 
-"@fortawesome/free-solid-svg-icons@npm:^7.3.0":
-  version: 7.3.0
-  resolution: "@fortawesome/free-solid-svg-icons@npm:7.3.0"
+"@fortawesome/free-solid-svg-icons@npm:^7.3.1":
+  version: 7.3.1
+  resolution: "@fortawesome/free-solid-svg-icons@npm:7.3.1"
   dependencies:
-    "@fortawesome/fontawesome-common-types": "npm:7.3.0"
-  checksum: 10c0/62d8978860a4838fc9b3f15eb433c09ccff7d6242c074dacde3ea816d807f5af83a6ba3ea8da9fea02bace7b361dd3acf79c12f95841e190e0d8f75e2f3c7232
+    "@fortawesome/fontawesome-common-types": "npm:7.3.1"
+  checksum: 10c0/b00958ce2929419adc2371739f7552728218f0c502dab74dafb6070e6a6c51a811a8b66ab18ca555703ad71d2769a99c64742baca29b244d8a209d11ad25d8fc
   languageName: node
   linkType: hard
 
@@ -1827,7 +1827,7 @@ __metadata:
     react-dom: "npm:^19.2.7"
     styled-components: "npm:^6.4.3"
     typescript: "npm:^6.0.3"
-    vite: "npm:^8.1.4"
+    vite: "npm:^8.1.5"
     vitest: "npm:^4.1.10"
   languageName: unknown
   linkType: soft
@@ -1837,9 +1837,9 @@ __metadata:
   resolution: "@ww-web-apps/portfolio@workspace:apps/portfolio"
   dependencies:
     "@fontsource/roboto-slab": "npm:^5.2.7"
-    "@fortawesome/fontawesome-svg-core": "npm:^7.3.0"
-    "@fortawesome/free-brands-svg-icons": "npm:^7.3.0"
-    "@fortawesome/free-solid-svg-icons": "npm:^7.3.0"
+    "@fortawesome/fontawesome-svg-core": "npm:^7.3.1"
+    "@fortawesome/free-brands-svg-icons": "npm:^7.3.1"
+    "@fortawesome/free-solid-svg-icons": "npm:^7.3.1"
     "@fortawesome/react-fontawesome": "npm:^3.4.0"
     "@testing-library/dom": "npm:^10.4.1"
     "@testing-library/jest-dom": "npm:^6.1.4"
@@ -1857,7 +1857,7 @@ __metadata:
     react-dom: "npm:^19.2.7"
     styled-components: "npm:^6.4.3"
     typescript: "npm:^6.0.3"
-    vite: "npm:^8.1.4"
+    vite: "npm:^8.1.5"
     vitest: "npm:^4.1.10"
   languageName: unknown
   linkType: soft
@@ -1886,7 +1886,7 @@ __metadata:
     react-router-dom: "npm:^7.18.1"
     styled-components: "npm:^6.4.3"
     typescript: "npm:^6.0.3"
-    vite: "npm:^8.1.4"
+    vite: "npm:^8.1.5"
     vitest: "npm:^4.1.10"
   languageName: unknown
   linkType: soft
@@ -1912,7 +1912,7 @@ __metadata:
     react-dom: "npm:^19.2.7"
     styled-components: "npm:^6.4.3"
     typescript: "npm:^6.0.3"
-    vite: "npm:^8.1.4"
+    vite: "npm:^8.1.5"
     vitest: "npm:^4.1.10"
   languageName: unknown
   linkType: soft
@@ -3436,9 +3436,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:^6.26.0":
-  version: 6.26.0
-  resolution: "knip@npm:6.26.0"
+"knip@npm:^6.27.0":
+  version: 6.27.0
+  resolution: "knip@npm:6.27.0"
   dependencies:
     fdir: "npm:^6.5.0"
     formatly: "npm:^0.3.0"
@@ -3456,7 +3456,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10c0/bdac0b7a878c17c887bc0aadbb51c243fc88bb0c95cc3bb90560387a68a96416df57b2972e647cf2af36aa930554664b214b4f2300918469c637ed934cc79a6e
+  checksum: 10c0/cabf456e6f723913132a63b721439959b54e60ed014322e23c7556792ca79a45f9ae8c2f937db012d32cbaae7af700dff4791a7aafbe2eb67b79c5c40c7a3b37
   languageName: node
   linkType: hard
 
@@ -4256,14 +4256,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.16":
-  version: 8.5.16
-  resolution: "postcss@npm:8.5.16"
+"postcss@npm:^8.5.17":
+  version: 8.5.19
+  resolution: "postcss@npm:8.5.19"
   dependencies:
     nanoid: "npm:^3.3.12"
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
-  checksum: 10c0/625de7a02f662f3a340964d14b487bd5097adf16f5f171e257d19005ba37aea8768ee446557500e88e91ca46b4d14d6cb4a0bf033c6ec0c8c0b660d85719f1ef
+  checksum: 10c0/302af9e4dfa8cce4f43af1798576b3a77ab7b23abac5522328c6c7a830d49b31281cba9d6071e478e6970a05ef82346d1570b8fbffae912f26a4f1a1a07f0a44
   languageName: node
   linkType: hard
 
@@ -4459,7 +4459,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rolldown@npm:~1.1.4":
+"rolldown@npm:~1.1.5":
   version: 1.1.5
   resolution: "rolldown@npm:1.1.5"
   dependencies:
@@ -5026,15 +5026,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^6.0.0 || ^7.0.0 || ^8.0.0, vite@npm:^8.1.4":
-  version: 8.1.4
-  resolution: "vite@npm:8.1.4"
+"vite@npm:^6.0.0 || ^7.0.0 || ^8.0.0, vite@npm:^8.1.5":
+  version: 8.1.5
+  resolution: "vite@npm:8.1.5"
   dependencies:
     fsevents: "npm:~2.3.3"
     lightningcss: "npm:^1.32.0"
     picomatch: "npm:^4.0.5"
-    postcss: "npm:^8.5.16"
-    rolldown: "npm:~1.1.4"
+    postcss: "npm:^8.5.17"
+    rolldown: "npm:~1.1.5"
     tinyglobby: "npm:^0.2.17"
   peerDependencies:
     "@types/node": ^20.19.0 || >=22.12.0
@@ -5079,7 +5079,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/4262cdd0dd00ca99b00a8aef91fc00e58b66e80b54adbef49353bfbbae7342c2d6ddf1180351956086ff53ad186bec03784f57b96e36ab4dad1246547236d79b
+  checksum: 10c0/3231e24dd4394d0bc8b4f0f5d6d6a2eda8737e5053042892b4163564456a03d67f953c4c7498621f9517eebc30a492ea136c728a767a122eb84bf6d7cf60e1e6
   languageName: node
   linkType: hard
 
@@ -5269,7 +5269,7 @@ __metadata:
     eslint-plugin-simple-import-sort: "npm:^13.0.0"
     globals: "npm:^17.7.0"
     husky: "npm:^9.1.7"
-    knip: "npm:^6.26.0"
+    knip: "npm:^6.27.0"
     lint-staged: "npm:^17.0.8"
     prettier: "npm:3.9.5"
     react-is: "npm:^19.2.7"
