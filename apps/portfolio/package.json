@@ -4,16 +4,16 @@
     "homepage": "https://waltwengert.github.io/",
     "private": true,
     "dependencies": {
-        "@fontsource/roboto-slab": "^5.2.7",
+        "@fontsource/roboto-slab": "^5.3.0",
         "@fortawesome/fontawesome-svg-core": "^7.3.1",
         "@fortawesome/free-brands-svg-icons": "^7.3.1",
         "@fortawesome/free-solid-svg-icons": "^7.3.1",
-        "@fortawesome/react-fontawesome": "^3.4.0",
+        "@fortawesome/react-fontawesome": "^3.5.0",
         "@vitejs/plugin-react": "^6.0.3",
         "@ww-web-apps/ui": "workspace:*",
         "react": "^19.2.7",
         "react-dom": "^19.2.7",
-        "styled-components": "^6.4.3",
+        "styled-components": "^6.4.4",
         "vite": "^8.1.5"
     },
     "devDependencies": {
