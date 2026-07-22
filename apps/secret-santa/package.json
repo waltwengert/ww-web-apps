@@ -11,8 +11,8 @@
         "@ww-web-apps/ui": "workspace:*",
         "@ww-web-apps/utils": "workspace:*",
         "gh-pages": "^6.3.0",
-        "react": "^19.2.7",
-        "react-dom": "^19.2.7",
+        "react": "^19.2.8",
+        "react-dom": "^19.2.8",
         "react-router-dom": "^7.18.1",
         "styled-components": "^6.4.4",
         "vite": "^8.1.5"
