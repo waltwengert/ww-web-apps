@@ -7,7 +7,7 @@
         "@fontsource/grandstander": "^5.3.0",
         "@testing-library/jest-dom": "^7.0.0",
         "@testing-library/react": "^16.3.2",
-        "@vitejs/plugin-react": "^6.0.3",
+        "@vitejs/plugin-react": "^6.0.4",
         "@ww-web-apps/ui": "workspace:*",
         "@ww-web-apps/utils": "workspace:*",
         "gh-pages": "^6.3.0",
