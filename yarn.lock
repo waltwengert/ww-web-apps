@@ -1825,8 +1825,8 @@ __metadata:
     "@ww-web-apps/ui": "workspace:*"
     jest-axe: "npm:^10.0.0"
     jsdom: "npm:^29.1.1"
-    react: "npm:^19.2.7"
-    react-dom: "npm:^19.2.7"
+    react: "npm:^19.2.8"
+    react-dom: "npm:^19.2.8"
     styled-components: "npm:^6.4.4"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.1.5"
@@ -1855,8 +1855,8 @@ __metadata:
     "@ww-web-apps/ui": "workspace:*"
     jest-axe: "npm:^10.0.0"
     jsdom: "npm:^29.1.1"
-    react: "npm:^19.2.7"
-    react-dom: "npm:^19.2.7"
+    react: "npm:^19.2.8"
+    react-dom: "npm:^19.2.8"
     styled-components: "npm:^6.4.4"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.1.5"
@@ -1883,8 +1883,8 @@ __metadata:
     gh-pages: "npm:^6.3.0"
     jest-axe: "npm:^10.0.0"
     jsdom: "npm:^29.1.1"
-    react: "npm:^19.2.7"
-    react-dom: "npm:^19.2.7"
+    react: "npm:^19.2.8"
+    react-dom: "npm:^19.2.8"
     react-router-dom: "npm:^7.18.1"
     styled-components: "npm:^6.4.4"
     typescript: "npm:^6.0.3"
@@ -1910,8 +1910,8 @@ __metadata:
     "@ww-web-apps/utils": "workspace:*"
     jest-axe: "npm:^10.0.0"
     jsdom: "npm:^29.1.1"
-    react: "npm:^19.2.7"
-    react-dom: "npm:^19.2.7"
+    react: "npm:^19.2.8"
+    react-dom: "npm:^19.2.8"
     styled-components: "npm:^6.4.4"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.1.5"
@@ -1925,13 +1925,13 @@ __metadata:
   dependencies:
     "@types/react": "npm:^19.2.17"
     "@types/react-dom": "npm:^19.2.3"
-    react: "npm:^19.2.7"
-    react-dom: "npm:^19.2.7"
+    react: "npm:^19.2.8"
+    react-dom: "npm:^19.2.8"
     styled-components: "npm:^6.4.4"
     typescript: "npm:^6.0.3"
   peerDependencies:
-    react: ^19.2.7
-    react-dom: ^19.2.7
+    react: ^19.2.8
+    react-dom: ^19.2.8
     styled-components: ^6.4.4
   languageName: unknown
   linkType: soft
@@ -4154,12 +4154,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.9.5":
-  version: 3.9.5
-  resolution: "prettier@npm:3.9.5"
+"prettier@npm:3.9.6":
+  version: 3.9.6
+  resolution: "prettier@npm:3.9.6"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/0349dd9e6d8010965de6f69e6b6ee2484b8caf78c66675afced6c75ad60ff24c3a2a4f41153fb8adeaee4d8f539641b48cebc71d283cec4d146e9962126c5ceb
+  checksum: 10c0/9f7ddae234035868f3daab3dc34e6de7e54622185afb017378029f0c09a9c023248ccf6f34def0b17a0538e18c47aa1b3188bab72965d1bf735919baa0747e99
   languageName: node
   linkType: hard
 
@@ -4217,14 +4217,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^19.2.7":
-  version: 19.2.7
-  resolution: "react-dom@npm:19.2.7"
+"react-dom@npm:^19.2.8":
+  version: 19.2.8
+  resolution: "react-dom@npm:19.2.8"
   dependencies:
     scheduler: "npm:^0.27.0"
   peerDependencies:
-    react: ^19.2.7
-  checksum: 10c0/970ff600f6e80d47d39e2f226f12f226173b3cba3382efc97c5f0cd663de9af38c7a4c11c213fb936094faeac83060d660247accaa96b752180d5b951b9cfecb
+    react: ^19.2.8
+  checksum: 10c0/41ba2247b76f687fcfe5bbc99f514d6b851d8c8041c2f5ded36ed05bd7fdc5208cacbac9de51e3e6633e77f96f44cec9f0d4a5a55184dba4e00738f224439134
   languageName: node
   linkType: hard
 
@@ -4242,10 +4242,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^19.2.7":
-  version: 19.2.7
-  resolution: "react-is@npm:19.2.7"
-  checksum: 10c0/419fe54d5bd7fdf5414a5bb7bd9a1e0e36f9fae28ffb4cb73290fbe342bde15d8584a90d1db62547f6aa03018dce517b178a041abb522136cd4b4b51b4e94c83
+"react-is@npm:^19.2.8":
+  version: 19.2.8
+  resolution: "react-is@npm:19.2.8"
+  checksum: 10c0/ed5322c84efe035c8fc814b1614ff5ca7fb8c2872a7c045197daf99f9b1bd68f32a2c79ffcbcfcff2fc5d93924ff9f9447400898f5b1534e6302bb0736a257f0
   languageName: node
   linkType: hard
 
@@ -4277,10 +4277,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^19.2.7":
-  version: 19.2.7
-  resolution: "react@npm:19.2.7"
-  checksum: 10c0/0bd0e2f1bbd4ba97561c6597bf8a5fec05e6476fe61e165c1065598d16668efc6715205599c94d3ddd49d36cb0f21cbf1b9bcc18ee840b805ce222c3e8d558ac
+"react@npm:^19.2.8":
+  version: 19.2.8
+  resolution: "react@npm:19.2.8"
+  checksum: 10c0/5f86bdb56426652fd6d989d30a6f2e603c057272c47c9ca3a3fbe190a3a39ee9ccce937d63cfc039717abed1b8891d6a499134bc35311acc07eafdacd86537cd
   languageName: node
   linkType: hard
 
@@ -5055,8 +5055,8 @@ __metadata:
     husky: "npm:^9.1.7"
     knip: "npm:^6.27.0"
     lint-staged: "npm:^17.1.0"
-    prettier: "npm:3.9.5"
-    react-is: "npm:^19.2.7"
+    prettier: "npm:3.9.6"
+    react-is: "npm:^19.2.8"
     typescript: "npm:^6.0.3"
   languageName: unknown
   linkType: soft
