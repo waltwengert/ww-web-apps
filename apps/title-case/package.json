@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "homepage": "https://waltwengert.github.io/title-case",
     "private": true,
+    "type": "module",
     "dependencies": {
         "@testing-library/jest-dom": "^7.0.0",
         "@vitejs/plugin-react": "^6.0.5",
