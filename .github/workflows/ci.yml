@@ -237,6 +237,7 @@ jobs:
                   yarn build:title-case
                   yarn build:future-weight
                   yarn build:secret-santa
+                  yarn build:fight-predictor
 
             - name: Assemble site
               run: |
@@ -248,6 +249,8 @@ jobs:
                   cp -r apps/future-weight/dist/. _site/future-weight/
                   mkdir -p _site/secret-santa
                   cp -r apps/secret-santa/dist/. _site/secret-santa/
+                  mkdir -p _site/fight-predictor
+                  cp -r apps/fight-predictor/dist/. _site/fight-predictor/
 
             - name: Upload Pages artifact
               uses: actions/upload-pages-artifact@v5
