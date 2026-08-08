@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 import { setupServer } from 'msw/node';
 import { afterAll, afterEach, beforeAll, describe, expect, it } from 'vitest';
@@ -7,6 +7,80 @@ import FightPredictorApp from './FightPredictorApp';
 
 describe('FightPredictorApp', () => {
     const server = setupServer();
+
+    const fighters = [
+        {
+            fighter_id: 1,
+            name: 'Justin Gaethje',
+            total_wins: 25,
+            total_losses: 5,
+            height_cm: 180,
+            reach_cm: 178,
+            current_ufc_win_streak: 2
+        },
+        {
+            fighter_id: 2,
+            name: 'Max Holloway',
+            total_wins: 26,
+            total_losses: 8,
+            height_cm: 181,
+            reach_cm: 175,
+            current_ufc_win_streak: 1
+        },
+        {
+            fighter_id: 3,
+            name: 'Ilia Topuria'
+        }
+    ];
+
+    const cards = [
+        {
+            card_id: 1,
+            name: 'UFC 329: McGregor vs. Holloway 2',
+            event_date: 'Jul 11, 2026',
+            location: 'T-Mobile Arena, Las Vegas'
+        },
+        {
+            card_id: 2,
+            name: 'UFC 328: Topuria vs. Volkanovski 2',
+            event_date: 'Jun 20, 2026'
+        }
+    ];
+
+    const fights = [
+        {
+            fight_id: 1,
+            card_id: 1,
+            red_fighter_id: 2,
+            blue_fighter_id: 1,
+            winner_id: 2,
+            fight_weight_class: 'Lightweight',
+            result_method_type: 'TKO',
+            result_round: '1'
+        },
+        {
+            fight_id: 2,
+            card_id: 1,
+            red_fighter_id: 3,
+            blue_fighter_id: 2,
+            winner_id: 3,
+            result_method: 'Decision'
+        },
+        {
+            fight_id: 3,
+            card_id: 2,
+            red_fighter_id: 3,
+            blue_fighter_id: 1
+        }
+    ];
+
+    const useSuccessfulBootstrapHandlers = (): void => {
+        server.use(
+            http.get('*/fighters', () => HttpResponse.json(fighters)),
+            http.get('*/cards', () => HttpResponse.json(cards)),
+            http.get('*/fights', () => HttpResponse.json(fights))
+        );
+    };
 
     beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
 
@@ -38,48 +112,7 @@ describe('FightPredictorApp', () => {
     });
 
     it('loads and displays fight card data', async () => {
-        server.use(
-            http.get('*/fighters', () =>
-                HttpResponse.json([
-                    {
-                        fighter_id: 1,
-                        name: 'Justin Gaethje',
-                        total_wins: 25,
-                        total_losses: 5
-                    },
-                    {
-                        fighter_id: 2,
-                        name: 'Max Holloway',
-                        total_wins: 26,
-                        total_losses: 8
-                    }
-                ])
-            ),
-            http.get('*/cards', () =>
-                HttpResponse.json([
-                    {
-                        card_id: 1,
-                        name: 'UFC 329: McGregor vs. Holloway 2',
-                        event_date: 'Jul 11, 2026',
-                        location: 'T-Mobile Arena, Las Vegas'
-                    }
-                ])
-            ),
-            http.get('*/fights', () =>
-                HttpResponse.json([
-                    {
-                        fight_id: 1,
-                        card_id: 1,
-                        red_fighter_id: 2,
-                        blue_fighter_id: 1,
-                        winner_id: 2,
-                        fight_weight_class: 'Lightweight',
-                        result_method_type: 'TKO',
-                        result_round: '1'
-                    }
-                ])
-            )
-        );
+        useSuccessfulBootstrapHandlers();
 
         render(<FightPredictorApp />);
 
@@ -88,5 +121,112 @@ describe('FightPredictorApp', () => {
         ).toBeInTheDocument();
         // fighter appears as both a table cell and a dropdown option
         expect(screen.getAllByText('Max Holloway').length).toBeGreaterThan(0);
+    });
+
+    it('renders backend loading errors', async () => {
+        server.use(
+            http.get('*/fighters', () =>
+                HttpResponse.json([], { status: 500 })
+            ),
+            http.get('*/cards', () => HttpResponse.json([])),
+            http.get('*/fights', () => HttpResponse.json([]))
+        );
+
+        render(<FightPredictorApp />);
+
+        expect(
+            await screen.findByText('Could not load data from backend')
+        ).toBeInTheDocument();
+    });
+
+    it('shows fighter profile and matchup outcomes', async () => {
+        useSuccessfulBootstrapHandlers();
+
+        render(<FightPredictorApp />);
+
+        const fighterSelect = await screen.findByLabelText(/select fighter/i);
+        fireEvent.change(fighterSelect, { target: { value: '2' } });
+
+        expect(
+            await screen.findByText('Wins: 26 • Losses: 8')
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText('Height: 181 cm • Reach: 175 cm')
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText('Current UFC win streak: 1')
+        ).toBeInTheDocument();
+        expect(screen.getAllByText('Justin Gaethje').length).toBeGreaterThan(0);
+        expect(screen.getByText('Win')).toBeInTheDocument();
+        expect(screen.getByText('Loss')).toBeInTheDocument();
+    });
+
+    it('validates predictor inputs before requesting prediction', async () => {
+        useSuccessfulBootstrapHandlers();
+
+        render(<FightPredictorApp />);
+
+        const predictButton = await screen.findByRole('button', {
+            name: /predict winner/i
+        });
+
+        fireEvent.click(predictButton);
+
+        expect(
+            await screen.findByText('Select both a red and blue fighter.')
+        ).toBeInTheDocument();
+    });
+
+    it('shows prediction results on successful response', async () => {
+        useSuccessfulBootstrapHandlers();
+        server.use(
+            http.post('*/predict', () =>
+                HttpResponse.json({
+                    red_win_probability: 0.35,
+                    blue_win_probability: 0.65,
+                    favorite: 'blue'
+                })
+            )
+        );
+
+        render(<FightPredictorApp />);
+
+        const redFighterSelect = await screen.findByLabelText(/red fighter/i);
+        const blueFighterSelect = screen.getByLabelText(/blue fighter/i);
+
+        fireEvent.change(redFighterSelect, { target: { value: '1' } });
+        fireEvent.change(blueFighterSelect, { target: { value: '2' } });
+        fireEvent.click(
+            screen.getByRole('button', { name: /predict winner/i })
+        );
+
+        expect(
+            await screen.findByText('Red win probability:')
+        ).toBeInTheDocument();
+        expect(screen.getByText('35%')).toBeInTheDocument();
+        expect(screen.getByText('65%')).toBeInTheDocument();
+        expect(screen.getByText('blue')).toBeInTheDocument();
+    });
+
+    it('renders prediction errors from backend failures', async () => {
+        useSuccessfulBootstrapHandlers();
+        server.use(
+            http.post('*/predict', () => HttpResponse.json({}, { status: 500 }))
+        );
+
+        render(<FightPredictorApp />);
+
+        const redFighterSelect = await screen.findByLabelText(/red fighter/i);
+        const blueFighterSelect = screen.getByLabelText(/blue fighter/i);
+
+        fireEvent.change(redFighterSelect, { target: { value: '1' } });
+        fireEvent.change(blueFighterSelect, { target: { value: '2' } });
+        fireEvent.click(
+            screen.getByRole('button', { name: /predict winner/i })
+        );
+
+        expect(
+            await screen.findByText('Prediction request failed')
+        ).toBeInTheDocument();
     });
 });
