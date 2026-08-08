@@ -166,6 +166,12 @@ const config = [
                 'error',
                 {
                     selector:
+                        'ImportDeclaration[specifiers.length=0]:not([source.value=/\\.(?:css|scss|sass|less)$/])',
+                    message:
+                        'Avoid side-effect-only imports. Import named/default bindings instead, or move one-time test setup into a setup file.'
+                },
+                {
+                    selector:
                         'Literal[value=/^(?:#(?:[0-9a-fA-F]{3,8})|(?:rgb|hsl)a?\\()/]',
                     message:
                         'Define color values in packages/ui/src/colors.ts and import the token instead of using inline color literals.'
