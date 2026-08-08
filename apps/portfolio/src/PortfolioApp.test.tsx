@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import App from './PortfolioApp';
+import PortfolioApp from './PortfolioApp';
 
 describe('Portfolio App', () => {
     afterEach(() => {
@@ -10,7 +10,7 @@ describe('Portfolio App', () => {
     });
 
     it('renders heading and section navigation buttons', () => {
-        render(<App />);
+        render(<PortfolioApp />);
 
         expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
         expect(
@@ -22,7 +22,7 @@ describe('Portfolio App', () => {
     });
 
     it('has no a11y violations', async () => {
-        const { container } = render(<App />);
+        const { container } = render(<PortfolioApp />);
         expect(await axe(container)).toHaveNoViolations();
     });
 
@@ -33,7 +33,7 @@ describe('Portfolio App', () => {
             writable: true
         });
 
-        render(<App />);
+        render(<PortfolioApp />);
 
         const projectsSection = document.getElementById('projects');
         expect(projectsSection).toBeTruthy();

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { SecretSanta } from '@ww-web-apps/ui';
+import { SecretSantaColor } from '@ww-web-apps/ui';
 
 import { Header } from './components/Header';
 
 const AppWrapper = styled.div`
-    background-color: ${SecretSanta.BackgroundGreen};
+    background-color: ${SecretSantaColor.BackgroundGreen};
 
     min-width: 100vw;
     min-height: 100vh;
@@ -20,7 +20,7 @@ interface AppProps {
     children: React.ReactNode;
 }
 
-const App = ({ children }: AppProps): React.ReactElement => {
+const SecretSantaApp = ({ children }: AppProps): React.ReactElement => {
     return (
         <AppWrapper>
             <Header />
@@ -29,4 +29,4 @@ const App = ({ children }: AppProps): React.ReactElement => {
     );
 };
 
-export default App;
+export default SecretSantaApp;

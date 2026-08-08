@@ -46,7 +46,7 @@ import {
 } from './portfolio.styles';
 import { data } from './portfolioData';
 
-const App = (): React.ReactElement => {
+const PortfolioApp = (): React.ReactElement => {
     const [activeSection, setActiveSection] = useState<SectionId>('about');
     const [buttonsFixed, setButtonsFixed] = useState(false);
     const [buttonsTopPx, setButtonsTopPx] = useState(280);
@@ -114,8 +114,8 @@ const App = (): React.ReactElement => {
                 }
             }
 
-            setActiveSection(
-                (prev): SectionId => (prev === nextSection ? prev : nextSection)
+            setActiveSection((prev): SectionId =>
+                prev === nextSection ? prev : nextSection
             );
         };
 
@@ -184,100 +184,88 @@ const App = (): React.ReactElement => {
             </ButtonsBar>
 
             <Section id="about" $zIndex={-5} $isAbout>
-                {data.about.map(
-                    (item, index): React.ReactElement => (
-                        <AboutTile
-                            key={`about-${index}`}
-                            $isLast={index === data.about.length - 1}
-                        >
-                            <AboutHeading>{item.heading}</AboutHeading>
-                            <AboutBody>{item.body}</AboutBody>
-                        </AboutTile>
-                    )
-                )}
+                {data.about.map((item, index): React.ReactElement => (
+                    <AboutTile
+                        key={`about-${index}`}
+                        $isLast={index === data.about.length - 1}
+                    >
+                        <AboutHeading>{item.heading}</AboutHeading>
+                        <AboutBody>{item.body}</AboutBody>
+                    </AboutTile>
+                ))}
             </Section>
 
             <Section id="projects" $zIndex={-4}>
-                {data.projects.map(
-                    (project, index): React.ReactElement => (
-                        <ProjectsTile
-                            key={`project-${index}`}
-                            $isLast={index === data.projects.length - 1}
-                        >
-                            <ProjectImageWrap>
-                                <ProjectImage
-                                    src={project.screen}
-                                    alt={project.title}
-                                />
-                            </ProjectImageWrap>
-                            <ProjectTextWrap>
-                                <ProjectHeading>{project.title}</ProjectHeading>
-                                <ProjectTech>{project.tech}</ProjectTech>
-                                <ProjectAbout>{project.about}</ProjectAbout>
-                            </ProjectTextWrap>
-                            <ProjectButtonWrap>
+                {data.projects.map((project, index): React.ReactElement => (
+                    <ProjectsTile
+                        key={`project-${index}`}
+                        $isLast={index === data.projects.length - 1}
+                    >
+                        <ProjectImageWrap>
+                            <ProjectImage
+                                src={project.screen}
+                                alt={project.title}
+                            />
+                        </ProjectImageWrap>
+                        <ProjectTextWrap>
+                            <ProjectHeading>{project.title}</ProjectHeading>
+                            <ProjectTech>{project.tech}</ProjectTech>
+                            <ProjectAbout>{project.about}</ProjectAbout>
+                        </ProjectTextWrap>
+                        <ProjectButtonWrap>
+                            <ProjectLink
+                                href={project.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`${project.title} GitHub`}
+                            >
+                                <ProjectLinkIcon icon={faGithub} />
+                            </ProjectLink>
+                            {project.play !== 'na' ? (
                                 <ProjectLink
-                                    href={project.link}
+                                    href={project.play}
                                     target="_blank"
                                     rel="noreferrer"
-                                    aria-label={`${project.title} GitHub`}
+                                    aria-label={`${project.title} Live`}
                                 >
-                                    <ProjectLinkIcon icon={faGithub} />
+                                    <ProjectLinkIcon icon={faPlayCircle} />
                                 </ProjectLink>
-                                {project.play !== 'na' ? (
-                                    <ProjectLink
-                                        href={project.play}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        aria-label={`${project.title} Live`}
-                                    >
-                                        <ProjectLinkIcon icon={faPlayCircle} />
-                                    </ProjectLink>
-                                ) : null}
-                            </ProjectButtonWrap>
-                        </ProjectsTile>
-                    )
-                )}
+                            ) : null}
+                        </ProjectButtonWrap>
+                    </ProjectsTile>
+                ))}
             </Section>
 
             <Section id="education" $zIndex={-3}>
-                {data.education.map(
-                    (item, index): React.ReactElement => (
-                        <EducationTile
-                            key={`education-${index}`}
-                            $isLast={index === data.education.length - 1}
-                        >
-                            <EducationLevel>{item.level}</EducationLevel>
-                            <EducationInstitution>
-                                {item.institution}
-                            </EducationInstitution>
-                            <EducationFocus>{item.focus}</EducationFocus>
-                            <EducationPeriod>{item.period}</EducationPeriod>
-                        </EducationTile>
-                    )
-                )}
+                {data.education.map((item, index): React.ReactElement => (
+                    <EducationTile
+                        key={`education-${index}`}
+                        $isLast={index === data.education.length - 1}
+                    >
+                        <EducationLevel>{item.level}</EducationLevel>
+                        <EducationInstitution>
+                            {item.institution}
+                        </EducationInstitution>
+                        <EducationFocus>{item.focus}</EducationFocus>
+                        <EducationPeriod>{item.period}</EducationPeriod>
+                    </EducationTile>
+                ))}
             </Section>
 
             <Section id="employment" $zIndex={-2}>
-                {data.employment.map(
-                    (item, index): React.ReactElement => (
-                        <EmploymentTile
-                            key={`employment-${index}`}
-                            $isLast={index === data.employment.length - 1}
-                        >
-                            <EmploymentEmployer>
-                                {item.employer}
-                            </EmploymentEmployer>
-                            <EmploymentPeriod>{item.period}</EmploymentPeriod>
-                            <EmploymentPosition>
-                                {item.position}
-                            </EmploymentPosition>
-                        </EmploymentTile>
-                    )
-                )}
+                {data.employment.map((item, index): React.ReactElement => (
+                    <EmploymentTile
+                        key={`employment-${index}`}
+                        $isLast={index === data.employment.length - 1}
+                    >
+                        <EmploymentEmployer>{item.employer}</EmploymentEmployer>
+                        <EmploymentPeriod>{item.period}</EmploymentPeriod>
+                        <EmploymentPosition>{item.position}</EmploymentPosition>
+                    </EmploymentTile>
+                ))}
             </Section>
         </>
     );
 };
 
-export default App;
+export default PortfolioApp;

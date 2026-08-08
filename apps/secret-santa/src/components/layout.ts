@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { MOBILE_DEVICE_WIDTH, SecretSanta } from '@ww-web-apps/ui';
+import { MOBILE_DEVICE_WIDTH, SecretSantaColor } from '@ww-web-apps/ui';
 
 export const ButtonRowWrapper = styled.div`
     justify-content: center;
@@ -10,8 +10,8 @@ export const ButtonRowWrapper = styled.div`
 `;
 
 export const ButtonRowContainer = styled.div`
-    background-color: ${SecretSanta.BackgroundGreen};
-    color: ${SecretSanta.White};
+    background-color: ${SecretSantaColor.BackgroundGreen};
+    color: ${SecretSantaColor.White};
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -23,7 +23,7 @@ export const ButtonRowContainer = styled.div`
 `;
 
 export const BaseResultsPanel = styled.div`
-    background-color: ${SecretSanta.PanelGreen};
+    background-color: ${SecretSantaColor.PanelGreen};
     margin: 20px auto 40px;
     width: 50vw;
 

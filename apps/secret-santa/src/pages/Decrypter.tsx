@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { Decrypter as DecrypterComponent } from '../components/Decrypter';
-import App from '../SecretSantaApp';
+import SecretSantaApp from '../SecretSantaApp';
 
 export const Decrypter = (): React.ReactElement => {
     return (
-        <App>
+        <SecretSantaApp>
             <DecrypterComponent />
-        </App>
+        </SecretSantaApp>
     );
 };

@@ -5,6 +5,53 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import eslintRecommended from '@eslint/js';
 import globals from 'globals';
 
+const preferArrowFunctionComponentStyle = {
+    meta: {
+        type: 'suggestion',
+        fixable: 'code',
+        schema: [],
+        messages: {
+            prefer: 'Use a const arrow function for React components.'
+        }
+    },
+    create(context) {
+        const sourceCode = context.sourceCode ?? context.getSourceCode();
+
+        return {
+            FunctionDeclaration(node) {
+                if (
+                    !node.id ||
+                    !/^[A-Z]/.test(node.id.name) ||
+                    !context.filename.endsWith('.tsx')
+                ) {
+                    return;
+                }
+
+                context.report({
+                    node,
+                    messageId: 'prefer',
+                    fix(fixer) {
+                        if (node.parent.type === 'ExportDefaultDeclaration') {
+                            return null;
+                        }
+
+                        const paramsText = node.params
+                            .map(param => sourceCode.getText(param))
+                            .join(', ');
+                        const bodyText = sourceCode.getText(node.body);
+                        const asyncPrefix = node.async ? 'async ' : '';
+
+                        return fixer.replaceText(
+                            node,
+                            `const ${node.id.name} = ${asyncPrefix}(${paramsText}) => ${bodyText}`
+                        );
+                    }
+                });
+            }
+        };
+    }
+};
+
 /** @type {import('eslint').Linter.Config[]} */
 const config = [
     {
@@ -35,7 +82,13 @@ const config = [
         plugins: {
             '@typescript-eslint': tseslint,
             'react-hooks': reactHooks,
-            'simple-import-sort': simpleImportSort
+            'simple-import-sort': simpleImportSort,
+            local: {
+                rules: {
+                    'prefer-arrow-function-component-style':
+                        preferArrowFunctionComponentStyle
+                }
+            }
         },
         settings: {
             react: {
@@ -69,6 +122,7 @@ const config = [
             '@typescript-eslint/semi': 'off',
 
             // Naming conventions
+            'local/prefer-arrow-function-component-style': 'warn',
             '@typescript-eslint/naming-convention': [
                 'error',
 

@@ -2,21 +2,21 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import { describe, expect, it } from 'vitest';
 
-import App from './TitleCaseApp';
+import TitleCaseApp from './TitleCaseApp';
 
 describe('TitleCase App', () => {
     it('renders app heading', () => {
-        render(<App />);
+        render(<TitleCaseApp />);
         expect(screen.getByText(/titlecase/i)).toBeInTheDocument();
     });
 
     it('has no a11y violations', async () => {
-        const { container } = render(<App />);
+        const { container } = render(<TitleCaseApp />);
         expect(await axe(container)).toHaveNoViolations();
     });
 
     it('converts text to title/upper/sentence/lower via case selector', () => {
-        render(<App />);
+        render(<TitleCaseApp />);
 
         const input = screen.getByLabelText('Input text');
         const output = screen.getByLabelText('Output text');
@@ -38,7 +38,7 @@ describe('TitleCase App', () => {
     });
 
     it('shows cipher shift input for Caesar modes and applies chosen shift', () => {
-        render(<App />);
+        render(<TitleCaseApp />);
 
         const input = screen.getByLabelText('Input text');
         const output = screen.getByLabelText('Output text');

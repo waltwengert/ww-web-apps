@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import TitleCaseApp from './TitleCaseApp';
+import FightPredictorApp from './FightPredictorApp';
 
 import './global.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <TitleCaseApp />
+        <FightPredictorApp />
     </React.StrictMode>
 );

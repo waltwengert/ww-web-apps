@@ -2,7 +2,7 @@ import React, { ChangeEvent, KeyboardEvent, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { Button, SecretSanta } from '@ww-web-apps/ui';
+import { Button, SecretSantaColor } from '@ww-web-apps/ui';
 
 import { decrypt } from '../lib/secretSanta';
 import {
@@ -23,13 +23,13 @@ const ResultPanel = styled(BaseResultsPanel)`
 
 const ResultLabel = styled.p`
     margin: 0;
-    color: ${SecretSanta.White};
+    color: ${SecretSantaColor.White};
     font-size: 22px;
 `;
 
 const ResultText = styled.p`
     margin: 8px 0 0;
-    color: ${SecretSanta.Gold};
+    color: ${SecretSantaColor.Gold};
     font-size: 26px;
 `;
 
@@ -91,8 +91,8 @@ export const Decrypter = (): React.ReactElement => {
                     <ButtonRowWrapper>
                         <ButtonRowContainer>
                             <DecryptButton
-                                backgroundColor={SecretSanta.Red}
-                                color={SecretSanta.White}
+                                backgroundColor={SecretSantaColor.Red}
+                                color={SecretSantaColor.White}
                                 onClick={onDecrypt}
                             >
                                 Who do I have?
