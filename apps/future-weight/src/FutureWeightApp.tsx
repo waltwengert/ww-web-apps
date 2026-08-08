@@ -27,8 +27,6 @@ import {
     validateStats
 } from './lib/futureWeight';
 
-import './global.css';
-
 type Results = { bmr: number; tdee: number; bmi: number };
 
 const FutureWeightApp: React.FC = () => {
