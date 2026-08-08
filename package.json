@@ -35,6 +35,7 @@
         "build:portfolio": "yarn workspace @ww-web-apps/portfolio build",
         "test:portfolio": "yarn workspace @ww-web-apps/portfolio test",
         "start:fight-predictor": "yarn workspace @ww-web-apps/fight-predictor start",
+        "start:fight-predictor-api": "cd services/fight-predictor-api && python3 app/main.py",
         "build:fight-predictor": "yarn workspace @ww-web-apps/fight-predictor build",
         "test:fight-predictor": "yarn workspace @ww-web-apps/fight-predictor test",
         "test:a11y": "yarn workspace @ww-web-apps/title-case test -- -t \"a11y\" && yarn workspace @ww-web-apps/future-weight test -- -t \"a11y\" && yarn workspace @ww-web-apps/secret-santa test -- -t \"a11y\" && yarn workspace @ww-web-apps/portfolio test -- -t \"a11y\"",
