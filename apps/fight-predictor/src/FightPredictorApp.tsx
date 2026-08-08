@@ -22,6 +22,14 @@ interface Fighter {
     total_losses?: number;
     height_cm?: number;
     reach_cm?: number;
+    strike_accuracy?: number;
+    strike_defence?: number;
+    td_accuracy?: number;
+    td_defence?: number;
+    strikes_landed_per_minute?: number;
+    strikes_absorbed_per_minute?: number;
+    takedown_average?: number;
+    submission_average?: number;
     current_ufc_win_streak?: number;
     last_seen_fight?: string;
 }
@@ -348,6 +356,35 @@ const FightPredictorApp = (): React.ReactElement => {
                         <p>
                             Current UFC win streak:{' '}
                             {selectedFighter.current_ufc_win_streak ?? '-'}
+                        </p>
+                        <p>
+                            Strikes landed/min:{' '}
+                            {selectedFighter.strikes_landed_per_minute ?? '-'} •
+                            Strikes absorbed/min:{' '}
+                            {selectedFighter.strikes_absorbed_per_minute ?? '-'}
+                        </p>
+                        <p>
+                            Strike acc:{' '}
+                            {selectedFighter.strike_accuracy != null
+                                ? `${selectedFighter.strike_accuracy}%`
+                                : '-'}{' '}
+                            • Strike def:{' '}
+                            {selectedFighter.strike_defence != null
+                                ? `${selectedFighter.strike_defence}%`
+                                : '-'}
+                        </p>
+                        <p>
+                            TD avg: {selectedFighter.takedown_average ?? '-'} •
+                            TD acc:{' '}
+                            {selectedFighter.td_accuracy != null
+                                ? `${selectedFighter.td_accuracy}%`
+                                : '-'}{' '}
+                            • TD def:{' '}
+                            {selectedFighter.td_defence != null
+                                ? `${selectedFighter.td_defence}%`
+                                : '-'}{' '}
+                            • Sub avg:{' '}
+                            {selectedFighter.submission_average ?? '-'}
                         </p>
                     </div>
                 ) : null}

@@ -16,6 +16,14 @@ describe('FightPredictorApp', () => {
             total_losses: 5,
             height_cm: 180,
             reach_cm: 178,
+            strike_accuracy: 61,
+            strike_defence: 55,
+            td_accuracy: 34,
+            td_defence: 77,
+            strikes_landed_per_minute: 7.46,
+            strikes_absorbed_per_minute: 7.88,
+            takedown_average: 0.15,
+            submission_average: 0,
             current_ufc_win_streak: 2
         },
         {
@@ -25,6 +33,14 @@ describe('FightPredictorApp', () => {
             total_losses: 8,
             height_cm: 181,
             reach_cm: 175,
+            strike_accuracy: 48,
+            strike_defence: 59,
+            td_accuracy: 53,
+            td_defence: 84,
+            strikes_landed_per_minute: 7.16,
+            strikes_absorbed_per_minute: 4.77,
+            takedown_average: 0.25,
+            submission_average: 0.2,
             current_ufc_win_streak: 1
         },
         {
@@ -155,6 +171,19 @@ describe('FightPredictorApp', () => {
         ).toBeInTheDocument();
         expect(
             screen.getByText('Current UFC win streak: 1')
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText(
+                'Strikes landed/min: 7.16 • Strikes absorbed/min: 4.77'
+            )
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText('Strike acc: 48% • Strike def: 59%')
+        ).toBeInTheDocument();
+        expect(
+            screen.getByText(
+                'TD avg: 0.25 • TD acc: 53% • TD def: 84% • Sub avg: 0.2'
+            )
         ).toBeInTheDocument();
         expect(screen.getAllByText('Justin Gaethje').length).toBeGreaterThan(0);
         expect(screen.getByText('Win')).toBeInTheDocument();

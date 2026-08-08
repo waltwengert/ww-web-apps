@@ -16,6 +16,10 @@ CREATE TABLE IF NOT EXISTS fighters (
     td_defence REAL, -- takedown defense percentage, if known
     strike_accuracy REAL, -- striking accuracy percentage, if known
     strike_defence REAL, -- striking defense percentage, if known
+    strikes_landed_per_minute REAL, -- significant strikes landed per minute, if known
+    strikes_absorbed_per_minute REAL, -- significant strikes absorbed per minute, if known
+    takedown_average REAL, -- takedowns landed per 15 minutes, if known
+    submission_average REAL, -- submission attempts per 15 minutes, if known
     current_ufc_win_streak INTEGER, -- current win streak in UFC competition, if known
     last_seen_fight DATE, -- date of the most recently known fight for this fighter
     record_scope TEXT NOT NULL DEFAULT 'career', -- scope of the summary stats in this row

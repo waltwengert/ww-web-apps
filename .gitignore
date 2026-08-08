@@ -28,3 +28,6 @@
 
 # yarn berry
 .yarn/install-state.gz
+
+# python
+*.pyc
