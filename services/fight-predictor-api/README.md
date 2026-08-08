@@ -16,6 +16,7 @@ erDiagram
     fighters ||--o{ fights : "blue_fighter_id"
     fighters ||--o{ fights : "winner_id"
     cards ||--o{ fights : "card_id"
+    weight_classes ||--o{ fights : "weight_class_id"
 
     fighters {
         integer fighter_id PK
@@ -48,17 +49,28 @@ erDiagram
         text location
     }
 
+    weight_classes {
+        integer weight_class_id PK
+        text name
+        integer max_pounds
+        text gender
+    }
+
     fights {
         integer fight_id PK
         integer card_id FK
+        integer weight_class_id FK
         text fight_weight_class
+        integer weight_class_pounds
         text fight_gender
-        integer fight_rounds
         text fight_date
         integer red_fighter_id FK
         integer blue_fighter_id FK
+        integer is_main_event
+        integer is_title_fight
         integer winner_id FK
         text result_method
+        text result_method_type
         text result_round
     }
 ```

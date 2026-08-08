@@ -38,13 +38,16 @@ FIGHT_FIELDS = [
     'fight_id',
     'card_id',
     'fight_weight_class',
+    'weight_class_pounds',
     'fight_gender',
-    'fight_rounds',
     'fight_date',
     'red_fighter_id',
     'blue_fighter_id',
+    'is_main_event',
+    'is_title_fight',
     'winner_id',
     'result_method',
+    'result_method_type',
     'result_round'
 ]
 
@@ -52,13 +55,16 @@ FIGHT_SOURCE_FIELDS = [
     'fight_id',
     'card_id',
     'fight_weight_class',
+    'weight_class_pounds',
     'fight_gender',
-    'fight_rounds',
     'fight_date',
     'red_fighter_id',
     'blue_fighter_id',
+    'is_main_event',
+    'is_title_fight',
     'result_winner_id',
     'result_method',
+    'result_method_type',
     'result_round'
 ]
 
@@ -201,13 +207,16 @@ def load_fights_with_cards(connection: sqlite3.Connection, csv_path: Path) -> No
                 row.get('fight_id'),
                 card_id,
                 row.get('fight_weight_class'),
+                row.get('weight_class_pounds') or None,
                 row.get('fight_gender'),
-                row.get('fight_rounds'),
                 row.get('fight_date'),
                 row.get('red_fighter_id'),
                 row.get('blue_fighter_id'),
-                row.get('result_winner_id'),
+                1 if row.get('is_main_event') == '1' else 0,
+                1 if row.get('is_title_fight') == '1' else 0,
+                row.get('result_winner_id') or None,
                 row.get('result_method'),
+                row.get('result_method_type'),
                 row.get('result_round'),
             ))
 
@@ -218,15 +227,18 @@ def load_fights_with_cards(connection: sqlite3.Connection, csv_path: Path) -> No
                     fight_id,
                     card_id,
                     fight_weight_class,
+                    weight_class_pounds,
                     fight_gender,
-                    fight_rounds,
                     fight_date,
                     red_fighter_id,
                     blue_fighter_id,
+                    is_main_event,
+                    is_title_fight,
                     winner_id,
                     result_method,
+                    result_method_type,
                     result_round
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 batch,
             )
@@ -260,18 +272,14 @@ def update_last_seen_fights(connection: sqlite3.Connection) -> None:
     connection.commit()
 
 
-def import_data(db_path: Optional[Path] = None, fighters_csv: Optional[Path] = None, fights_csv: Optional[Path] = None) -> Path:
-    db_path = db_path or DB_PATH
-    fighters_csv = fighters_csv or REPO_ROOT / 'data' / 'fighters.csv'
-    fights_csv = fights_csv or REPO_ROOT / 'data' / 'fights.csv'
-
+def import_data(db_path: Path, fighters_csv: Path, fights_csv: Path, cards_csv: Path) -> Path:
     if db_path.exists():
         db_path.unlink()
 
     connection = connect_db(db_path)
     init_db(connection)
     load_csv_data(connection, fighters_csv, FIGHTER_FIELDS, 'fighters', FIGHTER_SOURCE_FIELDS)
-    load_cards_csv(connection, REPO_ROOT / 'data' / 'cards.csv')
+    load_cards_csv(connection, cards_csv)
     load_fights_with_cards(connection, fights_csv)
     update_last_seen_fights(connection)
     connection.close()
