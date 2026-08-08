@@ -21,20 +21,28 @@ export const SectionCard = styled.section`
 `;
 
 export const FieldRow = styled.div`
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: 16px;
     margin-bottom: 16px;
+    align-items: flex-end;
 `;
 
 export const FieldLabel = styled.label`
-    display: grid;
-    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 200px;
+    min-width: 0;
 `;
 
 export const FighterSelect = styled(Select)`
     padding: 10px 14px;
     border-radius: 10px;
     border: 1px solid ${FightPredictorColor.SelectBorder};
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
 `;
 
 export const ActionButton = styled.button`
