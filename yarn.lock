@@ -1937,6 +1937,7 @@ __metadata:
     msw: "npm:^2.15.0"
     react: "npm:^19.2.5"
     react-dom: "npm:^19.2.5"
+    styled-components: "npm:^6.1.19"
     typescript: "npm:^6.0.2"
     vite: "npm:^8.0.8"
     vitest: "npm:^4.1.4"
@@ -5496,7 +5497,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^6.5.0":
+"styled-components@npm:^6.1.19, styled-components@npm:^6.5.0":
   version: 6.5.0
   resolution: "styled-components@npm:6.5.0"
   dependencies:
