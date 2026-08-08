@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { FutureWeight, Input, Select } from '@ww-web-apps/ui';
+import { FutureWeightColor, Input, Select } from '@ww-web-apps/ui';
 
 export const Page = styled.main`
     min-height: 100vh;
@@ -12,17 +12,17 @@ export const Page = styled.main`
 
 export const Card = styled.section`
     width: min(680px, 92vw);
-    background: ${FutureWeight.CardBackground};
-    border: 1px solid ${FutureWeight.CardBorder};
+    background: ${FutureWeightColor.CardBackground};
+    border: 1px solid ${FutureWeightColor.CardBorder};
     border-radius: 20px;
-    box-shadow: 0 20px 40px ${FutureWeight.CardShadow};
+    box-shadow: 0 20px 40px ${FutureWeightColor.CardShadow};
     padding: 28px 24px;
 `;
 
 export const Heading = styled.h1`
     margin: 0;
     text-align: center;
-    color: ${FutureWeight.Heading};
+    color: ${FutureWeightColor.Heading};
     font-size: clamp(2rem, 4.4vw, 2.9rem);
     letter-spacing: 0.02em;
 `;
@@ -30,7 +30,7 @@ export const Heading = styled.h1`
 export const Subheading = styled.p`
     margin: 10px 0 24px;
     text-align: center;
-    color: ${FutureWeight.Muted};
+    color: ${FutureWeightColor.Muted};
     font-size: 1.02rem;
 `;
 
@@ -51,13 +51,13 @@ export const FieldLabel = styled.span`
     width: 110px;
     flex-shrink: 0;
     font-size: 15px;
-    color: ${FutureWeight.Muted};
+    color: ${FutureWeightColor.Muted};
     font-weight: 500;
 `;
 
 export const UnitTag = styled.span`
     font-size: 14px;
-    color: ${FutureWeight.Muted};
+    color: ${FutureWeightColor.Muted};
     min-width: 28px;
 `;
 
@@ -66,13 +66,13 @@ export const FutureWeightInput = styled(Input)`
     width: auto;
     margin: 0;
     font-size: 16px;
-    border: 1px solid ${FutureWeight.CardBorder};
+    border: 1px solid ${FutureWeightColor.CardBorder};
     border-radius: 12px;
-    color: ${FutureWeight.Text};
-    background: ${FutureWeight.White};
+    color: ${FutureWeightColor.Text};
+    background: ${FutureWeightColor.White};
 
     &:focus {
-        outline: 2px solid ${FutureWeight.Accent};
+        outline: 2px solid ${FutureWeightColor.Accent};
         outline-offset: 1px;
     }
 `;
@@ -82,15 +82,15 @@ export const ActivitySelect = styled(Select)`
     width: auto;
     margin: 0;
     font-size: 15px;
-    border-color: ${FutureWeight.CardBorder};
-    color: ${FutureWeight.Text};
-    background-color: ${FutureWeight.White};
+    border-color: ${FutureWeightColor.CardBorder};
+    color: ${FutureWeightColor.Text};
+    background-color: ${FutureWeightColor.White};
 `;
 
 export const ToggleGroup = styled.div`
     display: flex;
     flex: 1;
-    background: ${FutureWeight.AccentSoft};
+    background: ${FutureWeightColor.AccentSoft};
     border-radius: 12px;
     padding: 3px;
     gap: 3px;
@@ -107,14 +107,14 @@ export const ToggleOption = styled.button<{ $active?: boolean }>`
         background 0.15s,
         color 0.15s;
     background: ${({ $active }): string =>
-        $active ? FutureWeight.Accent : 'transparent'};
+        $active ? FutureWeightColor.Accent : 'transparent'};
     color: ${({ $active }): string =>
-        $active ? FutureWeight.White : FutureWeight.Muted};
+        $active ? FutureWeightColor.White : FutureWeightColor.Muted};
     font-weight: ${({ $active }): string => ($active ? '600' : '400')};
 `;
 
 export const ErrorText = styled.p`
-    color: ${FutureWeight.Error};
+    color: ${FutureWeightColor.Error};
     font-size: 14px;
     text-align: center;
     margin: 0;
@@ -123,8 +123,8 @@ export const ErrorText = styled.p`
 export const CalculateButton = styled.button`
     width: 100%;
     padding: 12px;
-    background: ${FutureWeight.Accent};
-    color: ${FutureWeight.White};
+    background: ${FutureWeightColor.Accent};
+    color: ${FutureWeightColor.White};
     border: none;
     border-radius: 12px;
     font-size: 17px;
@@ -133,7 +133,7 @@ export const CalculateButton = styled.button`
     transition: background 0.15s;
 
     &:hover {
-        background: ${FutureWeight.Heading};
+        background: ${FutureWeightColor.Heading};
     }
 `;
 
@@ -148,8 +148,8 @@ export const ResultsGrid = styled.div`
 `;
 
 export const ResultCard = styled.div`
-    background: ${FutureWeight.AccentSoft};
-    border: 1px solid ${FutureWeight.CardBorder};
+    background: ${FutureWeightColor.AccentSoft};
+    border: 1px solid ${FutureWeightColor.CardBorder};
     border-radius: 14px;
     padding: 16px 12px;
     text-align: center;
@@ -158,12 +158,12 @@ export const ResultCard = styled.div`
 export const ResultValue = styled.div`
     font-size: 1.9rem;
     font-weight: 700;
-    color: ${FutureWeight.Heading};
+    color: ${FutureWeightColor.Heading};
 `;
 
 export const ResultLabel = styled.div`
     font-size: 0.82rem;
-    color: ${FutureWeight.Muted};
+    color: ${FutureWeightColor.Muted};
     margin-top: 4px;
     text-transform: uppercase;
     letter-spacing: 0.06em;

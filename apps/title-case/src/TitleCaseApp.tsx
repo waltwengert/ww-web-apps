@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Input, Select, TitleCase } from '@ww-web-apps/ui';
+import { Input, Select, TitleCaseColor } from '@ww-web-apps/ui';
 
 import { convertTextCase, TextCaseType } from './lib/textCase';
 
@@ -15,17 +15,17 @@ const Page = styled.main`
 
 const Card = styled.section`
     width: min(720px, 92vw);
-    background: ${TitleCase.CardBackground};
-    border: 1px solid ${TitleCase.CardBorder};
+    background: ${TitleCaseColor.CardBackground};
+    border: 1px solid ${TitleCaseColor.CardBorder};
     border-radius: 20px;
-    box-shadow: 0 20px 40px ${TitleCase.CardShadow};
+    box-shadow: 0 20px 40px ${TitleCaseColor.CardShadow};
     padding: 28px 24px;
 `;
 
 const Heading = styled.h1`
     margin: 0;
     text-align: center;
-    color: ${TitleCase.Heading};
+    color: ${TitleCaseColor.Heading};
     font-size: clamp(2rem, 4.4vw, 2.9rem);
     letter-spacing: 0.02em;
 `;
@@ -33,7 +33,7 @@ const Heading = styled.h1`
 const Subheading = styled.p`
     margin: 10px 0 24px;
     text-align: center;
-    color: ${TitleCase.Muted};
+    color: ${TitleCaseColor.Muted};
     font-size: 1.02rem;
 `;
 
@@ -48,13 +48,13 @@ const ControlsStack = styled.div`
 const TitleCaseInput = styled(Input)`
     width: 100%;
     margin: 0;
-    border: 1px solid ${TitleCase.CardBorder};
+    border: 1px solid ${TitleCaseColor.CardBorder};
     border-radius: 12px;
-    color: ${TitleCase.Text};
-    background: ${TitleCase.White};
+    color: ${TitleCaseColor.Text};
+    background: ${TitleCaseColor.White};
 
     &:focus {
-        outline: 2px solid ${TitleCase.Accent};
+        outline: 2px solid ${TitleCaseColor.Accent};
         outline-offset: 1px;
     }
 `;
@@ -62,12 +62,12 @@ const TitleCaseInput = styled(Input)`
 const CaseSelector = styled(Select)`
     width: 100%;
     margin: 0;
-    border-color: ${TitleCase.Accent};
-    color: ${TitleCase.Heading};
-    background-color: ${TitleCase.AccentSoft};
+    border-color: ${TitleCaseColor.Accent};
+    color: ${TitleCaseColor.Heading};
+    background-color: ${TitleCaseColor.AccentSoft};
 `;
 
-const App: React.FC = () => {
+const TitleCaseApp: React.FC = () => {
     const [inputText, setInputText] = useState('');
     const [outputText, setOutputText] = useState('');
     const [caseType, setCaseType] = useState<TextCaseType>('title');
@@ -176,4 +176,4 @@ const App: React.FC = () => {
     );
 };
 
-export default App;
+export default TitleCaseApp;

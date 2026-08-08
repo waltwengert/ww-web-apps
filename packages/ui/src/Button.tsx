@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Base } from './colors';
+import { BaseColor } from './colors';
 import { MOBILE_DEVICE_WIDTH } from './constants';
 
 interface ButtonProps {
@@ -18,8 +18,8 @@ const StyledButton = styled.button<{
     $color?: string;
 }>`
     background-color: ${(props): string =>
-        props.$backgroundColor || Base.Black};
-    color: ${(props): string => props.$color || Base.White};
+        props.$backgroundColor || BaseColor.Black};
+    color: ${(props): string => props.$color || BaseColor.White};
     font-size: 18px;
     border: none;
     border-radius: 100px;

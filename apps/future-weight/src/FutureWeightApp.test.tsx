@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import App from './FutureWeightApp';
+import FutureWeightApp from './FutureWeightApp';
 
 describe('FutureWeight App', () => {
     afterEach(() => {
@@ -10,17 +10,17 @@ describe('FutureWeight App', () => {
     });
 
     it('renders app heading', () => {
-        render(<App />);
+        render(<FutureWeightApp />);
         expect(screen.getByText(/future weight/i)).toBeInTheDocument();
     });
 
     it('has no a11y violations', async () => {
-        const { container } = render(<App />);
+        const { container } = render(<FutureWeightApp />);
         expect(await axe(container)).toHaveNoViolations();
     });
 
     it('calculates and renders BMR, TDEE, and BMI for valid metric inputs', () => {
-        render(<App />);
+        render(<FutureWeightApp />);
 
         const ageInput = screen.getByLabelText('Age');
         const heightInput = screen.getByLabelText('Height');
@@ -38,7 +38,7 @@ describe('FutureWeight App', () => {
     });
 
     it('shows inline validation error and does not show results with invalid stats', () => {
-        render(<App />);
+        render(<FutureWeightApp />);
 
         const ageInput = screen.getByLabelText('Age');
         const heightInput = screen.getByLabelText('Height');

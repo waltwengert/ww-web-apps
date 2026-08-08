@@ -1,0 +1,29 @@
+{
+    "name": "@ww-web-apps/fight-predictor",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "react": "^19.2.5",
+        "react-dom": "^19.2.5"
+    },
+    "devDependencies": {
+        "@testing-library/jest-dom": "^7.0.0",
+        "@testing-library/react": "^14.0.0",
+        "@types/react": "^19.2.14",
+        "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^6.0.1",
+        "typescript": "^6.0.2",
+        "vite": "^8.0.8",
+        "vitest": "^4.1.4"
+    },
+    "scripts": {
+        "start": "vite --mode development",
+        "build": "vite build --mode production",
+        "build:ci": "vite build --mode ci",
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "test:coverage": "vitest run --coverage --coverage.reporter=text-summary --coverage.thresholds.lines=60 --coverage.thresholds.functions=60 --coverage.thresholds.statements=60 --coverage.thresholds.branches=50",
+        "preview": "vite preview --mode production"
+    }
+}

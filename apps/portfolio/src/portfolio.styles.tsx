@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, { css } from 'styled-components';
 
-import { Portfolio as PortfolioColors } from '@ww-web-apps/ui';
+import { PortfolioColor as PortfolioColors } from '@ww-web-apps/ui';
 
 import { MOBILE_WIDTH, WIDE_WIDTH } from './portfolio.constants';
 

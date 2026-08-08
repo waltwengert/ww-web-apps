@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Generator as GeneratorComponent } from '../components/Generator';
-import App from '../SecretSantaApp';
+import SecretSantaApp from '../SecretSantaApp';
 
 const Generator = (): React.ReactElement => {
     return (
-        <App>
+        <SecretSantaApp>
             <GeneratorComponent />
-        </App>
+        </SecretSantaApp>
     );
 };
 

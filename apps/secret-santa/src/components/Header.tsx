@@ -6,14 +6,14 @@ import {
     Button,
     Label,
     MOBILE_DEVICE_WIDTH,
-    SecretSanta
+    SecretSantaColor
 } from '@ww-web-apps/ui';
 
 const HeaderWrapper = styled.div`
     flex: 0 1 auto;
 
-    background-color: ${SecretSanta.BackgroundGreen};
-    color: ${SecretSanta.Gold};
+    background-color: ${SecretSantaColor.BackgroundGreen};
+    color: ${SecretSantaColor.Gold};
 
     justify-content: center;
     font-size: calc(40px + 2vmin);
@@ -47,9 +47,9 @@ const NavButton = styled(Button)<{ $isActive: boolean }>`
     margin-left: 0;
     margin-right: 0;
     background-color: ${({ $isActive }): string =>
-        $isActive ? SecretSanta.Gold : SecretSanta.Red};
+        $isActive ? SecretSantaColor.Gold : SecretSantaColor.Red};
     color: ${({ $isActive }): string =>
-        $isActive ? SecretSanta.PanelGreen : SecretSanta.White};
+        $isActive ? SecretSantaColor.PanelGreen : SecretSantaColor.White};
 
     @media (hover: hover) {
         &:hover {

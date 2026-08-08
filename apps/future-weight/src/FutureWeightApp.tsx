@@ -27,11 +27,11 @@ import {
     validateStats
 } from './lib/futureWeight';
 
-import './style.css';
+import './global.css';
 
 type Results = { bmr: number; tdee: number; bmi: number };
 
-const App: React.FC = () => {
+const FutureWeightApp: React.FC = () => {
     const [isMetric, setIsMetric] = useState(true);
     const [isMale, setIsMale] = useState(true);
     const [age, setAge] = useState('');
@@ -241,4 +241,4 @@ const App: React.FC = () => {
     );
 };
 
-export default App;
+export default FutureWeightApp;

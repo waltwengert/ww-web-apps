@@ -13,6 +13,7 @@ Current apps:
 - `secret-santa`
 - `title-case`
 - `portfolio`
+- `fight-predictor`
 
 ## Setup
 

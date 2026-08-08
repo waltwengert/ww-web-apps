@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Input, SecretSanta } from '@ww-web-apps/ui';
+import { Input, SecretSantaColor } from '@ww-web-apps/ui';
 
 const InputWrapper = styled.div`
     flex: 0 1 auto;
 
-    background-color: ${SecretSanta.BackgroundGreen};
+    background-color: ${SecretSantaColor.BackgroundGreen};
 
     display: flex;
     flex-direction: column;

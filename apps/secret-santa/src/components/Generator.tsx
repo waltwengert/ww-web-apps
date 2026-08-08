@@ -1,7 +1,7 @@
 import React, { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { Button, Checkbox, SecretSanta } from '@ww-web-apps/ui';
+import { Button, Checkbox, SecretSantaColor } from '@ww-web-apps/ui';
 
 import {
     decryptStringArray,
@@ -94,22 +94,22 @@ export const Generator = (): React.ReactElement => {
             <ButtonRowWrapper>
                 <ButtonRowContainer>
                     <Button
-                        backgroundColor={SecretSanta.Red}
-                        color={SecretSanta.White}
+                        backgroundColor={SecretSantaColor.Red}
+                        color={SecretSantaColor.White}
                         onClick={onAdd}
                     >
                         Add
                     </Button>
                     <Button
-                        backgroundColor={SecretSanta.Red}
-                        color={SecretSanta.White}
+                        backgroundColor={SecretSantaColor.Red}
+                        color={SecretSantaColor.White}
                         onClick={onShuffle}
                     >
                         Shuffle
                     </Button>
                     <Button
-                        backgroundColor={SecretSanta.Red}
-                        color={SecretSanta.White}
+                        backgroundColor={SecretSantaColor.Red}
+                        color={SecretSantaColor.White}
                         onClick={onHide}
                     >
                         {hideButtonText}
