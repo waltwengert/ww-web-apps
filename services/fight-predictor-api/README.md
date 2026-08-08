@@ -36,6 +36,10 @@ erDiagram
         real td_defence
         real strike_accuracy
         real strike_defence
+        real strikes_landed_per_minute
+        real strikes_absorbed_per_minute
+        real takedown_average
+        real submission_average
         integer current_ufc_win_streak
         date last_seen_fight
         text record_scope
