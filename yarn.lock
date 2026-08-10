@@ -1937,7 +1937,7 @@ __metadata:
     msw: "npm:^2.15.0"
     react: "npm:^19.2.5"
     react-dom: "npm:^19.2.5"
-    styled-components: "npm:^6.1.19"
+    styled-components: "npm:^6.5.1"
     typescript: "npm:^6.0.2"
     vite: "npm:^8.0.8"
     vitest: "npm:^4.1.4"
@@ -1962,7 +1962,7 @@ __metadata:
     jsdom: "npm:^30.0.1"
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
-    styled-components: "npm:^6.5.0"
+    styled-components: "npm:^6.5.1"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.2.0"
     vitest: "npm:^4.1.10"
@@ -1992,7 +1992,7 @@ __metadata:
     jsdom: "npm:^30.0.1"
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
-    styled-components: "npm:^6.5.0"
+    styled-components: "npm:^6.5.1"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.2.0"
     vitest: "npm:^4.1.10"
@@ -2021,7 +2021,7 @@ __metadata:
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
     react-router-dom: "npm:^7.18.2"
-    styled-components: "npm:^6.5.0"
+    styled-components: "npm:^6.5.1"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.2.0"
     vitest: "npm:^4.1.10"
@@ -2047,7 +2047,7 @@ __metadata:
     jsdom: "npm:^30.0.1"
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
-    styled-components: "npm:^6.5.0"
+    styled-components: "npm:^6.5.1"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.2.0"
     vitest: "npm:^4.1.10"
@@ -2062,12 +2062,12 @@ __metadata:
     "@types/react-dom": "npm:^19.2.4"
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
-    styled-components: "npm:^6.5.0"
+    styled-components: "npm:^6.5.1"
     typescript: "npm:^6.0.3"
   peerDependencies:
     react: ^19.2.8
     react-dom: ^19.2.8
-    styled-components: ^6.5.0
+    styled-components: ^6.5.1
   languageName: unknown
   linkType: soft
 
@@ -2820,9 +2820,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^10.8.0":
-  version: 10.8.0
-  resolution: "eslint@npm:10.8.0"
+"eslint@npm:^10.8.1":
+  version: 10.8.1
+  resolution: "eslint@npm:10.8.1"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.8.0"
     "@eslint-community/regexpp": "npm:^4.12.2"
@@ -2861,7 +2861,7 @@ __metadata:
       optional: true
   bin:
     eslint: bin/eslint.js
-  checksum: 10c0/2dbc523578834088615f388e08418d2620b25655f7a398f6d415765fa2a3a25d6b8b43bd3293d40f977e12752323a841d52654a2648697a00c0102c9794bb3dc
+  checksum: 10c0/0c4720a43ef2052829db18e37aa79adb5f0a62137bdf4a4f8e9507bbbbf888ba0669fc03e4b7139d8f27b59b051bbbcd0a3988b068c30fa934a766d60a81f599
   languageName: node
   linkType: hard
 
@@ -3262,12 +3262,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-tsconfig@npm:4.14.0":
-  version: 4.14.0
-  resolution: "get-tsconfig@npm:4.14.0"
+"get-tsconfig@npm:4.14.1":
+  version: 4.14.1
+  resolution: "get-tsconfig@npm:4.14.1"
   dependencies:
     resolve-pkg-maps: "npm:^1.0.0"
-  checksum: 10c0/abc2b9275468eb589079a0b7a95eb5107c14fdd0ca6dda1bff116fe774ea1f79975421dcb22a0c86b4f820fcc69a7655dddf9b6d6a8a2c06fcb59e19794c0724
+  checksum: 10c0/c5e5d8fd298be9bc554b8ca3708a76732c27f632cd9b902c1d41b23ad1f4b6fefbe4dbdecd2fee84994d1ebf46e8cc50dd575fcff1b7ffafcdf6e2e0809a0337
   languageName: node
   linkType: hard
 
@@ -4008,13 +4008,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:^6.31.0":
-  version: 6.31.0
-  resolution: "knip@npm:6.31.0"
+"knip@npm:^6.32.0":
+  version: 6.32.0
+  resolution: "knip@npm:6.32.0"
   dependencies:
     fdir: "npm:^6.5.0"
     formatly: "npm:^0.3.0"
-    get-tsconfig: "npm:4.14.0"
+    get-tsconfig: "npm:4.14.1"
     jiti: "npm:^2.7.0"
     oxc-parser: "npm:^0.142.0"
     oxc-resolver: "npm:11.24.2"
@@ -4028,7 +4028,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10c0/e3f706099a3bc2ba21687bc836d1f5b0cbe441b3515e3d0b0a6c7c941005d8efcd7e2d326e6236874124e8888a45597579538990f2a1089b01f13172019ea1e3
+  checksum: 10c0/d6f10a0cc3f73041e49cff585c42774a6593c2602d1bdfcfb3d6b8931b406763d15e0aaa8f2a61f8c7d65d708ea4b9275a901abcafdfa5792d00a1ab4a274549
   languageName: node
   linkType: hard
 
@@ -5497,9 +5497,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^6.1.19, styled-components@npm:^6.5.0":
-  version: 6.5.0
-  resolution: "styled-components@npm:6.5.0"
+"styled-components@npm:^6.5.1":
+  version: 6.5.1
+  resolution: "styled-components@npm:6.5.1"
   dependencies:
     "@emotion/is-prop-valid": "npm:1.4.0"
     css-to-react-native: "npm:3.2.0"
@@ -5517,7 +5517,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 10c0/67e13f6c47f42fe1f4088c57066ac9951c37b755ac6a94f8eebfba97d15d0381a95a8763f71846b16df8f52bca9045fe29e1749eaffbe422560cf3ef8eb5c076
+  checksum: 10c0/52dfcb18fec387bfbbda9f0240cb40ff3565c913c39c630369fd4a0414fff2187c7e06c0c3bbf8d2e6eb9cad4f6f54bf811b1493a0c74cdbfcee66f5a3fe78e5
   languageName: node
   linkType: hard
 
@@ -6057,12 +6057,12 @@ __metadata:
     "@playwright/test": "npm:^1.62.1"
     "@typescript-eslint/eslint-plugin": "npm:^8.66.0"
     "@typescript-eslint/parser": "npm:^8.66.0"
-    eslint: "npm:^10.8.0"
+    eslint: "npm:^10.8.1"
     eslint-plugin-react-hooks: "npm:^7.1.1"
     eslint-plugin-simple-import-sort: "npm:^14.0.0"
     globals: "npm:^17.9.0"
     husky: "npm:^9.1.7"
-    knip: "npm:^6.31.0"
+    knip: "npm:^6.32.0"
     lint-staged: "npm:^17.3.0"
     prettier: "npm:3.9.6"
     react-is: "npm:^19.2.8"
