@@ -206,6 +206,50 @@ describe('FightPredictorApp', () => {
         ).toBeInTheDocument();
     });
 
+    it('sends boolean fight flags in the prediction payload', async () => {
+        useSuccessfulBootstrapHandlers();
+        let payload: Record<string, unknown> | undefined;
+
+        server.use(
+            http.post('*/predict', async ({ request }) => {
+                payload = (await request.json()) as Record<string, unknown>;
+                return HttpResponse.json({
+                    red_win_probability: 0.35,
+                    blue_win_probability: 0.65,
+                    favorite: 'blue'
+                });
+            })
+        );
+
+        render(<FightPredictorApp />);
+
+        const redFighterSelect = await screen.findByLabelText(/red fighter/i);
+        const blueFighterSelect = screen.getByLabelText(/blue fighter/i);
+        const checkboxes = screen.getAllByRole('checkbox');
+        const titleCheckbox = checkboxes[0];
+        const mainEventCheckbox = checkboxes[1];
+        const maleCheckbox = checkboxes[2];
+
+        fireEvent.change(redFighterSelect, { target: { value: '1' } });
+        fireEvent.change(blueFighterSelect, { target: { value: '2' } });
+        fireEvent.click(titleCheckbox);
+        fireEvent.click(mainEventCheckbox);
+        fireEvent.click(maleCheckbox);
+        fireEvent.click(
+            screen.getByRole('button', { name: /predict winner/i })
+        );
+
+        await screen.findByText('Red win probability:');
+
+        expect(payload).toMatchObject({
+            red_fighter_id: 1,
+            blue_fighter_id: 2,
+            fight_gender: true,
+            is_main_event: true,
+            is_title_fight: true
+        });
+    });
+
     it('shows prediction results on successful response', async () => {
         useSuccessfulBootstrapHandlers();
         server.use(

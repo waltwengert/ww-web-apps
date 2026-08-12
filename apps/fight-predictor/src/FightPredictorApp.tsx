@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
+import { Checkbox } from '@ww-web-apps/ui';
+
 import {
     ActionButton,
     AppShell,
@@ -78,6 +80,9 @@ const FightPredictorApp = (): React.ReactElement => {
     >(undefined);
     const [redId, setRedId] = useState<number | undefined>(undefined);
     const [blueId, setBlueId] = useState<number | undefined>(undefined);
+    const [isTitleFight, setIsTitleFight] = useState(false);
+    const [isMainEvent, setIsMainEvent] = useState(false);
+    const [isMaleFight, setIsMaleFight] = useState(false);
     const [result, setResult] = useState<PredictionResult | null>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -172,7 +177,10 @@ const FightPredictorApp = (): React.ReactElement => {
                 },
                 body: JSON.stringify({
                     red_fighter_id: redId,
-                    blue_fighter_id: blueId
+                    blue_fighter_id: blueId,
+                    fight_gender: isMaleFight,
+                    is_main_event: isMainEvent,
+                    is_title_fight: isTitleFight
                 })
             });
 
@@ -487,6 +495,24 @@ const FightPredictorApp = (): React.ReactElement => {
                             ))}
                         </FighterSelect>
                     </FieldLabel>
+                </FieldRow>
+
+                <FieldRow>
+                    <Checkbox
+                        checked={isTitleFight}
+                        onChange={() => setIsTitleFight(current => !current)}
+                        labelText="Title Fight?"
+                    />
+                    <Checkbox
+                        checked={isMainEvent}
+                        onChange={() => setIsMainEvent(current => !current)}
+                        labelText="Main Event?"
+                    />
+                    <Checkbox
+                        checked={isMaleFight}
+                        onChange={() => setIsMaleFight(current => !current)}
+                        labelText="Male Fight?"
+                    />
                 </FieldRow>
 
                 <FieldRow>

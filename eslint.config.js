@@ -1,8 +1,9 @@
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import eslintRecommended from '@eslint/js';
+import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import eslintRecommended from '@eslint/js';
 import globals from 'globals';
 
 const preferArrowFunctionComponentStyle = {
@@ -81,6 +82,7 @@ const config = [
         },
         plugins: {
             '@typescript-eslint': tseslint,
+            react,
             'react-hooks': reactHooks,
             'simple-import-sort': simpleImportSort,
             local: {
@@ -101,6 +103,15 @@ const config = [
 
             // React Hooks
             'react-hooks/exhaustive-deps': 'warn',
+
+            // JSX formatting
+            'react/self-closing-comp': [
+                'error',
+                {
+                    component: true,
+                    html: true
+                }
+            ],
 
             // Import grouping: external -> @ww-web-apps/* internal -> relative
             'simple-import-sort/imports': [

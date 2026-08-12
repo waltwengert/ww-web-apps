@@ -2,7 +2,10 @@ export const BaseColor = {
     White: '#ffffff',
     Black: '#000000',
     SelectBorder: '#b8c4dd',
-    SelectArrow: '#6b7b9d'
+    SelectArrow: '#6b7b9d',
+    CheckboxBorder: 'rgba(148, 163, 184, 0.5)',
+    CheckboxBackground: 'rgba(15, 23, 42, 0.02)',
+    CheckboxAccent: '#2563eb'
 } as const;
 
 export const SecretSantaColor = {

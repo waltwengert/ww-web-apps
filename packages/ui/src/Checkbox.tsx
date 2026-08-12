@@ -1,10 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { BaseColor } from './colors';
+
 const CheckboxWrapper = styled.label`
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
     align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid ${BaseColor.CheckboxBorder};
+    border-radius: 10px;
+    background: ${BaseColor.CheckboxBackground};
+    min-height: 44px;
+    font-weight: 500;
 
     &:hover {
         cursor: pointer;
@@ -20,23 +28,32 @@ const CheckboxWrapper = styled.label`
 `;
 
 const StyledCheckbox = styled.input`
-    margin-right: 10px;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: ${BaseColor.CheckboxAccent};
 `;
 
 interface CheckboxProps {
     labelText: string;
-    onChange: () => void;
+    checked?: boolean;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     className?: string;
 }
 
 export const Checkbox = ({
     labelText,
+    checked,
     onChange,
     className
 }: CheckboxProps): React.ReactElement => {
     return (
         <CheckboxWrapper className={className}>
-            <StyledCheckbox type="checkbox" onChange={onChange} />
+            <StyledCheckbox
+                type="checkbox"
+                checked={checked}
+                onChange={onChange}
+            />
             {labelText}
         </CheckboxWrapper>
     );
