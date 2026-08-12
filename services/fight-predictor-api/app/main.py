@@ -17,7 +17,7 @@ def main() -> None:
 
     db_path = import_data(
         db_path=service_root / 'fight_predictor.db',
-        fighters_csv=data_dir / 'fighters.enriched.csv',
+        fighters_csv=data_dir / 'fighters.csv',
         fights_csv=data_dir / 'fights.csv',
         cards_csv=data_dir / 'cards.csv',
     )
