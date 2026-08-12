@@ -12,12 +12,12 @@ else:
 
 def main() -> None:
     repo_root = Path(__file__).resolve().parents[3]
-    data_dir = repo_root / 'data'
+    data_dir = repo_root / 'ml' / 'data' / 'raw'
     service_root = Path(__file__).resolve().parents[1]
 
     db_path = import_data(
         db_path=service_root / 'fight_predictor.db',
-        fighters_csv=data_dir / 'fighters.csv',
+        fighters_csv=data_dir / 'fighters.enriched.csv',
         fights_csv=data_dir / 'fights.csv',
         cards_csv=data_dir / 'cards.csv',
     )
