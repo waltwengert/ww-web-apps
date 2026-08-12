@@ -205,118 +205,100 @@ const FightPredictorApp = (): React.ReactElement => {
             </p>
 
             <SectionCard>
-                <h2>Fight cards</h2>
-                <FieldLabel>
-                    Select card
-                    <FighterSelect
-                        value={selectedCardId ?? ''}
-                        onChange={event =>
-                            setSelectedCardId(
-                                Number(event.target.value) || undefined
-                            )
-                        }
-                    >
-                        {cards.map(card => (
-                            <option key={card.card_id} value={card.card_id}>
-                                {card.name}
-                            </option>
-                        ))}
-                    </FighterSelect>
-                </FieldLabel>
-                {((): React.ReactElement | null => {
-                    const activeCard = cards.find(
-                        c => c.card_id === selectedCardId
-                    );
-                    return activeCard ? (
-                        <p>
-                            {activeCard.event_date ?? '-'}{' '}
-                            {activeCard.location
-                                ? `· ${activeCard.location}`
-                                : ''}
-                        </p>
-                    ) : null;
-                })()}
-                <TableScroll>
-                    <Table>
-                        <thead>
-                            <tr>
-                                <TableHeaderCell>Fighter</TableHeaderCell>
-                                <TableHeaderCell>Opponent</TableHeaderCell>
-                                <TableHeaderCell>Weight class</TableHeaderCell>
-                                <TableHeaderCell>Result</TableHeaderCell>
-                                <TableHeaderCell>Method</TableHeaderCell>
-                                <TableHeaderCell>Rnd</TableHeaderCell>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {selectedCardFights.length === 0 ? (
-                                <tr>
-                                    <TableCell colSpan={6}>
-                                        No fights available for this card.
-                                    </TableCell>
-                                </tr>
-                            ) : (
-                                selectedCardFights.map(fight => {
-                                    const red = fighters.find(
-                                        f =>
-                                            f.fighter_id ===
-                                            fight.red_fighter_id
-                                    );
-                                    const blue = fighters.find(
-                                        f =>
-                                            f.fighter_id ===
-                                            fight.blue_fighter_id
-                                    );
-                                    const winner =
-                                        fight.winner_id === fight.red_fighter_id
-                                            ? red
-                                            : fight.winner_id ===
-                                                fight.blue_fighter_id
-                                              ? blue
-                                              : null;
-                                    const loser =
-                                        winner?.fighter_id === red?.fighter_id
-                                            ? blue
-                                            : red;
-                                    return (
-                                        <tr key={fight.fight_id}>
-                                            <TableCell>
-                                                {winner?.name ??
-                                                    red?.name ??
-                                                    'Unknown'}
-                                            </TableCell>
-                                            <TableCell>
-                                                {loser?.name ??
-                                                    blue?.name ??
-                                                    'Unknown'}
-                                            </TableCell>
-                                            <TableCell>
-                                                {fight.fight_weight_class ??
-                                                    '-'}
-                                            </TableCell>
-                                            <TableCell>
-                                                {fight.winner_id
-                                                    ? winner
-                                                        ? 'W'
-                                                        : '?'
-                                                    : '-'}
-                                            </TableCell>
-                                            <TableCell>
-                                                {fight.result_method_type ??
-                                                    fight.result_method ??
-                                                    '-'}
-                                            </TableCell>
-                                            <TableCell>
-                                                {fight.result_round ?? '-'}
-                                            </TableCell>
-                                        </tr>
-                                    );
-                                })
-                            )}
-                        </tbody>
-                    </Table>
-                </TableScroll>
+                <h2>Predictor</h2>
+                <FieldRow>
+                    <FieldLabel>
+                        Red fighter
+                        <FighterSelect
+                            value={redId ?? ''}
+                            onChange={event =>
+                                setRedId(
+                                    Number(event.target.value) || undefined
+                                )
+                            }
+                        >
+                            <option value="">Select a fighter</option>
+                            {fighters.map(fighter => (
+                                <option
+                                    key={fighter.fighter_id}
+                                    value={fighter.fighter_id}
+                                >
+                                    {fighter.name}
+                                </option>
+                            ))}
+                        </FighterSelect>
+                    </FieldLabel>
+
+                    <FieldLabel>
+                        Blue fighter
+                        <FighterSelect
+                            value={blueId ?? ''}
+                            onChange={event =>
+                                setBlueId(
+                                    Number(event.target.value) || undefined
+                                )
+                            }
+                        >
+                            <option value="">Select a fighter</option>
+                            {fighters.map(fighter => (
+                                <option
+                                    key={fighter.fighter_id}
+                                    value={fighter.fighter_id}
+                                >
+                                    {fighter.name}
+                                </option>
+                            ))}
+                        </FighterSelect>
+                    </FieldLabel>
+                </FieldRow>
+
+                <FieldRow>
+                    <Checkbox
+                        checked={isTitleFight}
+                        onChange={() => setIsTitleFight(current => !current)}
+                        labelText="Title Fight?"
+                    />
+                    <Checkbox
+                        checked={isMainEvent}
+                        onChange={() => setIsMainEvent(current => !current)}
+                        labelText="Main Event?"
+                    />
+                    <Checkbox
+                        checked={isMaleFight}
+                        onChange={() => setIsMaleFight(current => !current)}
+                        labelText="Male Fight?"
+                    />
+                </FieldRow>
+
+                <FieldRow>
+                    <ActionButton onClick={predict} disabled={loading}>
+                        {loading ? 'Predicting…' : 'Predict winner'}
+                    </ActionButton>
+                </FieldRow>
             </SectionCard>
+
+            {error ? <ErrorMessage>{error}</ErrorMessage> : null}
+
+            {result ? (
+                <SectionCard>
+                    <h2>Prediction</h2>
+                    <p>
+                        Red win probability:{' '}
+                        <strong>
+                            {(result.red_win_probability * 100).toFixed(0)}%
+                        </strong>
+                    </p>
+                    <p>
+                        Blue win probability:{' '}
+                        <strong>
+                            {(result.blue_win_probability * 100).toFixed(0)}%
+                        </strong>
+                    </p>
+                    <p>
+                        Favorite: <strong>{result.favorite}</strong>
+                    </p>
+                </SectionCard>
+            ) : null}
 
             <SectionCard>
                 <h2>Fighter profiles</h2>
@@ -450,100 +432,118 @@ const FightPredictorApp = (): React.ReactElement => {
             </SectionCard>
 
             <SectionCard>
-                <h2>Predictor</h2>
-                <FieldRow>
-                    <FieldLabel>
-                        Red fighter
-                        <FighterSelect
-                            value={redId ?? ''}
-                            onChange={event =>
-                                setRedId(
-                                    Number(event.target.value) || undefined
-                                )
-                            }
-                        >
-                            <option value="">Select a fighter</option>
-                            {fighters.map(fighter => (
-                                <option
-                                    key={fighter.fighter_id}
-                                    value={fighter.fighter_id}
-                                >
-                                    {fighter.name}
-                                </option>
-                            ))}
-                        </FighterSelect>
-                    </FieldLabel>
-
-                    <FieldLabel>
-                        Blue fighter
-                        <FighterSelect
-                            value={blueId ?? ''}
-                            onChange={event =>
-                                setBlueId(
-                                    Number(event.target.value) || undefined
-                                )
-                            }
-                        >
-                            <option value="">Select a fighter</option>
-                            {fighters.map(fighter => (
-                                <option
-                                    key={fighter.fighter_id}
-                                    value={fighter.fighter_id}
-                                >
-                                    {fighter.name}
-                                </option>
-                            ))}
-                        </FighterSelect>
-                    </FieldLabel>
-                </FieldRow>
-
-                <FieldRow>
-                    <Checkbox
-                        checked={isTitleFight}
-                        onChange={() => setIsTitleFight(current => !current)}
-                        labelText="Title Fight?"
-                    />
-                    <Checkbox
-                        checked={isMainEvent}
-                        onChange={() => setIsMainEvent(current => !current)}
-                        labelText="Main Event?"
-                    />
-                    <Checkbox
-                        checked={isMaleFight}
-                        onChange={() => setIsMaleFight(current => !current)}
-                        labelText="Male Fight?"
-                    />
-                </FieldRow>
-
-                <FieldRow>
-                    <ActionButton onClick={predict} disabled={loading}>
-                        {loading ? 'Predicting…' : 'Predict winner'}
-                    </ActionButton>
-                </FieldRow>
+                <h2>Fight cards</h2>
+                <FieldLabel>
+                    Select card
+                    <FighterSelect
+                        value={selectedCardId ?? ''}
+                        onChange={event =>
+                            setSelectedCardId(
+                                Number(event.target.value) || undefined
+                            )
+                        }
+                    >
+                        {cards.map(card => (
+                            <option key={card.card_id} value={card.card_id}>
+                                {card.name}
+                            </option>
+                        ))}
+                    </FighterSelect>
+                </FieldLabel>
+                {((): React.ReactElement | null => {
+                    const activeCard = cards.find(
+                        c => c.card_id === selectedCardId
+                    );
+                    return activeCard ? (
+                        <p>
+                            {activeCard.event_date ?? '-'}{' '}
+                            {activeCard.location
+                                ? `· ${activeCard.location}`
+                                : ''}
+                        </p>
+                    ) : null;
+                })()}
+                <TableScroll>
+                    <Table>
+                        <thead>
+                            <tr>
+                                <TableHeaderCell>Fighter</TableHeaderCell>
+                                <TableHeaderCell>Opponent</TableHeaderCell>
+                                <TableHeaderCell>Weight class</TableHeaderCell>
+                                <TableHeaderCell>Result</TableHeaderCell>
+                                <TableHeaderCell>Method</TableHeaderCell>
+                                <TableHeaderCell>Rnd</TableHeaderCell>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {selectedCardFights.length === 0 ? (
+                                <tr>
+                                    <TableCell colSpan={6}>
+                                        No fights available for this card.
+                                    </TableCell>
+                                </tr>
+                            ) : (
+                                selectedCardFights.map(fight => {
+                                    const red = fighters.find(
+                                        f =>
+                                            f.fighter_id ===
+                                            fight.red_fighter_id
+                                    );
+                                    const blue = fighters.find(
+                                        f =>
+                                            f.fighter_id ===
+                                            fight.blue_fighter_id
+                                    );
+                                    const winner =
+                                        fight.winner_id === fight.red_fighter_id
+                                            ? red
+                                            : fight.winner_id ===
+                                                fight.blue_fighter_id
+                                              ? blue
+                                              : null;
+                                    const loser =
+                                        winner?.fighter_id === red?.fighter_id
+                                            ? blue
+                                            : red;
+                                    return (
+                                        <tr key={fight.fight_id}>
+                                            <TableCell>
+                                                {winner?.name ??
+                                                    red?.name ??
+                                                    'Unknown'}
+                                            </TableCell>
+                                            <TableCell>
+                                                {loser?.name ??
+                                                    blue?.name ??
+                                                    'Unknown'}
+                                            </TableCell>
+                                            <TableCell>
+                                                {fight.fight_weight_class ??
+                                                    '-'}
+                                            </TableCell>
+                                            <TableCell>
+                                                {fight.winner_id
+                                                    ? winner
+                                                        ? 'W'
+                                                        : '?'
+                                                    : '-'}
+                                            </TableCell>
+                                            <TableCell>
+                                                {fight.result_method_type ??
+                                                    fight.result_method ??
+                                                    '-'}
+                                            </TableCell>
+                                            <TableCell>
+                                                {fight.result_round ?? '-'}
+                                            </TableCell>
+                                        </tr>
+                                    );
+                                })
+                            )}
+                        </tbody>
+                    </Table>
+                </TableScroll>
             </SectionCard>
-
-            {error ? <ErrorMessage>{error}</ErrorMessage> : null}
-
-            {result ? (
-                <SectionCard>
-                    <h2>Prediction</h2>
-                    <p>
-                        Red win probability:{' '}
-                        <strong>
-                            {(result.red_win_probability * 100).toFixed(0)}%
-                        </strong>
-                    </p>
-                    <p>
-                        Blue win probability:{' '}
-                        <strong>
-                            {(result.blue_win_probability * 100).toFixed(0)}%
-                        </strong>
-                    </p>
-                    <p>
-                        Favorite: <strong>{result.favorite}</strong>
-                    </p>
-                </SectionCard>
-            ) : null}
         </AppShell>
     );
 };
