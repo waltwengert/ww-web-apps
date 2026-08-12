@@ -32,3 +32,6 @@
 # python
 *.pyc
 **/.venv/
+
+# Jupyter checkpoints
+**/.ipynb_checkpoints/
