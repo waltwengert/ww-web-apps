@@ -1884,7 +1884,7 @@ __metadata:
     msw: "npm:^2.15.0"
     react: "npm:^19.2.5"
     react-dom: "npm:^19.2.5"
-    styled-components: "npm:^6.5.2"
+    styled-components: "npm:^6.5.3"
     typescript: "npm:^6.0.2"
     vite: "npm:^8.0.8"
     vitest: "npm:^4.1.4"
@@ -1909,7 +1909,7 @@ __metadata:
     jsdom: "npm:^30.0.1"
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
-    styled-components: "npm:^6.5.2"
+    styled-components: "npm:^6.5.3"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.2.0"
     vitest: "npm:^4.1.10"
@@ -1939,7 +1939,7 @@ __metadata:
     jsdom: "npm:^30.0.1"
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
-    styled-components: "npm:^6.5.2"
+    styled-components: "npm:^6.5.3"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.2.0"
     vitest: "npm:^4.1.10"
@@ -1968,7 +1968,7 @@ __metadata:
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
     react-router-dom: "npm:^7.18.2"
-    styled-components: "npm:^6.5.2"
+    styled-components: "npm:^6.5.3"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.2.0"
     vitest: "npm:^4.1.10"
@@ -1994,7 +1994,7 @@ __metadata:
     jsdom: "npm:^30.0.1"
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
-    styled-components: "npm:^6.5.2"
+    styled-components: "npm:^6.5.3"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.2.0"
     vitest: "npm:^4.1.10"
@@ -2009,12 +2009,12 @@ __metadata:
     "@types/react-dom": "npm:^19.2.4"
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
-    styled-components: "npm:^6.5.2"
+    styled-components: "npm:^6.5.3"
     typescript: "npm:^6.0.3"
   peerDependencies:
     react: ^19.2.8
     react-dom: ^19.2.8
-    styled-components: ^6.5.2
+    styled-components: ^6.5.3
   languageName: unknown
   linkType: soft
 
@@ -6104,9 +6104,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^6.5.2":
-  version: 6.5.2
-  resolution: "styled-components@npm:6.5.2"
+"styled-components@npm:^6.5.3":
+  version: 6.5.3
+  resolution: "styled-components@npm:6.5.3"
   dependencies:
     "@emotion/is-prop-valid": "npm:1.4.0"
     css-to-react-native: "npm:3.2.0"
@@ -6124,7 +6124,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 10c0/79897da3fd0e00c47522d8d95e08a32fc1bfdfffe191b22349d803d5df5537f7411dbf49074ef36c26997c7a2a74781c0e2e6e86378bdaf2dd582918e4f4b3b2
+  checksum: 10c0/76b525c7cbf4febdf52e6b15eeddb3782bb50e11f078e5d0a299b221067314386c7b05cf703f141f3eb15c541f41b20e43386405322986e441e8bb07324adf06
   languageName: node
   linkType: hard
 
