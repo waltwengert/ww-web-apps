@@ -55,8 +55,8 @@
         "eslint-plugin-simple-import-sort": "^14.0.0",
         "globals": "^17.11.0",
         "husky": "^9.1.7",
-        "knip": "^6.32.2",
-        "lint-staged": "^17.3.0",
+        "knip": "^6.33.0",
+        "lint-staged": "^17.4.1",
         "prettier": "3.9.6",
         "react-is": "^19.2.8",
         "typescript": "^6.0.3"
