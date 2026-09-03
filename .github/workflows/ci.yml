@@ -197,7 +197,18 @@ jobs:
               run: yarn deps:check
 
             - name: Audit dependencies
-              run: yarn deps:audit
+              run: |
+                  for attempt in 1 2 3; do
+                      if yarn deps:audit; then
+                          break
+                      fi
+
+                      if [ "$attempt" -eq 3 ]; then
+                          exit 1
+                      fi
+
+                      sleep 5
+                  done
 
     deploy:
         name: Deploy to GitHub Pages
