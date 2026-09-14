@@ -58,7 +58,7 @@
         "knip": "^6.35.1",
         "lint-staged": "^17.5.1",
         "prettier": "3.9.6",
-        "react-is": "^19.2.8",
+        "react-is": "^19.3.0",
         "typescript": "^6.0.3"
     },
     "lint-staged": {
