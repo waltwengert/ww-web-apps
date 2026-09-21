@@ -48,17 +48,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/code-frame@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "@babel/code-frame@npm:8.0.0"
-  dependencies:
-    "@babel/helper-validator-identifier": "npm:^8.0.0"
-    js-tokens: "npm:^10.0.0"
-  checksum: 10c0/2ea8614018bcd8c86358ab6aa930508115d2205e5e111f736d355b150453818bdf487850f6dec5ec92a10bf27ba4536f4b3b8ad9204514e43d8d68ff2e542443
-  languageName: node
-  linkType: hard
-
-"@babel/code-frame@npm:^8.0.6":
+"@babel/code-frame@npm:^8.0.0, @babel/code-frame@npm:^8.0.6":
   version: 8.0.6
   resolution: "@babel/code-frame@npm:8.0.6"
   dependencies:
@@ -226,13 +216,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-string-parser@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "@babel/helper-string-parser@npm:8.0.0"
-  checksum: 10c0/b2272a9eaa63a1bc9ce2673d580e69620fd79786f3e3cf1891f406801f8211810f194f2739fef920f01a97ae06ae465b2dfd238ab8037a3182d0869939ca9a5d
-  languageName: node
-  linkType: hard
-
 "@babel/helper-string-parser@npm:^8.0.6":
   version: 8.0.6
   resolution: "@babel/helper-string-parser@npm:8.0.6"
@@ -244,13 +227,6 @@ __metadata:
   version: 7.29.7
   resolution: "@babel/helper-validator-identifier@npm:7.29.7"
   checksum: 10c0/4795354e7ae0dcafa72de1cd04ec51252dc1498517170beaf019e03effc5b7bf13c6b21a3949a77e07b8125be7f106ed1131350d8ebd4566ae874094a726d62b
-  languageName: node
-  linkType: hard
-
-"@babel/helper-validator-identifier@npm:^8.0.0, @babel/helper-validator-identifier@npm:^8.0.4":
-  version: 8.0.4
-  resolution: "@babel/helper-validator-identifier@npm:8.0.4"
-  checksum: 10c0/9d3c639a42b70613016fda026487a3b8056df918cb40221a48ef666a3bd2574475e315ee509c552baef4bef55a627ee8ea530e9af5b376512ab248c37aeab336
   languageName: node
   linkType: hard
 
@@ -306,18 +282,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:^8.0.0":
-  version: 8.0.5
-  resolution: "@babel/parser@npm:8.0.5"
-  dependencies:
-    "@babel/types": "npm:^8.0.5"
-  bin:
-    parser: ./bin/babel-parser.js
-  checksum: 10c0/395fdcf8080a0defe6a543e648d52dd04655f83090cc9d118184270e5ec0b74118545a0b3383f6b8fe22577bd8deabd15cad716a7b8228109269fc128d3327df
-  languageName: node
-  linkType: hard
-
-"@babel/parser@npm:^8.0.6":
+"@babel/parser@npm:^8.0.0, @babel/parser@npm:^8.0.6":
   version: 8.0.6
   resolution: "@babel/parser@npm:8.0.6"
   dependencies:
@@ -397,17 +362,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^8.0.0, @babel/types@npm:^8.0.5":
-  version: 8.0.5
-  resolution: "@babel/types@npm:8.0.5"
-  dependencies:
-    "@babel/helper-string-parser": "npm:^8.0.0"
-    "@babel/helper-validator-identifier": "npm:^8.0.4"
-  checksum: 10c0/23d0178fa77f0a59933eaaacf2d846321899747950f505fee304533c4418ecef1c38038ee22a7e4aee50e03bc38eda905e40f191504cee2d438c921d710e4854
-  languageName: node
-  linkType: hard
-
-"@babel/types@npm:^8.0.6":
+"@babel/types@npm:^8.0.0, @babel/types@npm:^8.0.5, @babel/types@npm:^8.0.6":
   version: 8.0.6
   resolution: "@babel/types@npm:8.0.6"
   dependencies:
@@ -464,17 +419,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-calc@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "@csstools/css-calc@npm:3.3.0"
-  peerDependencies:
-    "@csstools/css-parser-algorithms": ^4.0.0
-    "@csstools/css-tokenizer": ^4.0.0
-  checksum: 10c0/83157b9fbf3599dfff2338ac40e7eec0884d1d729b9ca4a949af3c2da55d14368b2ac70ff4f659fc1ec6801a48c9225f2211a8be987678aadf6795dbebe5a2da
-  languageName: node
-  linkType: hard
-
-"@csstools/css-calc@npm:^3.4.0":
+"@csstools/css-calc@npm:^3.3.0, @csstools/css-calc@npm:^3.4.0":
   version: 3.4.0
   resolution: "@csstools/css-calc@npm:3.4.0"
   peerDependencies:
@@ -6887,16 +6832,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^2.9.0":
-  version: 2.9.0
-  resolution: "yaml@npm:2.9.0"
-  bin:
-    yaml: bin.mjs
-  checksum: 10c0/f340718df45e97a9551b9bf9dac61c80050bc464513b710debfb5067c380c8472e3b67809cffacb4ab5ffb5e66ef9310816c88b05f371cec60abfedd8c88e0a2
-  languageName: node
-  linkType: hard
-
-"yaml@npm:^2.9.1":
+"yaml@npm:^2.9.0, yaml@npm:^2.9.1":
   version: 2.9.1
   resolution: "yaml@npm:2.9.1"
   bin:
