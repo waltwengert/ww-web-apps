@@ -5,7 +5,8 @@ import {
     Button,
     MOBILE_DEVICE_WIDTH,
     SecretSantaColor,
-    Select
+    Select,
+    Tooltip
 } from '@ww-web-apps/ui';
 
 import { GeneratorStateContext, OutputMode } from '../context/GeneratorState';
@@ -49,6 +50,14 @@ const PartnerControls = styled.div`
     @media (max-width: ${MOBILE_DEVICE_WIDTH}px) {
         width: 90vw;
     }
+`;
+
+const PartnerActionRow = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: ${SecretSantaColor.White};
 `;
 
 const PartnerPairList = styled.fieldset`
@@ -344,16 +353,19 @@ export const Generator = (): React.ReactElement => {
                 </ButtonRowContainer>
             </ButtonRowWrapper>
             <PartnerControls>
-                <PartnerAction
-                    type="button"
-                    onClick={addPartnerPair}
-                    disabled={
-                        availableParticipants.length < 2 ||
-                        hasIncompletePartnerPair
-                    }
-                >
-                    Add partner pair
-                </PartnerAction>
+                <PartnerActionRow>
+                    <PartnerAction
+                        type="button"
+                        onClick={addPartnerPair}
+                        disabled={
+                            availableParticipants.length < 2 ||
+                            hasIncompletePartnerPair
+                        }
+                    >
+                        Add partner pair
+                    </PartnerAction>
+                    <Tooltip content="Partner pairs won't be assigned to each other in the Secret Santa draw." />
+                </PartnerActionRow>
                 {partnerPairs.length > 0 ? (
                     <PartnerPairList>
                         <legend>Partner pairs</legend>

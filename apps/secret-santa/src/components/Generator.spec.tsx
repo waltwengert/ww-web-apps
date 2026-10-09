@@ -155,6 +155,24 @@ describe('Generator UI', () => {
             fireEvent.change(select, { target: { value: option.value } });
         };
 
+        it('explains what partner pairs do', () => {
+            render(
+                <GeneratorStateProvider>
+                    <Generator />
+                </GeneratorStateProvider>
+            );
+
+            const infoButton = screen.getByRole('button', {
+                name: 'More information'
+            });
+            const tooltipId = infoButton.getAttribute('aria-describedby');
+
+            expect(tooltipId).toBeTruthy();
+            expect(document.getElementById(tooltipId!)).toHaveTextContent(
+                "Partner pairs won't be assigned to each other in the Secret Santa draw."
+            );
+        });
+
         it('prevents both directions of a partner assignment', () => {
             vi.spyOn(Math, 'random').mockReturnValue(0.5);
 
