@@ -1,4 +1,5 @@
 import React from 'react';
+import { QRCodeSVG } from 'qrcode.react';
 import styled from 'styled-components';
 
 import { SecretSantaColor } from '@ww-web-apps/ui';
@@ -10,9 +11,10 @@ const ResultsContainer = styled(BaseResultsPanel)`
     overflow: auto;
 `;
 
-const NamesContainer = styled.div`
-    width: 50%;
-    display: inline-block;
+const ResultRow = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
 `;
 
 const Name = styled.div`
@@ -32,34 +34,53 @@ interface ResultsProps {
     nameList: string[];
     shuffledNameList: string[];
     hidden: boolean;
-    encrypted: boolean;
+    mode: 'plain' | 'encrypted' | 'qr';
 }
 
 export const Results = ({
     nameList,
     shuffledNameList,
     hidden,
-    encrypted
+    mode
 }: ResultsProps): React.ReactElement => {
-    const names = nameList.map((name): React.ReactElement => (
-        <Name key={`name-${name}`}>{name}</Name>
-    ));
-    const shuffledNames = shuffledNameList.map((name): React.ReactElement => (
-        <Name key={`shuffledName-${name}`} hidden={hidden}>
-            {encrypted ? (
-                <ResultLink href={`/secret-santa/#/decrypter/${name}`}>
-                    {name}
-                </ResultLink>
-            ) : (
-                <ResultText>{name}</ResultText>
-            )}
-        </Name>
-    ));
+    const rowCount = Math.max(nameList.length, shuffledNameList.length);
 
     return (
         <ResultsContainer>
-            <NamesContainer>{names}</NamesContainer>
-            <NamesContainer>{shuffledNames}</NamesContainer>
+            {Array.from({ length: rowCount }, (_, index) => {
+                const shuffledName = shuffledNameList[index];
+
+                return (
+                    <ResultRow key={`result-${index}`}>
+                        <Name>{nameList[index]}</Name>
+                        <Name hidden={hidden}>
+                            {shuffledName === undefined ? null : mode ===
+                              'qr' ? (
+                                <QRCodeSVG
+                                    value={getDecrypterUrl(shuffledName)}
+                                    size={128}
+                                    role="img"
+                                    aria-label="Scan to reveal assignment"
+                                />
+                            ) : mode === 'encrypted' ? (
+                                <ResultLink
+                                    href={getDecrypterUrl(shuffledName)}
+                                >
+                                    {shuffledName}
+                                </ResultLink>
+                            ) : (
+                                <ResultText>{shuffledName}</ResultText>
+                            )}
+                        </Name>
+                    </ResultRow>
+                );
+            })}
         </ResultsContainer>
     );
+};
+
+const getDecrypterUrl = (token: string): string => {
+    const url = new URL(window.location.href);
+    url.hash = `/decrypter/${encodeURIComponent(token)}`;
+    return url.toString();
 };

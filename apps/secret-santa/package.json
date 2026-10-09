@@ -12,6 +12,7 @@
         "@ww-web-apps/ui": "workspace:*",
         "@ww-web-apps/utils": "workspace:*",
         "gh-pages": "^6.3.0",
+        "qrcode.react": "^4.2.0",
         "react": "^19.3.0",
         "react-dom": "^19.3.0",
         "react-router-dom": "^7.18.4",

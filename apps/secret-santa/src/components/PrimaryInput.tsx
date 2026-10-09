@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Input, SecretSantaColor } from '@ww-web-apps/ui';
+import { Input, MOBILE_DEVICE_WIDTH, SecretSantaColor } from '@ww-web-apps/ui';
 
 const InputWrapper = styled.div`
     flex: 0 1 auto;
@@ -11,8 +11,14 @@ const InputWrapper = styled.div`
     display: flex;
     flex-direction: column;
 
-    width: 100%;
+    width: 40vw;
+    margin-right: auto;
+    margin-left: auto;
     justify-content: center;
+
+    @media (max-width: ${MOBILE_DEVICE_WIDTH}px) {
+        width: 90vw;
+    }
 
     // The below prevents text from being selectable
     -webkit-touch-callout: none;
@@ -25,6 +31,8 @@ const InputWrapper = styled.div`
 
 const StyledInput = styled(Input)`
     flex: 3;
+    box-sizing: border-box;
+    width: 100%;
 `;
 
 interface PrimaryInputProps {

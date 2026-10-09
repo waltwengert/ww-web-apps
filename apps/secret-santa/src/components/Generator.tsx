@@ -1,8 +1,9 @@
-import React, { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, KeyboardEvent, useContext } from 'react';
 import styled from 'styled-components';
 
-import { Button, Checkbox, SecretSantaColor } from '@ww-web-apps/ui';
+import { Button, SecretSantaColor } from '@ww-web-apps/ui';
 
+import { GeneratorStateContext, OutputMode } from '../context/GeneratorState';
 import {
     decryptStringArray,
     encryptStringArray,
@@ -12,20 +13,45 @@ import { ButtonRowContainer, ButtonRowWrapper } from './layout';
 import { PrimaryInput } from './PrimaryInput';
 import { Results } from './Results';
 
-const EncryptedCheckbox = styled(Checkbox)`
-    flex: 2;
+const ModeSelector = styled.fieldset`
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 0 10px;
+    padding: 0;
+    border: 0;
+`;
+
+const ModeOption = styled.label`
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+
+    input {
+        margin: 0;
+        accent-color: ${SecretSantaColor.Red};
+    }
 `;
 
 export const Generator = (): React.ReactElement => {
-    const [nameList, setNameList] = useState<string[]>([]);
-    const [shuffledNameList, setShuffledNameList] = useState<string[]>([]);
-    const [encrypted, setEncrypted] = useState(false);
-    const [hidden, setHidden] = useState(false);
-    const [currentText, setCurrentText] = useState('');
+    const generatorState = useContext(GeneratorStateContext);
+    if (!generatorState)
+        throw new Error('Generator requires GeneratorStateProvider');
 
-    const [hideButtonText, setHideButtonText] = useState<
-        'Hide all' | 'Reveal all'
-    >('Hide all');
+    const {
+        nameList,
+        setNameList,
+        shuffledNameList,
+        setShuffledNameList,
+        mode,
+        setMode,
+        hidden,
+        setHidden,
+        currentText,
+        setCurrentText
+    } = generatorState;
+    const hideButtonText = hidden ? 'Reveal all' : 'Hide all';
 
     const handleTextInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
         setCurrentText(e.target.value);
@@ -45,36 +71,27 @@ export const Generator = (): React.ReactElement => {
 
     const onShuffle = (): void => {
         const shuffled = shuffle([...nameList]);
-        if (encrypted) {
+        if (mode !== 'plain') {
             setShuffledNameList(encryptStringArray(shuffled));
         } else {
             setShuffledNameList(shuffled);
         }
     };
 
-    const onToggleEncrypted = (): void => {
-        const next = !encrypted;
-        setEncrypted(next);
-        if (next) {
-            // Encrypt whatever is currently in shuffledNameList.
+    const onModeChange = (nextMode: OutputMode): void => {
+        if (nextMode === mode) return;
+
+        if (mode === 'plain' && nextMode !== 'plain') {
             setShuffledNameList(encryptStringArray(shuffledNameList));
-        } else {
-            // Decrypt tokens back to plain names.
+        } else if (mode !== 'plain' && nextMode === 'plain') {
             setShuffledNameList(decryptStringArray(shuffledNameList));
         }
+        setMode(nextMode);
     };
 
     const onHide = (): void => {
         setHidden(!hidden);
     };
-
-    useEffect(() => {
-        if (hidden) {
-            setHideButtonText('Reveal all');
-        } else {
-            setHideButtonText('Hide all');
-        }
-    }, [hidden]);
 
     return (
         <>
@@ -85,10 +102,38 @@ export const Generator = (): React.ReactElement => {
                 onChange={handleTextInputChange}
                 onKeyUp={onInputKeyUp}
                 bottomSlot={
-                    <EncryptedCheckbox
-                        labelText="Encrypted?"
-                        onChange={onToggleEncrypted}
-                    />
+                    <ModeSelector aria-label="Output mode">
+                        <ModeOption>
+                            <input
+                                type="radio"
+                                name="output-mode"
+                                value="plain"
+                                checked={mode === 'plain'}
+                                onChange={() => onModeChange('plain')}
+                            />
+                            Plain
+                        </ModeOption>
+                        <ModeOption>
+                            <input
+                                type="radio"
+                                name="output-mode"
+                                value="encrypted"
+                                checked={mode === 'encrypted'}
+                                onChange={() => onModeChange('encrypted')}
+                            />
+                            Encrypted
+                        </ModeOption>
+                        <ModeOption>
+                            <input
+                                type="radio"
+                                name="output-mode"
+                                value="qr"
+                                checked={mode === 'qr'}
+                                onChange={() => onModeChange('qr')}
+                            />
+                            QR
+                        </ModeOption>
+                    </ModeSelector>
                 }
             />
             <ButtonRowWrapper>
@@ -120,7 +165,7 @@ export const Generator = (): React.ReactElement => {
                 nameList={nameList}
                 shuffledNameList={shuffledNameList}
                 hidden={hidden}
-                encrypted={encrypted}
+                mode={mode}
             />
         </>
     );
