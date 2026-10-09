@@ -6,9 +6,9 @@ test('secret-santa loads', async ({ page }) => {
 
     const nameInput = page.getByPlaceholder('Name');
     await nameInput.fill('alice');
-    await page.getByRole('button', { name: 'Add' }).click();
+    await page.getByRole('button', { name: 'Add', exact: true }).click();
     await nameInput.fill('bob');
-    await page.getByRole('button', { name: 'Add' }).click();
+    await page.getByRole('button', { name: 'Add', exact: true }).click();
     await page.getByRole('button', { name: 'Shuffle' }).click();
 
     await expect(page.getByText('alice')).toHaveCount(2);
