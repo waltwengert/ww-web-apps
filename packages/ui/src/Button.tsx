@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import { BaseColor } from './colors';
 import { MOBILE_DEVICE_WIDTH } from './constants';
 
-interface ButtonProps {
+interface ButtonProps extends Omit<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    'color'
+> {
     children: React.ReactNode;
     backgroundColor?: string;
     color?: string;
-    className?: string;
-    onClick?: () => void;
-    type?: 'button' | 'submit' | 'reset';
 }
 
 const StyledButton = styled.button<{
@@ -35,6 +35,11 @@ const StyledButton = styled.button<{
         font-size: 16px;
     }
 
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.55;
+    }
+
     @media (max-width: ${MOBILE_DEVICE_WIDTH}px) {
         width: 95vw;
     }
@@ -52,15 +57,15 @@ export const Button = ({
     backgroundColor,
     color,
     className,
-    onClick,
-    type = 'button'
+    type = 'button',
+    ...buttonProps
 }: ButtonProps): React.ReactElement => {
     return (
         <StyledButton
+            {...buttonProps}
             className={className}
             $backgroundColor={backgroundColor}
             $color={color}
-            onClick={onClick}
             type={type}
         >
             {children}

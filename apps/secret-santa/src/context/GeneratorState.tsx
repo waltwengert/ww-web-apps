@@ -1,10 +1,14 @@
 import React, { createContext, useState } from 'react';
 
+import { Participant, PartnerPair } from '../lib/secretSanta';
+
 export type OutputMode = 'plain' | 'encrypted' | 'qr';
 
 interface GeneratorState {
-    nameList: string[];
-    setNameList: React.Dispatch<React.SetStateAction<string[]>>;
+    participants: Participant[];
+    setParticipants: React.Dispatch<React.SetStateAction<Participant[]>>;
+    partnerPairs: PartnerPair[];
+    setPartnerPairs: React.Dispatch<React.SetStateAction<PartnerPair[]>>;
     shuffledNameList: string[];
     setShuffledNameList: React.Dispatch<React.SetStateAction<string[]>>;
     mode: OutputMode;
@@ -26,7 +30,8 @@ interface GeneratorStateProviderProps {
 export const GeneratorStateProvider = ({
     children
 }: GeneratorStateProviderProps): React.ReactElement => {
-    const [nameList, setNameList] = useState<string[]>([]);
+    const [participants, setParticipants] = useState<Participant[]>([]);
+    const [partnerPairs, setPartnerPairs] = useState<PartnerPair[]>([]);
     const [shuffledNameList, setShuffledNameList] = useState<string[]>([]);
     const [mode, setMode] = useState<OutputMode>('plain');
     const [hidden, setHidden] = useState(false);
@@ -35,8 +40,10 @@ export const GeneratorStateProvider = ({
     return (
         <GeneratorStateContext.Provider
             value={{
-                nameList,
-                setNameList,
+                participants,
+                setParticipants,
+                partnerPairs,
+                setPartnerPairs,
                 shuffledNameList,
                 setShuffledNameList,
                 mode,

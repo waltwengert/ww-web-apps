@@ -25,6 +25,23 @@ describe('Generator UI', () => {
         expect(screen.getByText('alex')).toBeInTheDocument();
     });
 
+    it('does not shuffle fewer than two participants', () => {
+        render(
+            <GeneratorStateProvider>
+                <Generator />
+            </GeneratorStateProvider>
+        );
+        const input = screen.getByPlaceholderText('Name');
+
+        fireEvent.change(input, { target: { value: 'Jane' } });
+        fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+        fireEvent.click(screen.getByRole('button', { name: 'Shuffle' }));
+
+        expect(screen.getByRole('alert')).toHaveTextContent(
+            'Add at least two participants'
+        );
+    });
+
     it('shows encrypted links after shuffle when encrypted mode is selected', () => {
         vi.spyOn(Math, 'random').mockReturnValue(0);
 
@@ -73,6 +90,10 @@ describe('Generator UI', () => {
             screen.getAllByRole('img', { name: 'Scan to reveal assignment' })
         ).toHaveLength(2);
         expect(container.querySelector('svg')).toBeInTheDocument();
+        expect(screen.getByText('alex')).toBeInTheDocument();
+        expect(
+            screen.getByRole('button', { name: 'Save all QR codes' })
+        ).toBeEnabled();
     });
 
     it('retains generator state when navigating to and from the decrypter', () => {
@@ -120,5 +141,89 @@ describe('Generator UI', () => {
             screen.getAllByRole('img', { name: 'Scan to reveal assignment' })
         ).toHaveLength(2);
         expect(screen.getByText('alex')).toBeInTheDocument();
+    });
+
+    describe('partner pairs', () => {
+        const selectParticipant = (label: string, name: string): void => {
+            const select = screen.getByLabelText(label) as HTMLSelectElement;
+            const option = Array.from(select.options).find(
+                candidate => candidate.textContent === name
+            );
+
+            if (!option)
+                throw new Error(`Could not find participant option: ${name}`);
+            fireEvent.change(select, { target: { value: option.value } });
+        };
+
+        it('prevents both directions of a partner assignment', () => {
+            vi.spyOn(Math, 'random').mockReturnValue(0.5);
+
+            const { container } = render(
+                <GeneratorStateProvider>
+                    <Generator />
+                </GeneratorStateProvider>
+            );
+            const input = screen.getByPlaceholderText('Name');
+
+            for (const name of ['Jane', 'Joe', 'Mary', 'Max']) {
+                fireEvent.change(input, { target: { value: name } });
+                fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+            }
+
+            fireEvent.click(
+                screen.getByRole('button', { name: 'Add partner pair' })
+            );
+            selectParticipant('First participant in partner pair 1', 'jane');
+            selectParticipant('Second participant in partner pair 1', 'joe');
+            fireEvent.click(
+                screen.getByRole('button', { name: 'Add partner pair' })
+            );
+            selectParticipant('First participant in partner pair 2', 'mary');
+            selectParticipant('Second participant in partner pair 2', 'max');
+            expect(
+                screen.getByRole('button', { name: 'Add partner pair' })
+            ).toBeDisabled();
+            fireEvent.click(screen.getByRole('button', { name: 'Shuffle' }));
+
+            const assignments = new Map(
+                Array.from(
+                    container.querySelectorAll(
+                        '[data-testid^="assignment-row-"]'
+                    )
+                ).map(row => [
+                    row.children[0].textContent,
+                    row.children[1].textContent
+                ])
+            );
+            expect(assignments.get('jane')).not.toBe('joe');
+            expect(assignments.get('joe')).not.toBe('jane');
+            expect(assignments.get('mary')).not.toBe('max');
+            expect(assignments.get('max')).not.toBe('mary');
+        });
+
+        it('shows an error when partner constraints make a shuffle impossible', () => {
+            render(
+                <GeneratorStateProvider>
+                    <Generator />
+                </GeneratorStateProvider>
+            );
+            const input = screen.getByPlaceholderText('Name');
+
+            for (const name of ['Jane', 'Joe', 'Mary']) {
+                fireEvent.change(input, { target: { value: name } });
+                fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+            }
+
+            fireEvent.click(
+                screen.getByRole('button', { name: 'Add partner pair' })
+            );
+            selectParticipant('First participant in partner pair 1', 'jane');
+            selectParticipant('Second participant in partner pair 1', 'joe');
+            fireEvent.click(screen.getByRole('button', { name: 'Shuffle' }));
+
+            expect(screen.getByRole('alert')).toHaveTextContent(
+                'No valid assignments are possible'
+            );
+        });
     });
 });
