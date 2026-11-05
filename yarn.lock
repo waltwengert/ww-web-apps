@@ -282,18 +282,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:^8.0.0":
-  version: 8.0.10
-  resolution: "@babel/parser@npm:8.0.10"
-  dependencies:
-    "@babel/types": "npm:^8.0.10"
-  bin:
-    parser: ./bin/babel-parser.js
-  checksum: 10c0/bce3f1b80dbdcdbf3763be39d0da7afa5f55a849cad4d9c5e9ebb25839b5e6316f4a59b9ba2d21c8921de016efba47445b75c88c983336036ea7923fb0c09d45
-  languageName: node
-  linkType: hard
-
-"@babel/parser@npm:^8.1.0":
+"@babel/parser@npm:^8.0.0, @babel/parser@npm:^8.1.0":
   version: 8.1.0
   resolution: "@babel/parser@npm:8.1.0"
   dependencies:
@@ -373,17 +362,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^8.0.0, @babel/types@npm:^8.0.10":
-  version: 8.0.10
-  resolution: "@babel/types@npm:8.0.10"
-  dependencies:
-    "@babel/helper-string-parser": "npm:^8.0.8"
-    "@babel/helper-validator-identifier": "npm:^8.0.6"
-  checksum: 10c0/d1ebd1bcab77073d102680c71609903d951bfdd1b362c04885cbb1d31f070b81e7e080d201c297bfa891e1de76d0a71629fe9e3609b67b84cd0aa5bafce01913
-  languageName: node
-  linkType: hard
-
-"@babel/types@npm:^8.1.0":
+"@babel/types@npm:^8.0.0, @babel/types@npm:^8.1.0":
   version: 8.1.0
   resolution: "@babel/types@npm:8.1.0"
   dependencies:
